@@ -16,8 +16,9 @@ const Form = ({setBookSearch, setApiData}) => {
     }
 
     return (
-        <form onSubmit={searchBookHandler}>
-            <input type="text" id="searchInput"/>
+        <form onSubmit={searchBookHandler} id="bookForm">
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/search.png"/>
+            <input type="text" id="searchInput" placeholder="Search..."/>
             <button>Search</button>
         </form>
     )

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Maven+Pro:wght@500&display=swap');
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Abril Fatface', cursive;
+}
+
+p,a,li,small {
+    font-family: 'Maven Pro', sans-serif;
+}
+
+/* form */
+
+#bookForm {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: rgb(240, 240, 240);
+}
+
+#bookForm img {
+    width: 30px;
+    height: 30px;
+    opacity: 0.2;
+    padding: 8px;
+}
+
+#bookForm input {
+    width: 80%;
+    padding: 15px 5px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    background-color: rgb(240, 240, 240);
+    color: rgb(145, 145, 145);
+}
+
+#bookForm input::placeholder {
+    color: rgb(182, 182, 182);
+}
+
+#bookForm input:focus {
+    outline: none;
+}
+
+#bookForm input:aut {
+
+}
+
+#bookForm button {
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: rgb(69 229 201);
+    padding: 0 12px;
+}
+
+#bookForm button:focus {
+    outline: none;
+}
+
+/* books container */
+
+.book-container {
+    position: relative;
+    margin: 15px;
+    padding: 10px;
+}
+
+.book-img-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.book-info-container {
+    box-shadow: 3px 3px 11px 11px rgba(0,0,0,0.02);
+    border-radius: 15px;
+    padding: 10px;
+    padding-left: 110px;
+}
+
+.book-container .book-img {
+    box-shadow: 3px 3px 10px 10px rgba(0,0,0,0.03);
+    width: 100px;
+    height: 150px;
+    border-radius: 8px;
+}
+
+.book-container h3 {
+    margin: 0;
+}
+
+.book-container .autor {
+    color: rgb(153, 153, 153);
+    margin: 6px 0 15px 0;
+}
+
+.book-container .rating {
+    display: flex;
+    align-items: center;
+    color: rgb(236, 159, 58);
+    margin: 0;
+}
+
+.book-container .rating img {
+    margin-right: 10px;
+}
+
+.book-container .page-count {
+    display: flex;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.book-container .page-count img {
+    margin-right: 10px;
+}
+
+.book-container .add-icon {
+    box-shadow: 3px 3px 7px 7px rgba(0,0,0,0.04);
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 25px;
+    right: 20px;
+    bottom: 20px;
+}
