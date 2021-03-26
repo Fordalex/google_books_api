@@ -1,73 +1,22 @@
 import React, { Fragment, useEffect, useState } from "react";
-import axios from "axios";
+import Loading from "../static/img/book-loading.gif";
+import Book from "./Book";
 
 const Books = ({ bookSearch, setApiData, apiData }) => {
   return (
     <Fragment>
       {apiData.loading ? (
         <Fragment>
-          <p>Search: {bookSearch}</p>
-          <p>Loading...</p>
+          {apiData.msg === "loading" ? (
+            <img src={Loading} id='loading' />
+          ) : (
+            <p class='m-1'>{apiData.msg}</p>
+          )}
         </Fragment>
       ) : (
         <Fragment>
-          <p>Total Results: {apiData.book.totalItems}</p>
-
-          {apiData.book.items.map((book) => (
-            <div class='book-container'>
-              <div class='book-img-container'>
-                <img
-                  class='book-img'
-                  src={book.volumeInfo.imageLinks.smallThumbnail}
-                />
-              </div>
-              <div class='book-info-container'>
-                <h3>{book.volumeInfo.title}</h3>
-
-                <p class='autor'>{book.volumeInfo.authors}</p>
-
-                {book.volumeInfo.averageRating ? (
-                  <p class='rating'>
-                    <img src='https://img.icons8.com/color/25/000000/filled-star--v1.png' />{" "}
-                    {book.volumeInfo.averageRating} / 5
-                  </p>
-                ) : (
-                  <p class='rating'>
-                    <img src='https://img.icons8.com/color/25/000000/filled-star--v1.png' />{" "}
-                    No Rating
-                  </p>
-                )}
-
-                {book.volumeInfo.pageCount ? (
-                  <small class='page-count'>
-                    <img src='https://img.icons8.com/color/25/000000/open-book--v1.png' />{" "}
-                    {book.volumeInfo.pageCount} Pages
-                  </small>
-                ) : (
-                  <small class='page-count'>
-                    <img src='https://img.icons8.com/color/25/000000/open-book--v1.png' />{" "}
-                    No Info
-                  </small>
-                )}
-
-                {book.volumeInfo.publishedDate ? (
-                  <small class='page-count'>
-                    <img src='https://img.icons8.com/color/25/000000/date-to.png' />
-                    {book.volumeInfo.publishedDate}
-                  </small>
-                ) : (
-                  <small class='page-count'>
-                    <img src='https://img.icons8.com/color/25/000000/date-to.png' />
-                    No Info
-                  </small>
-                )}
-
-                <img
-                  class='add-icon'
-                  src='https://img.icons8.com/flat-round/64/000000/plus.png'
-                />
-              </div>
-            </div>
+          {apiData.book.items.map((book, index) => (
+            <Book book={book} key={index} />
           ))}
 
           <h4>Search Page Length: {apiData.book.items.length}</h4>

@@ -6,7 +6,7 @@ import Form from './components/Form';
 function App() {
 
   const [bookSearch, setBookSearch] = useState('Steven');
-  const [apiData, setApiData] = useState({ loading: true });
+  const [apiData, setApiData] = useState({ loading: true, msg: 'Please search a book title.' });
 
   return (
     <Fragment>

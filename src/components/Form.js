@@ -6,6 +6,7 @@ const Form = ({setBookSearch, setApiData}) => {
 
     const searchBookHandler = async (e) => {
         e.preventDefault();
+        setApiData({ loading: true, msg: 'loading' });
         const search = document.getElementById('searchInput').value;
         const res = await axios.get(
             `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${apiKey}`
