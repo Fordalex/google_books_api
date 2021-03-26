@@ -1,24 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Fragment, useState, useEffect } from 'react';
+import Books from './components/Books';
+import Form from './components/Form';
 
 function App() {
+
+  const [bookSearch, setBookSearch] = useState('Steven');
+  const [apiData, setApiData] = useState({ loading: true });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Form setBookSearch={setBookSearch} setApiData={setApiData}/>
+      <Books bookSearch={bookSearch} setApiData={setApiData} apiData={apiData}/>
+    </Fragment>
+
   );
 }
 
