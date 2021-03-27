@@ -76,6 +76,7 @@ input:-webkit-autofill:focus {
     position: relative;
     margin: 15px;
     padding: 10px;
+    opacity: 0;
 }
 
 .book-img-container {
@@ -99,6 +100,7 @@ input:-webkit-autofill:focus {
     height: 150px;
     border-radius: 10px;
     background-color: white;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -136,10 +138,25 @@ input:-webkit-autofill:focus {
 
 .book-container .add-icon {
     box-shadow: 3px 3px 7px 7px rgba(0,0,0,0.04);
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     position: absolute;
     border-radius: 25px;
     right: 30px;
     bottom: 30px;
+}
+
+/* book info container */
+
+.one-book-info-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: none;
+    z-index: 50;
+    overflow: auto;
 }

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import Loading from "../static/img/book-loading.gif";
 import Book from "./Book";
 
-const Books = ({ bookSearch, setApiData, apiData }) => {
+const Books = ({ bookSearch, setApiData, apiData , setBookIndex}) => {
   return (
     <Fragment>
       {apiData.loading ? (
@@ -15,11 +15,11 @@ const Books = ({ bookSearch, setApiData, apiData }) => {
         </Fragment>
       ) : (
         <Fragment>
-          {apiData.book.items.map((book, index) => (
-            <Book book={book} key={index} />
-          ))}
-
-          <h4>Search Page Length: {apiData.book.items.length}</h4>
+            {apiData.book.items.map((book, index) => (
+              <Book book={book} key={index} index={index} setBookIndex={setBookIndex}/>
+            ))}
+            <h4>Search Page Length: {apiData.book.items.length}</h4>
+            
         </Fragment>
       )}
     </Fragment>
