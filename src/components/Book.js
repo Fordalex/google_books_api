@@ -10,47 +10,21 @@ const Book = ({ book, index, setBookIndex }) => {
     imgLink = "";
   }
 
-  // Animate books on load
-  anime({
-    targets: ".book-container",
-    keyframes: [
-      { rotate: "-80deg", translateX: "-100vw", duration: 0 },
-      { rotate: "0deg", translateX: "0px", duration: 800 },
-    ],
-    opacity: 1,
-    delay: anime.stagger(50, { easing: "easeOutQuad" }),
-  });
-
-  anime({
-    targets: ".book-img-container",
-    keyframes: [
-      { rotate: "180deg", duration: 0 },
-      { rotate: "0deg", duration: 1500 },
-    ],
-    opacity: 1,
-    delay: anime.stagger(50, { easing: "easeOutQuad" }),
-  });
-
   // Show book information
   const showBookInfoHandler = (e) => {
     let idNum = e.target.id.split("-")[2];
     setBookIndex(idNum);
 
-    anime({
-      targets: ".search-book-container",
-      translateX: "-110vw",
-      loop: false,
-      duration: 800,
-    });
     let bookInfoContainer = document.getElementsByClassName(
       "one-book-info-container"
     )[0];
     bookInfoContainer.style.display = "block";
+
     anime({
       targets: ".one-book-info-container",
       keyframes: [
-        { translateX: "110vw", duration: 0 },
-        { translateX: "0px", duration: 800 },
+        { translateX: "200vw", duration: 0 },
+        { translateX: "0px", duration: 1000 },
       ],
       loop: false,
     });

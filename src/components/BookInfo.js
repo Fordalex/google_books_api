@@ -2,91 +2,91 @@ import React from "react";
 import anime from "animejs/lib/anime.es.js";
 
 const BookInfo = ({ apiData, bookIndex }) => {
+  // go back to book search.
   const backHandler = () => {
-    let searchBookContainer = document.getElementsByClassName(
-      "search-book-container"
-    )[0];
-    searchBookContainer.style.display = "block";
+
     anime({
-      targets: ".search-book-container",
-      translateX: "0vw",
+      targets: ".one-book-info-container",
+      keyframes: [
+        { translateX: "200vw", duration: 1000 },
+      ],
       loop: false,
-      duration: 500,
     });
-    let bookInfoContainer = document.getElementsByClassName(
-      "one-book-info-container"
-    )[0];
-    bookInfoContainer.style.display = "none";
+
+    setTimeout(() => {
+      let bookInfoContainer = document.getElementsByClassName(
+        "one-book-info-container"
+      )[0];
+      bookInfoContainer.style.display = "none";
+    }, 1000)
+
+   
   };
 
   //   Check if book has title
   try {
     var title = apiData.book.items[bookIndex].volumeInfo.title;
   } catch {
-    var title = "Not Found";
+    return <div></div>;
   }
 
   // Check if book has image
   var imgLink = "";
   try {
-    imgLink = apiData.book.items[bookIndex].volumeInfo.imageLinks.smallThumbnail;
+    imgLink =
+      apiData.book.items[bookIndex].volumeInfo.imageLinks.thumbnail;
   } catch {
     imgLink = "";
   }
 
   return (
     <div>
-      <button onClick={backHandler}>Back</button>
+      <div>
+      <img onClick={backHandler} class="info-back-button" src="https://img.icons8.com/ios/35/000000/circled-left-2.png"/>
+      </div>
+
       {imgLink ? (
-        <img class='book-img' src={imgLink} />
+        <img class='book-info-img' src={imgLink} />
       ) : (
-        <p class='book-img'>No Image</p>
+        <p class='book-info-img'>No Image</p>
       )}
-      <h3>{title}</h3>
-      <p>
-        "But I must explain to you how all this mistaken idea of denouncing
-        pleasure and praising pain was born and I will give you a complete
-        account of the system, and expound the actual teachings of the great
-        explorer of the truth, the master-builder of human happiness. No one
-        rejects, dislikes, or avoids pleasure itself, because it is pleasure,
-        but because those who do not know how to pursue pleasure rationally
-        encounter consequences that are extremely painful. Nor again is there
-        anyone who loves or pursues or desires to obtain pain of itself, because
-        it is pain, but because occasionally circumstances occur in which toil
-        and pain can procure him some great pleasure. To take a trivial example,
-        which of us ever undertakes laborious physical exercise, except to
-        obtain some advantage from it? But who has any right to find fault with
-        a man who chooses to enjoy a pleasure that has no annoying consequences,
-        or one who avoids a pain that produces no resultant pleasure?""But I
-        must explain to you how all this mistaken idea of denouncing pleasure
-        and praising pain was born and I will give you a complete account of the
-        system, and expound the actual teachings of the great explorer of the
-        truth, the master-builder of human happiness. No one rejects, dislikes,
-        or avoids pleasure itself, because it is pleasure, but because those who
-        do not know how to pursue pleasure rationally encounter consequences
-        that are extremely painful. Nor again is there anyone who loves or
-        pursues or desires to obtain pain of itself, because it is pain, but
-        because occasionally circumstances occur in which toil and pain can
-        procure him some great pleasure. To take a trivial example, which of us
-        ever undertakes laborious physical exercise, except to obtain some
-        advantage from it? But who has any right to find fault with a man who
-        chooses to enjoy a pleasure that has no annoying consequences, or one
-        who avoids a pain that produces no resultant pleasure?""But I must
-        explain to you how all this mistaken idea of denouncing pleasure and
-        praising pain was born and I will give you a complete account of the
-        system, and expound the actual teachings of the great explorer of the
-        truth, the master-builder of human happiness. No one rejects, dislikes,
-        or avoids pleasure itself, because it is pleasure, but because those who
-        do not know how to pursue pleasure rationally encounter consequences
-        that are extremely painful. Nor again is there anyone who loves or
-        pursues or desires to obtain pain of itself, because it is pain, but
-        because occasionally circumstances occur in which toil and pain can
-        procure him some great pleasure. To take a trivial example, which of us
-        ever undertakes laborious physical exercise, except to obtain some
-        advantage from it? But who has any right to find fault with a man who
-        chooses to enjoy a pleasure that has no annoying consequences, or one
-        who avoids a pain that produces no resultant pleasure?"
-      </p>
+      <div class='book-all-info-container'>
+        <div class="book-all-title-container">
+          <div>
+            <h3>{title}</h3>
+            <p>{apiData.book.items[bookIndex].volumeInfo.subtitle}</p>
+            <small class="mb-3">Author: {apiData.book.items[bookIndex].volumeInfo.authors}</small>
+          </div>
+          <div class="d-flex-center">
+            <img class="love-icon" src='https://img.icons8.com/material-outlined/24/000000/filled-like.png' />
+          </div>
+        </div>
+
+        <hr/>
+        <div class="justify-content-between align-items-center">
+          <div class="justify-content-between align-items-center w-100">
+            <div class="justify-content-between align-items-center">
+            <img class="rating-icon m-1" src='https://img.icons8.com/color/25/000000/filled-star--v1.png' />
+            <p class="rating">Rating</p>
+            </div>
+          {apiData.book.items[bookIndex].volumeInfo.averageRating ? (
+          <p class='rating m-1'>
+            {apiData.book.items[bookIndex].volumeInfo.averageRating} / 5
+          </p>
+        ) : (
+          <p class='rating m-1'>
+            N/A
+          </p>
+        )}
+          </div>
+        </div>
+        <hr/>
+
+        <p>{apiData.book.items[bookIndex].volumeInfo.description}</p>
+
+          <button class="add-book">Add Book</button>
+
+      </div>
     </div>
   );
 };
