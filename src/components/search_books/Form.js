@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { apiKey } from "../config/default.json";
+import { apiKey } from "../../config/default.json";
 import anime from "animejs/lib/anime.es.js";
 
 const Form = ({ setBookSearch, setApiData }) => {
@@ -38,7 +38,7 @@ const Form = ({ setBookSearch, setApiData }) => {
   return (
     <form onSubmit={searchBookHandler} id='bookForm'>
       <img src='https://img.icons8.com/ios-glyphs/30/000000/search.png' />
-      <input type='text' id='searchInput' placeholder='Search...' />
+      <input type='text' id='searchInput' placeholder='Search...' autocomplete="off" />
       <button>Search</button>
     </form>
   );

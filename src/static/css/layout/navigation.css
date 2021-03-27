@@ -1,0 +1,26 @@
+nav {
+    background-color: white;
+    padding: 8px 14px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 8px 8px rgba(0,0,0,0.02);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.burger-menu-container div {
+    height: 4px;
+    width: 27px;
+    background-color: rgb(0, 0, 0);
+    margin-bottom: 4px;
+    border-radius: 2px;
+}
+
+.burger-menu-container div:last-of-type {
+    margin: 0;
+}

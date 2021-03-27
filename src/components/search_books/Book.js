@@ -42,7 +42,11 @@ const Book = ({ book, index, setBookIndex }) => {
       <div class='book-info-container'>
         <h3>{book.volumeInfo.title}</h3>
 
-        <p class='autor'>{book.volumeInfo.authors}</p>
+        <p class='autor'>{book.volumeInfo.authors.map((author) => (
+              <span>{author}, </span>
+            ))}</p>
+
+
 
         {book.volumeInfo.averageRating ? (
           <p class='rating'>

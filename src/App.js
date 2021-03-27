@@ -1,32 +1,25 @@
-import "./App.css";
-import React, { Fragment, useState, useEffect } from "react";
-import Books from "./components/Books";
-import Form from "./components/Form";
-import BookInfo from './components/BookInfo';
+import React, { Fragment, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// components
+import NavBar from "./components/layout/NavBar";
+import BookSearch from "./components/search_books/BookIndex";
+// css
+import './static/css/basic.css'
+import './static/css/search_books/searchBooks.css'
+import './static/css/layout/navigation.css'
 
 function App() {
-  const [bookSearch, setBookSearch] = useState("Steven");
-  const [apiData, setApiData] = useState({
-    loading: true,
-    msg: "Please search a book title.",
-  });
-  const [bookIndex, setBookIndex] = useState(0)
-
   return (
-    <Fragment>
-      <div class='search-book-container'>
-        <Form setBookSearch={setBookSearch} setApiData={setApiData} />
-        <Books
-          bookSearch={bookSearch}
-          setApiData={setApiData}
-          apiData={apiData}
-          setBookIndex={setBookIndex}
-        />
-      </div>
-      <div class="one-book-info-container">
-        <BookInfo bookIndex={bookIndex} apiData={apiData}/>
-      </div>
-    </Fragment>
+    <Router>
+      <Fragment>
+        <NavBar />
+        <section className='container'>
+          <Switch>
+            <Route exact path='/book-search' component={BookSearch} />
+          </Switch>
+        </section>
+      </Fragment>
+    </Router>
   );
 }
 

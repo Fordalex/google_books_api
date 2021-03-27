@@ -55,7 +55,11 @@ const BookInfo = ({ apiData, bookIndex }) => {
           <div>
             <h3>{title}</h3>
             <p>{apiData.book.items[bookIndex].volumeInfo.subtitle}</p>
-            <small class="mb-3">Author: {apiData.book.items[bookIndex].volumeInfo.authors}</small>
+            <small class="mb-3">Author: {
+            apiData.book.items[bookIndex].volumeInfo.authors.map((author) => (
+              <span>{author}, </span>
+            ))
+            }</small>
           </div>
           <div class="d-flex-center">
             <img class="love-icon" src='https://img.icons8.com/material-outlined/24/000000/filled-like.png' />

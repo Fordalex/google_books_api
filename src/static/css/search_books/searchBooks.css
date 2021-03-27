@@ -1,49 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Maven+Pro:wght@500&display=swap');
 
-:root {
-    --mainColour: rgb(81, 206, 195);
-}
-
-body {
-    background-color: rgb(245 247 246);
-}
-
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'Abril Fatface', cursive;
-}
-
-p,a,li,small,button {
-    font-family: 'Maven Pro', sans-serif;
-}
-
-.m-1 {
-    margin: 10px;
-}
-
-.w-100 {
-    width: 100%;
-}
-
-hr {
-    border: solid 1px rgb(228, 228, 228);
-    border-top: none;
-}
-
-.d-flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.justify-content-between {
-    display: flex;
-    justify-content: space-between;
-}
-
-.align-items-center {
-    display: flex;
-    align-items: center;
-}
 
 #loading {
     width: 100%;
@@ -189,6 +144,7 @@ button:focus {
 }
 
 .one-book-info-container {
+    padding-top: 62px;
     position: fixed;
     top: 0;
     right: 0;
@@ -212,7 +168,7 @@ button:focus {
 .book-all-info-container {
     background-color: white;
     padding: 15px;
-    padding-bottom: 30px;
+    padding-bottom: 90px;
 }
 
 .book-all-title-container {
@@ -226,7 +182,7 @@ button:focus {
 
 .book-all-info-container .add-book {
     position: sticky;
-    bottom: 15px;
+    bottom: 77px;
     right: 0;
     left: 0;
     padding: 18px;
