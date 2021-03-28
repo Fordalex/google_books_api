@@ -50,6 +50,7 @@ nav {
     height:60px;
     width: 60px;
     border: solid 3px var(--mainColour);
+    margin-right: 10px;
 }
 
 .nav-link-container {   

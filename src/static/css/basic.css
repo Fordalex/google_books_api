@@ -72,3 +72,7 @@ hr {
 .text-secondary {
     color: rgb(155, 155, 155);
 }
+
+.text-main {
+    color: var(--mainColour);
+}

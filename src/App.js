@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/layout/NavBar";
 import BookSearch from "./components/search_books/BookIndex";
 import Profile from "./components/user/Profile";
+import UsersBooks from "./components/user/UsersBooks";
 import Settings from "./components/settings/Settings";
 // css
 import './static/css/basic.css'
@@ -19,6 +20,7 @@ function App() {
         <section className='container'>
           <Switch>
             <Route exact path='/profile' component={Profile} />
+            <Route exact path='/users-books' component={UsersBooks} />
             <Route exact path='/book-search' component={BookSearch} />
             <Route exact path='/settings' component={Settings} />
           </Switch>

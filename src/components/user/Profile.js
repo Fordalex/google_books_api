@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import UserImage from "../../static/img/user-image.png";
 
 const Profile = () => {
@@ -13,11 +14,11 @@ const Profile = () => {
           </p>
           <div class='profile-stats-container'>
             <div>
-              <p class="m-0 text-center"><b>12345</b></p>
+              <p class="m-0 text-center text-main"><b>3</b></p>
               <p class="m-0 text-center">Reading</p>
             </div>
             <div>
-              <p class="m-0 text-center"><b>12345</b></p>
+              <p class="m-0 text-center text-main"><b>42</b></p>
               <p class="m-0 text-center">Read</p>
             </div>
           </div>
@@ -27,7 +28,7 @@ const Profile = () => {
 
         <div class='justify-content-between m-1'>
           <h3>Currently Reading</h3>
-          <p>See All</p>
+          <p><Link to="users-books">View All</Link></p>
         </div>
 
         <div class='currently-reading'>
@@ -38,7 +39,7 @@ const Profile = () => {
 
         <div class='justify-content-between m-1'>
           <h3>Read</h3>
-          <p>See All</p>
+          <p><Link to="users-books">View All</Link></p>
         </div>
 
         <div class='currently-reading'>

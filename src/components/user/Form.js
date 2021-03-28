@@ -1,20 +1,14 @@
 import React from "react";
 import axios from "axios";
+import { apiKey } from "../../config/default.json";
 import anime from "animejs/lib/anime.es.js";
-// api key
-const {REACT_APP_GOOGLE_API_KEY} = process.env;
 
 const Form = ({ setBookSearch, setApiData }) => {
   const searchBookHandler = async (e) => {
     e.preventDefault();
-    setApiData({ loading: true, msg: "loading" });
-    const search = document.getElementById("searchInput").value;
-    const res = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${REACT_APP_GOOGLE_API_KEY}`
-    );
-    console.log(res.data);
-    setApiData({ book: res.data });
-    setBookSearch(search);
+    
+
+    
     // Animate books on load
     anime({
       targets: ".book-container",
