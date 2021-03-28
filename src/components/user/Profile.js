@@ -32,9 +32,9 @@ const Profile = () => {
         </div>
 
         <div class='currently-reading'>
-          <img />
-          <img />
-          <img />
+          <img src="http://books.google.com/books/content?id=iKdaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"/>
+          <img src="http://books.google.com/books/content?id=6W_IDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"/>
+          <img src="http://books.google.com/books/content?id=3tOMDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
         </div>
 
         <div class='justify-content-between m-1'>
@@ -43,9 +43,9 @@ const Profile = () => {
         </div>
 
         <div class='currently-reading'>
-          <img />
-          <img />
-          <img />
+        <img src="http://books.google.com/books/content?id=iKdaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"/>
+          <img src="http://books.google.com/books/content?id=6W_IDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"/>
+          <img src="http://books.google.com/books/content?id=3tOMDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
         </div>
 
       </div>

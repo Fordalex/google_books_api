@@ -64,6 +64,7 @@ const NavBar = () => {
           <li><img src="https://img.icons8.com/fluent/30/000000/user-male-circle.png" class="m-1"/><Link to="profile" onClick={toggleNavHandler}>Profile</Link></li>
           <li><img src="https://img.icons8.com/fluent/30/000000/search.png" class="m-1"/><Link to="book-search" onClick={toggleNavHandler}>Search Books</Link></li>
           <li><img src="https://img.icons8.com/fluent/30/000000/settings.png" class="m-1"/><Link to="settings" onClick={toggleNavHandler}>Settings</Link></li>
+          <li><img src="https://img.icons8.com/fluent/30/000000/export.png" class="m-1"/><Link to="settings" onClick={toggleNavHandler}>Log Out</Link></li>
         </ul>
       </div>
     </Fragment>

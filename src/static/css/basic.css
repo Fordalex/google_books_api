@@ -65,6 +65,10 @@ hr {
     justify-content: flex-start;
 }
 
+.hidden {
+    display: none;
+}
+
 .text-center {
     text-align: center;
 }
