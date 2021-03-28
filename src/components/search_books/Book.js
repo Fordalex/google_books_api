@@ -33,8 +33,9 @@ const Book = ({ book, index, setBookIndex }) => {
       targets: ".one-book-info-container",
       keyframes: [
         { translateX: "200vw", duration: 0 },
-        { translateX: "0px", duration: 1000 },
+        { translateX: "0", duration: 1000 },
       ],
+      easing: 'easeInOutQuad',
       loop: false,
     });
   };

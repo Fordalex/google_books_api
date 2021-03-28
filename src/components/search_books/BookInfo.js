@@ -10,6 +10,7 @@ const BookInfo = ({ apiData, bookIndex }) => {
       keyframes: [
         { translateX: "200vw", duration: 1000 },
       ],
+      easing: 'easeInOutQuad',
       loop: false,
     });
 
