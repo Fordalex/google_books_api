@@ -10,6 +10,15 @@ const Book = ({ book, index, setBookIndex }) => {
     imgLink = "";
   }
 
+  // check authors 
+  try {
+    var authors = book.volumeInfo.authors.map((author) => (
+      <span>{author}, </span>
+    ));
+  } catch {
+    var authors = '';
+  }
+
   // Show book information
   const showBookInfoHandler = (e) => {
     let idNum = e.target.id.split("-")[2];
@@ -42,9 +51,7 @@ const Book = ({ book, index, setBookIndex }) => {
       <div class='book-info-container'>
         <h3>{book.volumeInfo.title}</h3>
 
-        <p class='autor'>{book.volumeInfo.authors.map((author) => (
-              <span>{author}, </span>
-            ))}</p>
+        <p class='autor'>{authors}</p>
 
 
 

@@ -38,7 +38,7 @@ const Form = ({ setBookSearch, setApiData }) => {
   return (
     <form onSubmit={searchBookHandler} id='bookForm'>
       <img src='https://img.icons8.com/ios-glyphs/30/000000/search.png' />
-      <input type='text' id='searchInput' placeholder='Search...' autocomplete="off" />
+      <input type='text' id='searchInput' placeholder='Search...' autoComplete="off" />
       <button>Search</button>
     </form>
   );

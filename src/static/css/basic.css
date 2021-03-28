@@ -51,6 +51,11 @@ hr {
     align-items: center;
 }
 
+.justify-content-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .text-center {
     text-align: center;
 }

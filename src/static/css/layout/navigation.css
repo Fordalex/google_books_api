@@ -24,3 +24,41 @@ nav {
 .burger-menu-container div:last-of-type {
     margin: 0;
 }
+
+#nav-container {
+    border-top: solid grey 1px;
+    padding: 15px;
+    height: 100vh;
+    background-color: white;
+    z-index: 50;
+    position: fixed;
+    top: 56px;
+    right: 0;
+    left:0;
+    transform: translateY(-200vw);
+}
+
+#nav-container p {
+    margin: 0;
+}
+
+#nav-container h3 {
+    margin: 0;
+}
+
+.nav-image {
+    border-radius: 50%;
+    height:60px;
+    width: 60px;
+    border: solid 3px var(--mainColour);
+}
+
+.nav-link-container {   
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.nav-link-container li {
+    margin: 15px 0;
+}
