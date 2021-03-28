@@ -91,7 +91,11 @@ const BookInfo = ({ apiData, bookIndex }) => {
         </div>
         <hr/>
 
-        <p>{apiData.book.items[bookIndex].volumeInfo.description}</p>
+        {apiData.book.items[bookIndex].volumeInfo.description ? (
+          <p>{apiData.book.items[bookIndex].volumeInfo.description}</p>
+        ): (
+          <p>No Description</p>
+        )}
 
           <button class="add-book">Add Book</button>
 

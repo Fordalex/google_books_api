@@ -26,7 +26,6 @@ nav {
 }
 
 #nav-container {
-    border-top: solid grey 1px;
     padding: 15px;
     height: 100vh;
     background-color: white;
@@ -55,10 +54,16 @@ nav {
 
 .nav-link-container {   
     list-style: none;
-    padding: 20px;
+    padding: 0 10px;
     margin: 0;
 }
 
 .nav-link-container li {
     margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link-container li a {
+    text-decoration: none;
 }

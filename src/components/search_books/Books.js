@@ -10,7 +10,7 @@ const Books = ({ bookSearch, setApiData, apiData , setBookIndex}) => {
           {apiData.msg === "loading" ? (
             <img src={Loading} id='loading' />
           ) : (
-            <p class='m-2'>{apiData.msg}</p>
+            <p class='m-2 text-secondary'>{apiData.msg}</p>
           )}
         </Fragment>
       ) : (

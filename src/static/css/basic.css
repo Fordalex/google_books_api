@@ -7,7 +7,7 @@
 body {
     background-color: rgb(245 247 246);
     margin: 0;
-    padding-top: 62px;
+    padding-top: 56px;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -16,6 +16,10 @@ h1,h2,h3,h4,h5,h6 {
 
 p,a,li,small,button {
     font-family: 'Maven Pro', sans-serif;
+}
+
+.m-0 {
+    margin: 0;
 }
 
 .m-1 {
@@ -46,6 +50,11 @@ hr {
     justify-content: space-between;
 }
 
+.justify-content-around {
+    display: flex;
+    justify-content: space-around;
+}
+
 .align-items-center {
     display: flex;
     align-items: center;
@@ -58,4 +67,8 @@ hr {
 
 .text-center {
     text-align: center;
+}
+
+.text-secondary {
+    color: rgb(155, 155, 155);
 }
