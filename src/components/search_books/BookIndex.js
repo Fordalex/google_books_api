@@ -1,16 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import Books from "./Books";
 import Form from "./Form";
 import BookInfo from './BookInfo';
 
-const BookIndex = () => {
-
-  const [bookSearch, setBookSearch] = useState("Steven");
-  const [apiData, setApiData] = useState({
-    loading: true,
-    msg: "Please search a book title.",
-  });
-  const [bookIndex, setBookIndex] = useState(0)
+const BookIndex = ({bookSearch, setApiData, apiData, setBookIndex, setBookSearch, bookIndex}) => {
 
   return (
     <Fragment>
