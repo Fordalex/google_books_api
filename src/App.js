@@ -13,10 +13,14 @@ import "./static/css/basic.css";
 import "./static/css/search_books/searchBooks.css";
 import "./static/css/user/profile.css";
 import "./static/css/layout/navigation.css";
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
 
   return (
+    <Provider store={store}>
     <Router>
       <Fragment>
         <NavBar />
@@ -31,6 +35,7 @@ function App() {
         </section>
       </Fragment>
     </Router>
+    </Provider>
   );
 }
 
