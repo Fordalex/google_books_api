@@ -8,19 +8,14 @@ import Profile from "./components/user/Profile";
 import UsersBooks from "./components/user/UsersBooks";
 import Settings from "./components/settings/Settings";
 // css
-import "./static/css/home/home.css";
-import "./static/css/basic.css";
-import "./static/css/search_books/searchBooks.css";
-import "./static/css/user/profile.css";
-import "./static/css/layout/navigation.css";
-// Redux
-import { Provider } from 'react-redux';
-import store from './store';
+import './static/css/home/home.css'
+import './static/css/basic.css'
+import './static/css/search_books/searchBooks.css'
+import './static/css/user/profile.css'
+import './static/css/layout/navigation.css'
 
 function App() {
-
   return (
-    <Provider store={store}>
     <Router>
       <Fragment>
         <NavBar />
@@ -35,7 +30,6 @@ function App() {
         </section>
       </Fragment>
     </Router>
-    </Provider>
   );
 }
 

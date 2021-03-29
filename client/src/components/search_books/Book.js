@@ -21,7 +21,23 @@ const Book = ({ book, index, setBookIndex }) => {
 
   // Show book information
   const showBookInfoHandler = (e) => {
-   
+    let idNum = e.target.id.split("-")[2];
+    setBookIndex(idNum);
+
+    let bookInfoContainer = document.getElementsByClassName(
+      "one-book-info-container"
+    )[0];
+    bookInfoContainer.style.display = "block";
+
+    anime({
+      targets: ".one-book-info-container",
+      keyframes: [
+        { translateX: "200vw", duration: 0 },
+        { translateX: "0", duration: 1000 },
+      ],
+      easing: 'easeInOutQuad',
+      loop: false,
+    });
   };
 
   return (
