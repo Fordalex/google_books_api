@@ -1,7 +1,10 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
-app.get('/', (req, res) => res.send('API Running'));
+// Define Routes
+app.use("/api/users", require("./routes/api/users"));
+
+app.get("/", (req, res) => res.send("API Running"));
 
 const PORT = process.env.PORT || 5000;
 

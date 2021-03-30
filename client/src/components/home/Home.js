@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import BookIllustrationOne from "../../static/img/book-illustration-one.svg";
 import BookIllustrationTwo from "../../static/img/book-illustration-two.svg";
 import BookIllustrationThree from "../../static/img/book-illustration-three.svg";
@@ -94,7 +95,11 @@ const Home = () => {
         ></div>
         <div id='homePageInTwo' class='home-page-indicator'></div>
         <div id='homePageInThree' class='home-page-indicator'></div>
-        <img src="https://img.icons8.com/windows/32/000000/right.png" id="homeRightIcon" onClick={onPageChangeHandler}/>
+        <div >
+          <img src="https://img.icons8.com/windows/32/000000/right.png" id="homeRightIcon" onClick={onPageChangeHandler}/>
+          <Link to="register" id="homeEnter">Enter</Link>
+        </div>
+        
       </div>
       
     </div>
