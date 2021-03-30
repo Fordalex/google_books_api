@@ -46,6 +46,8 @@ const NavBar = () => {
           <div class="mid-burger"></div>
           <div class="bottom-burger"></div>
         </div>
+        <button class="btn-main p-1
+        ">Login</button>
       </nav>
       <div id='nav-container'>
         <div class='justify-content-start m-1'>

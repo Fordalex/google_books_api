@@ -4,6 +4,26 @@
     --mainColour: rgb(81, 206, 195);
 }
 
+.btn-main {
+    border-radius: 5px;
+    border: none;
+    background-color: var(--mainColour);
+    padding: 15px;
+    box-shadow: 0px 0px 9px 9px rgba(0,0,0,0.01);
+}
+
+.btn-secondary {
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+    color: var(--mainColour);
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 0px 9px 9px rgba(0,0,0,0.01);
+    border: solid rgb(243, 243, 243) 1px;
+}
+
 body {
     background-color: rgb(245 247 246);
     margin: 0;
@@ -32,6 +52,10 @@ p,a,li,small,button {
 
 .ml-1 {
     margin-left: 10px;
+}
+
+.mt-2 {
+    margin-top: 20px;
 }
 
 .p-0 {

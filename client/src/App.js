@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/layout/NavBar";
 import Home from "./components/home/Home";
 import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
 import BookSearch from "./components/search_books/BookIndex";
 import Profile from "./components/user/Profile";
 import UsersBooks from "./components/user/UsersBooks";
@@ -29,6 +30,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/users-books' component={UsersBooks} />
               <Route exact path='/book-search' component={BookSearch} />

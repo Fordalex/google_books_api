@@ -22,18 +22,3 @@
     background-color: rgb(255, 255, 255) !important;
     color: rgb(145, 145, 145) !important;
 }
-
-.btn-main {
-    border-radius: 5px;
-    border: none;
-    background-color: var(--mainColour);
-    padding: 15px;
-}
-
-.btn-secondary {
-    border-radius: 5px;
-    border: none;
-    background-color: white;
-    color: var(--mainColour);
-    padding: 15px;
-}
