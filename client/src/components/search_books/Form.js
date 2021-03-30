@@ -4,6 +4,8 @@ import anime from "animejs/lib/anime.es.js";
 // api key
 const {REACT_APP_GOOGLE_API_KEY} = process.env;
 
+console.log(process.env)
+
 const Form = ({ setBookSearch, setApiData }) => {
   const searchBookHandler = async (e) => {
     e.preventDefault();
