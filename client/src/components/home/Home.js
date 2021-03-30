@@ -100,7 +100,7 @@ const Home = () => {
         <div id='homePageInThree' className='home-page-indicator'></div>
         <div >
           <img src="https://img.icons8.com/windows/32/000000/right.png" id="homeRightIcon" onClick={onPageChangeHandler}/>
-          <Link to="register" id="homeEnter" className="btn-secondary hidden home-right-button">Enter</Link>
+          <Link to="register" id="homeEnter" className="btn-secondary hidden home-right-button">Sign Up</Link>
         </div>
         
       </div>

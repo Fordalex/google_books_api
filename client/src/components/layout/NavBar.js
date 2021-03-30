@@ -2,8 +2,10 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import UserImage from "../../static/img/user-image.png";
 import anime from "animejs/lib/anime.es.js";
+import PropTypes from "prop-types";
+import {connect} from 'react-redux';
 
-const NavBar = () => {
+const NavBar = ({auth}) => {
 
     const toggleNavHandler = () => {
 
@@ -41,13 +43,18 @@ const NavBar = () => {
     <Fragment>
       <nav>
         <img src='https://img.icons8.com/flat-round/40/000000/book.png' />
-        <div class='burger-menu-container' onClick={toggleNavHandler}>
+        {!auth.isAuthenticated ? (
+          <button class="btn-main p-1
+          ">Login</button>
+        ) :(
+          <div class='burger-menu-container' onClick={toggleNavHandler}>
           <div class="top-burger"></div>
           <div class="mid-burger"></div>
           <div class="bottom-burger"></div>
         </div>
-        <button class="btn-main p-1
-        ">Login</button>
+        )}
+      
+       
       </nav>
       <div id='nav-container'>
         <div class='justify-content-start m-1'>
@@ -73,4 +80,12 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+NavBar.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(NavBar);

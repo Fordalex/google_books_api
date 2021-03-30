@@ -20,10 +20,14 @@
   },
   "homepage": "https://github.com/Fordalex/google_books_api#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.10.0",
-    "mongoose": "^5.12.2"
+    "mongoose": "^5.12.2",
+    "stringify-object": "^3.3.0",
+    "uuidv4": "^6.2.7"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",

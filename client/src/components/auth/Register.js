@@ -2,9 +2,9 @@ import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { auth } from "../../actions/auth";
+import { register } from "../../actions/auth";
 
-const Register = ({ auth, counter }) => {
+const Register = ({ register, counter }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,7 +22,7 @@ const Register = ({ auth, counter }) => {
     if (password !== password2) {
       //   setAlert('Passwords do not match', 'danger');
     } else {
-      //   register({name, email, password});
+        register({name, email, password});
     }
   };
 
@@ -41,7 +41,6 @@ const Register = ({ auth, counter }) => {
               onChange={(e) => onChange(e)}
               required
             />
-
             <input
               type='email'
               placeholder='Email Address'
@@ -49,7 +48,6 @@ const Register = ({ auth, counter }) => {
               value={email}
               onChange={(e) => onChange(e)}
             />
-
             <input
               type='password'
               placeholder='Password'
@@ -58,7 +56,6 @@ const Register = ({ auth, counter }) => {
               value={password}
               onChange={(e) => onChange(e)}
             />
-
             <input
               type='password'
               placeholder='Confirm Password'
@@ -76,21 +73,15 @@ const Register = ({ auth, counter }) => {
           <button type='submit' className='btn-main w-100'>Register</button>
         <Link className='btn-secondary w-100 ml-1' to='login'>Sign In</Link>
         </div>
-      
         </form>
-
       </div>
     </Fragment>
   );
 };
 
 Register.propTypes = {
-  counter: PropTypes.number.isRequired,
-  auth: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  counter: state.auth.counter,
-});
 
-export default connect(mapStateToProps, { auth })(Register);
+export default connect(null, {register})(Register);

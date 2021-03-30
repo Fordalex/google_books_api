@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/layout/NavBar";
 import Home from "./components/home/Home";
 import Register from "./components/auth/Register";
+import Alert from './components/layout/Alert';
 import Login from "./components/auth/Login";
 import BookSearch from "./components/search_books/BookIndex";
 import Profile from "./components/user/Profile";
@@ -15,6 +16,7 @@ import "./static/css/auth/auth.css";
 import "./static/css/search_books/searchBooks.css";
 import "./static/css/user/profile.css";
 import "./static/css/layout/navigation.css";
+import "./static/css/layout/alert.css";
 import "./static/css/basic.css";
 // Redux
 import { Provider } from "react-redux";
@@ -26,6 +28,7 @@ function App() {
       <Router>
         <Fragment>
           <NavBar />
+          <Alert/>
           <section className='container'>
             <Switch>
               <Route exact path='/' component={Home} />

@@ -2,9 +2,8 @@ import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { auth } from "../../actions/auth";
 
-const Login = ({ auth, counter }) => {
+const Login = ({ counter }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -65,11 +64,10 @@ const Login = ({ auth, counter }) => {
 
 Login.propTypes = {
   counter: PropTypes.number.isRequired,
-  auth: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   counter: state.auth.counter,
 });
 
-export default connect(mapStateToProps, { auth })(Login);
+export default connect(mapStateToProps)(Login);

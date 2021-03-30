@@ -6,6 +6,10 @@ const app = express();
 // Connect Database
 connectDB();
 
+// init middleware
+// Get the data in the req.body in users.js
+app.use(express.json({ extended: false }))
+
 // Define Routes
 app.use("/api/users", require("./routes/api/auth"));
 
