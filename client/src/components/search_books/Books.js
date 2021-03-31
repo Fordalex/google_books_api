@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Loading from "../../static/img/book-loading.gif";
 import Book from "./Book";
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Books = ({ bookSearch, setApiData, apiData , setBookIndex}) => {
+const Books = ({ books, apiData , setBookIndex}) => {
   return (
     <Fragment>
       {apiData.loading ? (
         <Fragment>
-          {apiData.msg === "loading" ? (
+          {books.loading ? (
             <img src={Loading} id='loading' />
           ) : (
             <p class='m-2 text-secondary'>{apiData.msg}</p>
@@ -26,4 +28,12 @@ const Books = ({ bookSearch, setApiData, apiData , setBookIndex}) => {
   );
 };
 
-export default Books;
+Books.propTypes = {
+  books: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  books: state.books
+})
+
+export default connect(mapStateToProps)(Books);
