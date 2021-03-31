@@ -10,6 +10,7 @@ import BookSearch from "./components/search_books/BookIndex";
 import Profile from "./components/user/Profile";
 import UsersBooks from "./components/user/UsersBooks";
 import Settings from "./components/settings/Settings";
+import PrivateRoute from './components/routing/PrivateRoute';
 // css
 import "./static/css/home/home.css";
 import "./static/css/auth/auth.css";
@@ -34,10 +35,10 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
-              <Route exact path='/profile' component={Profile} />
-              <Route exact path='/users-books' component={UsersBooks} />
-              <Route exact path='/book-search' component={BookSearch} />
-              <Route exact path='/settings' component={Settings} />
+              <PrivateRoute exact path='/profile' component={Profile} />
+              <PrivateRoute exact path='/users-books' component={UsersBooks} />
+              <PrivateRoute exact path='/book-search' component={BookSearch} />
+              <PrivateRoute exact path='/settings' component={Settings} />
             </Switch>
           </section>
         </Fragment>
