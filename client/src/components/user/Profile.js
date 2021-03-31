@@ -41,31 +41,41 @@ const Profile = ({ profile: { profile, loading }, getCurrentProfile }) => {
 
             <hr />
 
-            <div class='justify-content-between m-1'>
+            <div class='justify-content-between align-items-center m-1'>
               <h3>Currently Reading</h3>
               <p>
-                <Link to='users-books'>View All</Link>
+                <Link to='users-books' class="text-secondary">View All</Link>
               </p>
             </div>
 
+          {profile.reading < 1 ? (
+            <p class="m-2 mb-4"><Link to="book-search" class="text-main">Search</Link> your first book!</p>
+          ):(
             <div class='currently-reading'>
               <img src='http://books.google.com/books/content?id=iKdaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
               <img src='http://books.google.com/books/content?id=6W_IDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
               <img src='http://books.google.com/books/content?id=3tOMDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
             </div>
-
-            <div class='justify-content-between m-1'>
+          )}
+            <hr/>
+            <div class='justify-content-between align-items-center m-1'>
               <h3>Read</h3>
               <p>
-                <Link to='users-books'>View All</Link>
+                <Link to='users-books' class="text-secondary">View All</Link>
               </p>
             </div>
 
-            <div class='currently-reading'>
+            {profile.read < 1 ? (
+              <p class="m-2">Add an old book?</p>
+            ):(
+              <div class='currently-reading'>
               <img src='http://books.google.com/books/content?id=iKdaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
               <img src='http://books.google.com/books/content?id=6W_IDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
               <img src='http://books.google.com/books/content?id=3tOMDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
             </div>
+            )}
+
+          
           </div>
         </div>
       )}

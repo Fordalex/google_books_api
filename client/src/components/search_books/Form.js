@@ -34,8 +34,7 @@ const Form = ({ getBooks }) => {
   const searchBookHandler = async (e) => {
     e.preventDefault();
     const search = document.getElementById("searchInput").value;
-    const searchLink = `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${REACT_APP_GOOGLE_API_KEY}`;
-    getBooks({searchLink});
+    getBooks(search);
   };
 
 

@@ -13,7 +13,7 @@ if (!REACT_APP_JWT_SECRET) {
 }
 
 // @route        POST api/users
-// @desc         Register a new user
+// @desc         Register a new user & get jwt
 // @access       Pubic
 router.post('/',[
     check("name", 'Name is required').not().isEmpty(),
@@ -53,7 +53,20 @@ router.post('/',[
 
         await user.save();
 
-        res.json({msg: "User created"})
+        // Return jsonwebtoken
+        const payload = {
+            user: {
+                id: user.id
+            }
+        }
+
+        jwt.sign(
+            payload,
+            REACT_APP_JWT_SECRET, { expiresIn: 360000 },
+            (err, token) => {
+                if (err) throw errors;
+                res.json({ token });
+            });
 
     } catch (err) {
         console.error(err.message);
@@ -63,7 +76,7 @@ router.post('/',[
 });
 
 // @route        POST api/auth/login
-// @desc         Authenticate user & get token
+// @desc         Authenticate user & get jwt
 // @access       Pubic
 router.post('/login', [
     check('email', 'Please include a valid email').isEmail(),
