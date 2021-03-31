@@ -1,5 +1,4 @@
 import React from "react";
-import anime from "animejs/lib/anime.es.js";
 import {getBooks} from '../../actions/books';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,26 +9,6 @@ const {REACT_APP_GOOGLE_API_KEY} = process.env;
 console.log(process.env)
 
 const Form = ({ getBooks }) => {
-
-   // Animate books on load
-   anime({
-    targets: ".book-container",
-    keyframes: [
-      { rotate: "-80deg", translateX: "-100vw", duration: 0 },
-      { rotate: "0deg", translateX: "0px", duration: 800 },
-    ],
-    opacity: 1,
-    delay: anime.stagger(100, { easing: "easeOutQuad" }),
-  });
-  anime({
-    targets: ".book-img-container",
-    keyframes: [
-      { rotate: "180deg", duration: 0 },
-      { rotate: "0deg", duration: 1500 },
-    ],
-    opacity: 1,
-    delay: anime.stagger(100, { easing: "easeOutQuad" }),
-  });
 
   const searchBookHandler = async (e) => {
     e.preventDefault();

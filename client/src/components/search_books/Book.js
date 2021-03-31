@@ -54,7 +54,7 @@ const Book = ({ book, index, setBookIndex }) => {
 
         <p class='autor'>{authors}</p>
 
-
+        
 
         {book.volumeInfo.averageRating ? (
           <p class='rating'>
