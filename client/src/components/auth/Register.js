@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { register } from "../../actions/auth";
 
-const Register = ({ register, counter }) => {
+const Register = ({ register, auth }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,7 +28,10 @@ const Register = ({ register, counter }) => {
 
   return (
     <Fragment>
-      <div class='p-2'>
+      {auth.isAuthenticated ? (
+        <Redirect to="profile"/>
+      ): (
+        <div class='p-2'>
         <h1 className='text-center m-2'>Create Your Account
         </h1>
         <form className='form' onSubmit={(e) => onSubmit(e)}>
@@ -75,13 +78,20 @@ const Register = ({ register, counter }) => {
         </div>
         </form>
       </div>
+      )}
+     
     </Fragment>
   );
 };
 
 Register.propTypes = {
   register: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
 
-export default connect(null, {register})(Register);
+
+export default connect(mapStateToProps, {register})(Register);

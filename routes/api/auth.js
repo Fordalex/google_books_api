@@ -12,21 +12,6 @@ if (!REACT_APP_JWT_SECRET) {
     REACT_APP_JWT_SECRET = config.REACT_APP_JWT_SECRET;
 }
 
-// @route        GET api/users
-// @desc         Get all users
-// @access       Pubic
-router.get('/', async(req, res) => {
-
-    try {
-        const users = await User.find();
-        res.json(users);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send("Server Error");
-    }
-
-});
-
 // @route        POST api/users
 // @desc         Register a new user
 // @access       Pubic

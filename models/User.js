@@ -5,6 +5,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    age: {
+        type: Number,
+        required: false,
+    },
+    gender: {
+        type: String,
+        required: false,
+    },
     email: {
         type: String,
         required: true,
@@ -13,10 +21,6 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    },
-    books: {
-        type: Array,
-        default: [],
     },
     date: {
         type: Date,
