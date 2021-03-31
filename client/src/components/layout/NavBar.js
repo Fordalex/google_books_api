@@ -4,8 +4,9 @@ import UserImage from "../../static/img/user-image.png";
 import anime from "animejs/lib/anime.es.js";
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
+import {logout} from '../../actions/auth';
 
-const NavBar = ({auth}) => {
+const NavBar = ({auth, logout}) => {
 
     const toggleNavHandler = () => {
 
@@ -44,8 +45,8 @@ const NavBar = ({auth}) => {
       <nav>
         <img src='https://img.icons8.com/flat-round/40/000000/book.png' />
         {!auth.isAuthenticated ? (
-          <button class="btn-main p-1
-          ">Login</button>
+          <Link to="login" class="btn-main p-1
+          ">Login</Link>
         ) :(
           <div class='burger-menu-container' onClick={toggleNavHandler}>
           <div class="top-burger"></div>
@@ -73,7 +74,7 @@ const NavBar = ({auth}) => {
           <li><img src="https://img.icons8.com/fluent/30/000000/user-male-circle.png" class="m-1"/><Link to="profile" onClick={toggleNavHandler}>Profile</Link></li>
           <li><img src="https://img.icons8.com/fluent/30/000000/search.png" class="m-1"/><Link to="book-search" onClick={toggleNavHandler}>Search Books</Link></li>
           <li><img src="https://img.icons8.com/fluent/30/000000/settings.png" class="m-1"/><Link to="settings" onClick={toggleNavHandler}>Settings</Link></li>
-          <li><img src="https://img.icons8.com/fluent/30/000000/export.png" class="m-1"/><Link to="" onClick={toggleNavHandler}>Log Out</Link></li>
+          <li><img src="https://img.icons8.com/fluent/30/000000/export.png" class="m-1"/><Link onClick={logout, toggleNavHandler}>Log Out</Link></li>
         </ul>
       </div>
     </Fragment>
@@ -82,10 +83,11 @@ const NavBar = ({auth}) => {
 
 NavBar.propTypes = {
   auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, {logout})(NavBar);
