@@ -6,6 +6,11 @@ const { check, validationResult } = require("express-validator/check");
 //  Add user model
 const User = require("../../models/User");
 
+var REACT_APP_JWT_SECRET = process.env.REACT_APP_JWT_SECRET;
+if (!REACT_APP_JWT_SECRET) {
+    const config = require('../../config/config');
+    REACT_APP_JWT_SECRET = config.REACT_APP_JWT_SECRET;
+}
 
 // @route        GET api/users
 // @desc         Get all users
@@ -105,10 +110,11 @@ router.post('/login', [
                 id: user.id
             }
         }
+        console.log(REACT_APP_JWT_SECRET)
 
         jwt.sign(
             payload,
-            config.get('jwtSecret'), { expiresIn: 360000 },
+            REACT_APP_JWT_SECRET, { expiresIn: 360000 },
             (err, token) => {
                 if (err) throw errors;
                 res.json({ token });
