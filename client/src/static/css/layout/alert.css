@@ -1,9 +1,9 @@
 .alert {
 padding: 0.8rem;
-margin: 1rem 0;
 opacity: 0.9;
 background: white;
 color: #333;
+box-shadow: 0 0 12px 12px rgba(0,0,0,0.03);
 }
 
 .alert-danger {

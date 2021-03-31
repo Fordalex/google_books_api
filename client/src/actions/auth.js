@@ -3,8 +3,11 @@ import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 const stringifyObject = require('stringify-object');
 
-// Load User
+// Register a user
 export const register = ({name, email, password}) => async dispatch  => {
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    }
 
     const config = {
         header: {
@@ -47,6 +50,10 @@ export const register = ({name, email, password}) => async dispatch  => {
 
 // Login User
 export const login = ({ email, password }) => async dispatch => {
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    }
+
     const config = {
         header: {
             'Content-Type': 'application/json'
@@ -63,10 +70,13 @@ export const login = ({ email, password }) => async dispatch => {
     try {
         const res = await axios.post('/api/auth/login', body, config);
 
+        dispatch(setAlert("Login Successful", 'success'));
+
         dispatch({
             type: "LOGIN_SUCCESS",
             payload: res.data
         });
+        
 
         // dispatch(loadUser());
 
@@ -87,4 +97,5 @@ export const login = ({ email, password }) => async dispatch => {
 export const logout = () => dispatch => {
     dispatch({type: "CLEAR_PROFILE"})
     dispatch({type: "LOGOUT"})
+    dispatch(setAlert("Logged Out", ''));
 }

@@ -95,7 +95,6 @@ router.post('/login', [
                 id: user.id
             }
         }
-        console.log(REACT_APP_JWT_SECRET)
 
         jwt.sign(
             payload,
@@ -104,6 +103,7 @@ router.post('/login', [
                 if (err) throw errors;
                 res.json({ token });
             });
+            
 
     } catch (err) {
         console.error(err.message)

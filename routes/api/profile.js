@@ -5,22 +5,22 @@ const { check, validationResult } = require("express-validator/check");
 
 const User = require("../../models/User");
 
-// @route        GET api/profile/user/:user_id
-// @desc         Get profile by user ID
-// @access       Public
-router.get("/user/:user_id", async(req, res) => {
+// @route        GET api/profile/me
+// @desc         Get current user logged in
+// @access       Private
+router.get("/me", auth, async(req, res) => {
     try {
-        const profile = await User.findOne({
-            _id: req.params.user_id,
-        }).populate("user", ["name", "avatar"]);
-        if (!profile) return res.status(400).json({ msg: "Profile not found." });
-        res.json(profile);
+        const user = await User.findOne({
+            _id: req.user.id,
+        });
+
+        if (!user) {
+            return res.status(400).json({ msg: "There is no profile for this user" });
+        }
+        
+        res.json(user);
     } catch (err) {
         console.error(err.message);
-        if (err.kind == "ObjectId") {
-            return res.status(400).json({ msg: "Profile not found." });
-        }
-
         res.status(500).send("Server Error");
     }
 });

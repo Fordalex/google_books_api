@@ -1,3 +1,4 @@
+
 const jwt = require('jsonwebtoken');
 var REACT_APP_JWT_SECRET = process.env.REACT_APP_JWT_SECRET;
 if (!REACT_APP_JWT_SECRET) {
