@@ -38,22 +38,26 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
                 </div>
               </div>
             </div>
-
             <hr />
-
             <div class='justify-content-between align-items-center m-1'>
               <h3>Currently Reading</h3>
               <p>
                 <Link to='users-books' class="text-secondary">View All</Link>
               </p>
             </div>
-
           {reading < 1 ? (
             <p class="m-2 mb-4"><Link to="book-search" class="text-main">Search</Link> your first book!</p>
           ):(
             <div class='currently-reading'>
               {reading.map((book) => (
-               <img src={book.img} />
+                <div class="profile-book-container">
+                  <img src={book.img} />
+                  <div class="profile-book-info-container">
+                    <p class="justify-content-between"><b>Started:</b> {book.startDate}</p>
+                    <p class="justify-content-between"><b>Current Page:</b> {book.currentPage}</p>
+                    <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
+                  </div>
+                </div>
               ))}
             </div>
           )}
@@ -70,7 +74,14 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
             ):(
               <div class='currently-reading'>
               {read.map((book) => (
+               <div class="profile-book-container">
                <img src={book.img} />
+               <div class="profile-book-info-container">
+                 <p class="justify-content-between"><b>Started:</b> {book.startDate}</p>
+                 <p class="justify-content-between"><b>Finished:</b> {book.finishedDate}</p>
+                 <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
+               </div>
+             </div>
               ))}
             </div>
             )}

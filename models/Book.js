@@ -19,7 +19,7 @@ const BookSchema = new mongoose.Schema({
         default: Date.now,
         required: true,
     },
-    finsihedDate: {
+    finishedDate: {
         type: Date,
         required: false,
     },
@@ -31,6 +31,16 @@ const BookSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
+    notes: [{
+        page: {
+            type: Number,
+            required: true,
+        },
+        note: {
+            type: String,
+            required: true,
+        },
+    }],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users',

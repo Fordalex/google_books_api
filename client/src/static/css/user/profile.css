@@ -49,13 +49,29 @@ background-size: contain;
 .currently-reading {
     overflow: auto;
     white-space: nowrap;
+    padding: 15px 0;
 }
 
-.currently-reading img {
+.profile-book-container {
     display: inline-block;
+    box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.1);
+    width: 200px;
+    margin: 0 20px;
+    border-radius: 13px;
+}
+
+.profile-book-container img {
     width: 200px;
     height: 300px;
-    border-radius: 13px;
-    box-shadow: 3px 3px 11px 11px rgba(0,0,0,0.01);
-    margin: 0 20px;
+    border-radius: 13px 13px 0 0 ;
+}
+
+.profile-book-info-container {
+    padding: 8px;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.profile-book-info-container p {
+    margin: 3px 0;
 }
