@@ -1,13 +1,12 @@
 import axios from "axios";
 import anime from "animejs/lib/anime.es.js";
 
-export const getBooks = ({ search }) => async (dispatch) => {
+export const getBooks = ({ srch }) => async (dispatch) => {
   try {
     dispatch({ 
       type: "SEARCHING_BOOKS", 
     });
-
-    const res = await axios.get(`/api/books/${search}`);
+    const res = await axios.get(`/api/books/${srch}`);
 
     dispatch({ 
         type: "SEARCHED_BOOKS", 

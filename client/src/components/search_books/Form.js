@@ -12,8 +12,8 @@ const Form = ({ getBooks }) => {
 
   const searchBookHandler = async (e) => {
     e.preventDefault();
-    const search = document.getElementById("searchInput").value;
-    getBooks(search);
+    const srch = document.getElementById("searchInput").value;
+    getBooks({srch});
   };
 
 
