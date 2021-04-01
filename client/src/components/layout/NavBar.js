@@ -22,7 +22,7 @@ const NavBar = ({auth, logout}) => {
                 targets: "#nav-container",
                 keyframes: [
                     { translateY: "0vh", duration: 0 },
-                    { translateY: "-200vh", duration: 250 },
+                    { translateY: "-200vh", duration: 500 },
                   ],
                 easing: 'easeInOutQuad',
                 loop: false,
@@ -34,7 +34,7 @@ const NavBar = ({auth, logout}) => {
                 targets: "#nav-container",
                 keyframes: [
                     { translateY: "-200vh", duration: 0 },
-                    { translateY: "0vh", duration: 250 },
+                    { translateY: "0vh", duration: 500 },
                   ],
                 easing: 'easeInOutQuad',
                 loop: false,

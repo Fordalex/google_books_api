@@ -1,14 +1,16 @@
 import React from "react";
 import anime from "animejs/lib/anime.es.js";
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
-const BookInfo = ({ apiData, bookIndex }) => {
+const BookInfo = ({ books: {books, bookIndex } }) => {
   // go back to book search.
   const backHandler = () => {
 
     anime({
       targets: ".one-book-info-container",
       keyframes: [
-        { translateX: "200vw", duration: 1000 },
+        { translateX: "200vw", duration: 500 },
       ],
       easing: 'easeInOutQuad',
       loop: false,
@@ -19,21 +21,21 @@ const BookInfo = ({ apiData, bookIndex }) => {
         "one-book-info-container"
       )[0];
       bookInfoContainer.style.display = "none";
-    }, 1000)
+    }, 500)
 
    
   };
 
   //   Check if book has title
   try {
-    var title = apiData.book.items[bookIndex].volumeInfo.title;
+    var title = books.items[bookIndex].volumeInfo.title;
   } catch {
     return <div></div>;
   }
 
    // check authors 
    try {
-    var authors = apiData.book.items[bookIndex].volumeInfo.authors.map((author) => (
+    var authors = books.items[bookIndex].volumeInfo.authors.map((author) => (
       <span>{author}, </span>
     ));
   } catch {
@@ -44,7 +46,7 @@ const BookInfo = ({ apiData, bookIndex }) => {
   var imgLink = "";
   try {
     imgLink =
-      apiData.book.items[bookIndex].volumeInfo.imageLinks.thumbnail;
+      books.items[bookIndex].volumeInfo.imageLinks.thumbnail;
   } catch {
     imgLink = "";
   }
@@ -64,7 +66,7 @@ const BookInfo = ({ apiData, bookIndex }) => {
         <div class="book-all-title-container">
           <div>
             <h3>{title}</h3>
-            <p>{apiData.book.items[bookIndex].volumeInfo.subtitle}</p>
+            <p>{books.items[bookIndex].volumeInfo.subtitle}</p>
             <small class="mb-3">Author: {authors}</small>
           </div>
           <div class="d-flex-center">
@@ -79,9 +81,9 @@ const BookInfo = ({ apiData, bookIndex }) => {
             <img class="rating-icon m-1" src='https://img.icons8.com/color/25/000000/filled-star--v1.png' />
             <p class="rating">Rating</p>
             </div>
-          {apiData.book.items[bookIndex].volumeInfo.averageRating ? (
+          {books.items[bookIndex].volumeInfo.averageRating ? (
           <p class='rating m-1'>
-            {apiData.book.items[bookIndex].volumeInfo.averageRating} / 5
+            {books.items[bookIndex].volumeInfo.averageRating} / 5
           </p>
         ) : (
           <p class='rating m-1'>
@@ -92,8 +94,8 @@ const BookInfo = ({ apiData, bookIndex }) => {
         </div>
         <hr/>
 
-        {apiData.book.items[bookIndex].volumeInfo.description ? (
-          <p>{apiData.book.items[bookIndex].volumeInfo.description}</p>
+        {books.items[bookIndex].volumeInfo.description ? (
+          <p>{books.items[bookIndex].volumeInfo.description}</p>
         ): (
           <p>No Description</p>
         )}
@@ -105,4 +107,12 @@ const BookInfo = ({ apiData, bookIndex }) => {
   );
 };
 
-export default BookInfo;
+BookInfo.propTypes = {
+  books: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  books: state.books,
+});
+
+export default connect(mapStateToProps)(BookInfo);

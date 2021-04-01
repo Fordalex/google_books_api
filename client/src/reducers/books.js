@@ -1,5 +1,6 @@
 const initialState = {
     books: null,
+    bookIndex: 0,
     loading: false,
 }
 
@@ -15,6 +16,11 @@ export default function(state = initialState, action) {
             return {
                 books: payload,
                 loading: false,
+            }
+        case "BOOK_INDEX":
+            return {
+                ...state,
+                bookIndex: payload,
             }
         default:
             return state

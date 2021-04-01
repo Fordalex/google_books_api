@@ -131,6 +131,7 @@ button:focus {
     border-radius: 25px;
     right: 10px;
     bottom: 10px;
+    border: solid 3px #a5cde0;
 }
 
 /* book info container */

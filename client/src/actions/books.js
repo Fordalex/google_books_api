@@ -37,3 +37,12 @@ export const getBooks = ({ srch }) => async (dispatch) => {
     return err;
   }
 };
+
+export const setBookIndex = ({idNum}) => async (dispatch) => {
+
+  dispatch({
+    type: "BOOK_INDEX",
+    payload: idNum,
+  })
+
+};

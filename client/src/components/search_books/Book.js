@@ -1,5 +1,8 @@
 import React from "react";
 import anime from "animejs/lib/anime.es.js";
+import {setBookIndex} from '../../actions/books';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 const Book = ({ book, index, setBookIndex }) => {
   // Check if book has image
@@ -22,7 +25,7 @@ const Book = ({ book, index, setBookIndex }) => {
   // Show book information
   const showBookInfoHandler = (e) => {
     let idNum = e.target.id.split("-")[2];
-    setBookIndex(idNum);
+    setBookIndex({idNum});
 
     let bookInfoContainer = document.getElementsByClassName(
       "one-book-info-container"
@@ -33,7 +36,7 @@ const Book = ({ book, index, setBookIndex }) => {
       targets: ".one-book-info-container",
       keyframes: [
         { translateX: "200vw", duration: 0 },
-        { translateX: "0", duration: 1000 },
+        { translateX: "0", duration: 500 },
       ],
       easing: 'easeInOutQuad',
       loop: false,
@@ -103,4 +106,8 @@ const Book = ({ book, index, setBookIndex }) => {
   );
 };
 
-export default Book;
+Book.propTypes = {
+  setBookIndex: PropTypes.func.isRequired,
+}
+
+export default connect(null, {setBookIndex})(Book);
