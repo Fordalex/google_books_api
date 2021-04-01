@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import { setBookIndex } from "../../actions/books";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Moment from 'react-moment';
 
 const Book = ({ book, index }) => {
   // Check if book has image
@@ -32,12 +33,15 @@ const Book = ({ book, index }) => {
           <p class='book-img'>No Image</p>
         )}
       </div>
-      <div class='book-info-container'>
+      <div class='view-all-book-info-container'>
         <h3>{book.title}</h3>
-        <p>Start Date: {book.startDate}</p>
-        <p>Finished Date: {book.finishedDate}</p>
-        <p>Current Page: {book.currentPage}</p>
-        <p>Notes: {book.notes.length}</p>
+        <p class="justify-content-between"><b>Start Date:</b> <Moment format="DD/MM/YYYY">{book.startDate}</Moment></p>
+        {book.finished ? (
+          <p class="justify-content-between"><b>Finished Date:</b> <Moment format="DD/MM/YYYY">{book.finishedDate}</Moment></p>
+        ):(
+          <p class="justify-content-between"><b>Current Page:</b> {book.currentPage}</p>
+        )}
+        <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
         <Link to='book-data'>
           <img
             class='add-icon'

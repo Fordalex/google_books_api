@@ -27,6 +27,12 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
   } catch {
     return null;
   }
+  // Check if book has total pages
+  try {
+    var totalPages = books.items[bookIndex].volumeInfo.pageCount;
+  } catch {
+    return null;
+  }
 
   var finished = false;
 
@@ -35,6 +41,7 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
     var startDate = document.getElementsByName("startDate")[0].value;
     var finishedDate = document.getElementsByName("finishedDate")[0].value;
     var currentPage = document.getElementsByName("currentPage")[0].value;
+    var rating = document.getElementsByName("rating")[0].value;
 
     addBook({
       startDate,
@@ -44,6 +51,8 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
       title,
       img,
       bookId,
+      rating,
+      totalPages,
     });
     setFormSubmited(true);
   };
@@ -86,6 +95,7 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
             <div className='form-group'>
               <p>Start Date</p>
               <input type='date' name='startDate' required />
+              <hr/>
               <div class='justify-content-around align-items-center mb-2'>
                 <p class='text-dark m-0'>Have you finished this book?</p>
                 <div>
@@ -110,6 +120,8 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
               <div class='hidden' id='finishedInput'>
                 <p>Finished Date</p>
                 <input type='date' name='finishedDate' />
+                <p>Rating</p>
+                <input min="0" max="5" type='number' name='rating'/>
               </div>
               <div class='hidden' id='pageInput'>
                 <input

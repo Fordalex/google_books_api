@@ -9,8 +9,8 @@ As soon as a users refreshes the page they get logged out.
 
 Remove account
 Change password
-Get the book information to be displayed when the user clicks a book
 Add notes to books
+Add moment to style dates
 
 ##### Feature upgrades
 

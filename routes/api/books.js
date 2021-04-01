@@ -50,6 +50,8 @@ router.post(
         startDate,
         title,
         img,
+        rating,
+        totalPages
       } = req.body;
 
       var book = new Book({
@@ -61,6 +63,8 @@ router.post(
         title,
         img,
         user: req.user.id,
+        rating,
+        totalPages
       });
 
       book.save();

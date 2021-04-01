@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import UserImage from "../../static/img/user-image.png";
 import { getCurrentProfile } from "../../actions/profile";
+import Moment from 'react-moment';
+
 
 const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCurrentProfile }) => {
   useEffect(() => {
@@ -53,9 +55,11 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
                 <Link to="book-data" class="profile-book-container">
                   <img src={book.img} />
                   <div class="profile-book-info-container">
-                    <p class="justify-content-between"><b>Started:</b> {book.startDate}</p>
+                  <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
+                  <hr/>
+                    <p class="justify-content-between"><b>Started:</b> <Moment format="DD MMM YYYY">{book.startDate}</Moment></p>
+                    <p class="justify-content-between"><b>Total Pages:</b> {book.totalPages}</p>
                     <p class="justify-content-between"><b>Current Page:</b> {book.currentPage}</p>
-                    <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
                   </div>
                 </Link>
               ))}
@@ -77,9 +81,15 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
                <Link to="book-data" class="profile-book-container">
                <img src={book.img} />
                <div class="profile-book-info-container">
-                 <p class="justify-content-between"><b>Started:</b> {book.startDate}</p>
-                 <p class="justify-content-between"><b>Finished:</b> {book.finishedDate}</p>
-                 <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
+               <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
+               <hr/>
+                 <p class="justify-content-between"><b>Started:</b> <Moment format="DD MMM YYYY">{book.startDate}</Moment></p>
+                 <p class="justify-content-between"><b>Finished:</b> <Moment format="DD MMM YYYY">{book.finishedDate}</Moment></p>
+                 <p class="justify-content-between"><b>Total Pages:</b> {book.totalPages}</p>
+                 <p class="justify-content-between"><b>Time Taken:</b> <Moment from={book.startDate} to={book.finishedDate}></Moment></p>
+                 <p class="justify-content-between"><b>PPD:</b> </p>
+                 <p class="justify-content-between"><b>Your Rating:</b> {book.notes.length} / 5</p>
+
                </div>
              </Link>
               ))}

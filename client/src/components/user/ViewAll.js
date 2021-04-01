@@ -30,13 +30,13 @@ const Books = ({ profile: { profile: { user, reading, read }, loading } }) => {
 
   return (
         <Fragment>
-              <h3>Reading</h3>
+              <h2 class="p-2 m-0">Reading</h2>
             {reading.map((book, index) => (
               <Book book={book} key={index} index={index}/>
             ))}
             <p class="m-1">Results: {reading.length}</p>
             <hr/>
-            <h3>Read</h3>
+            <h2 class="p-2 m-0">Read</h2>
             {read.map((book, index) => (
               <Book book={book} key={index} index={index}/>
             ))}

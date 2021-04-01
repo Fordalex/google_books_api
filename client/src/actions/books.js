@@ -53,7 +53,9 @@ export const addBook = ({
   finished,
   title,
   img,
-  bookId
+  bookId,
+  rating,
+  totalPages
 }) => async (dispatch) => {
   const config = {
     header: {
@@ -69,6 +71,8 @@ export const addBook = ({
     title,
     img,
     bookId,
+    rating,
+    totalPages
   };
 
   stringifyObject(body, {

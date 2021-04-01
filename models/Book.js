@@ -14,6 +14,10 @@ const BookSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    totalPages: {
+        type: Number,
+        required: true,
+    },
     startDate: {
         type: Date,
         default: Date.now,
@@ -30,6 +34,10 @@ const BookSchema = new mongoose.Schema({
     finished: {
         type: Boolean,
         required: true,
+    },
+    rating: {
+        type: Number,
+        required: false,
     },
     notes: [{
         page: {
