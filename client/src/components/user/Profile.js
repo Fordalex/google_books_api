@@ -52,9 +52,9 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
             <p class="m-2 mb-4"><Link to="book-search" class="text-main">Search</Link> your first book!</p>
           ):(
             <div class='currently-reading'>
-              <img src='http://books.google.com/books/content?id=iKdaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
-              <img src='http://books.google.com/books/content?id=6W_IDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
-              <img src='http://books.google.com/books/content?id=3tOMDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
+              {reading.map((book) => (
+               <img src={book.img} />
+              ))}
             </div>
           )}
             <hr/>
@@ -69,9 +69,9 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
               <p class="m-2"><Link to="book-search" class="text-main">Add</Link> a book you've already read.</p>
             ):(
               <div class='currently-reading'>
-              <img src='http://books.google.com/books/content?id=iKdaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
-              <img src='http://books.google.com/books/content?id=6W_IDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
-              <img src='http://books.google.com/books/content?id=3tOMDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />
+              {read.map((book) => (
+               <img src={book.img} />
+              ))}
             </div>
             )}
 

@@ -77,7 +77,7 @@ export const addBook = ({
   });
 
   try {
-    dispatch(setAlert(`${title}, added`, "success"));
+    dispatch(setAlert(`${title} added.`, "success"));
     const res = await axios.post("/api/books/add", body, config);
   
   } catch (err) {
