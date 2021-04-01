@@ -13,16 +13,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    read: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
-    reading: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
     email: {
         type: String,
         required: true,

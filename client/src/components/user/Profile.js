@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import UserImage from "../../static/img/user-image.png";
 import { getCurrentProfile } from "../../actions/profile";
 
-const Profile = ({ profile: { profile, loading }, getCurrentProfile }) => {
+const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCurrentProfile }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
@@ -19,20 +19,20 @@ const Profile = ({ profile: { profile, loading }, getCurrentProfile }) => {
           <div class='profile-container'>
             <div class='profile-wrapper'>
               <img src={UserImage} class='profile-image' />
-              <h1 class='text-center m-0 profile-name'>{profile.name}</h1>
+              <h1 class='text-center m-0 profile-name'>{user.name}</h1>
               <p class='text-center m-0'>
-                <small class='profile-username'>{profile.email}</small>
+                <small class='profile-username'>{user.email}</small>
               </p>
               <div class='profile-stats-container'>
                 <div>
                   <p class='m-0 text-center text-main'>
-                    <b>{profile.reading}</b>
+                    <b>{reading.length}</b>
                   </p>
                   <p class='m-0 text-center'>Reading</p>
                 </div>
                 <div>
                   <p class='m-0 text-center text-main'>
-                    <b>{profile.read}</b>
+                    <b>{read.length}</b>
                   </p>
                   <p class='m-0 text-center'>Read</p>
                 </div>
@@ -48,7 +48,7 @@ const Profile = ({ profile: { profile, loading }, getCurrentProfile }) => {
               </p>
             </div>
 
-          {profile.reading < 1 ? (
+          {reading < 1 ? (
             <p class="m-2 mb-4"><Link to="book-search" class="text-main">Search</Link> your first book!</p>
           ):(
             <div class='currently-reading'>
@@ -65,7 +65,7 @@ const Profile = ({ profile: { profile, loading }, getCurrentProfile }) => {
               </p>
             </div>
 
-            {profile.read < 1 ? (
+            {read < 1 ? (
               <p class="m-2"><Link to="book-search" class="text-main">Add</Link> a book you've already read.</p>
             ):(
               <div class='currently-reading'>

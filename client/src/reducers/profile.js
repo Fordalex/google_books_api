@@ -1,5 +1,9 @@
 const initialState = {
-  profile: null,
+  profile: {
+    user: null,
+    reading: null,
+    read: null
+  },
   loading: true,
   error: {},
 };
@@ -24,7 +28,11 @@ export default function (state = initialState, action) {
     case "CLEAR_PROFILE":
       return {
         ...state,
-        profile: null,
+        profile: {
+          user: null,
+          reading: null,
+          read: null
+        },
         repos: [],
         loading: false,
       };
