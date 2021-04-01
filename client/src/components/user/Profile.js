@@ -66,7 +66,7 @@ const Profile = ({ profile: { profile, loading }, getCurrentProfile }) => {
             </div>
 
             {profile.read < 1 ? (
-              <p class="m-2">Add an old book?</p>
+              <p class="m-2"><Link to="book-search" class="text-main">Add</Link> a book you've already read.</p>
             ):(
               <div class='currently-reading'>
               <img src='http://books.google.com/books/content?id=iKdaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' />

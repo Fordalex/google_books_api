@@ -2,6 +2,7 @@ import React from "react";
 import anime from "animejs/lib/anime.es.js";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const BookInfo = ({ books: {books, bookIndex } }) => {
   // go back to book search.
@@ -100,7 +101,7 @@ const BookInfo = ({ books: {books, bookIndex } }) => {
           <p>No Description</p>
         )}
 
-          <button class="add-book">Add Book</button>
+          <Link class="add-book" to="add-book">Add Book</Link>
 
       </div>
     </div>

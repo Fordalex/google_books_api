@@ -22,3 +22,9 @@
     background-color: rgb(255, 255, 255) !important;
     color: rgb(145, 145, 145) !important;
 }
+
+.form-group p {
+    margin-left: 15px;
+    margin-top: 0;
+    color: rgb(110, 110, 110);
+}
