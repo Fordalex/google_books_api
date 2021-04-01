@@ -12,3 +12,5 @@ Change password
 Get the book information to be displayed when the user clicks a book
 Add books in a new entity in the DB
 Add notes to books
+
+Allow the users to make their notes public or private to be shown to other users.
