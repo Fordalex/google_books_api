@@ -58,6 +58,8 @@ background-size: contain;
     width: 200px;
     margin: 0 20px;
     border-radius: 13px;
+    text-decoration: none;
+    color:rgb(61, 61, 61);
 }
 
 .profile-book-container img {

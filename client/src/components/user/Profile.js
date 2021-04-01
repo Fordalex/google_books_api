@@ -42,7 +42,7 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
             <div class='justify-content-between align-items-center m-1'>
               <h3>Currently Reading</h3>
               <p>
-                <Link to='users-books' class="text-secondary">View All</Link>
+              <Link to='view-all' class="text-secondary">View All</Link>
               </p>
             </div>
           {reading < 1 ? (
@@ -50,14 +50,14 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
           ):(
             <div class='currently-reading'>
               {reading.map((book) => (
-                <div class="profile-book-container">
+                <Link to="book-data" class="profile-book-container">
                   <img src={book.img} />
                   <div class="profile-book-info-container">
                     <p class="justify-content-between"><b>Started:</b> {book.startDate}</p>
                     <p class="justify-content-between"><b>Current Page:</b> {book.currentPage}</p>
                     <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
@@ -65,7 +65,7 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
             <div class='justify-content-between align-items-center m-1'>
               <h3>Read</h3>
               <p>
-                <Link to='users-books' class="text-secondary">View All</Link>
+                <Link to='view-all' class="text-secondary">View All</Link>
               </p>
             </div>
 
@@ -74,14 +74,14 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
             ):(
               <div class='currently-reading'>
               {read.map((book) => (
-               <div class="profile-book-container">
+               <Link to="book-data" class="profile-book-container">
                <img src={book.img} />
                <div class="profile-book-info-container">
                  <p class="justify-content-between"><b>Started:</b> {book.startDate}</p>
                  <p class="justify-content-between"><b>Finished:</b> {book.finishedDate}</p>
                  <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
                </div>
-             </div>
+             </Link>
               ))}
             </div>
             )}

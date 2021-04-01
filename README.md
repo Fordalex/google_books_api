@@ -10,7 +10,9 @@ As soon as a users refreshes the page they get logged out.
 Remove account
 Change password
 Get the book information to be displayed when the user clicks a book
-Add books in a new entity in the DB
 Add notes to books
 
+##### Feature upgrades
+
 Allow the users to make their notes public or private to be shown to other users.
+Allow uses to search their own books.

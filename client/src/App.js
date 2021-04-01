@@ -9,6 +9,8 @@ import Login from "./components/auth/Login";
 import BookSearch from "./components/search_books/BookIndex";
 import AddBookForm from "./components/book_forms/AddBookForm";
 import Profile from "./components/user/Profile";
+import ViewAll from "./components/user/ViewAll";
+import BookData from "./components/user/BookData";
 import UsersBooks from "./components/user/UsersBooks";
 import Settings from "./components/settings/Settings";
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -37,6 +39,8 @@ function App() {
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
               <PrivateRoute exact path='/profile' component={Profile} />
+              <PrivateRoute exact path='/view-all' component={ViewAll} />
+              <PrivateRoute exact path='/book-data' component={BookData} />
               <PrivateRoute exact path='/users-books' component={UsersBooks} />
               <PrivateRoute exact path='/book-search' component={BookSearch} />
               <PrivateRoute exact path='/add-book' component={AddBookForm} />
