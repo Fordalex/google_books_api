@@ -33,7 +33,7 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
           <div class='profile-container'>
             <div class='profile-wrapper'>
               <img src={UserImage} class='profile-image' />
-              <h1 class='text-center m-0 profile-name'>{user.name}</h1>
+              <h1 class='text-center m-0 profile-name'>{user.firstName} {user.lastName}</h1>
               <p class='text-center m-0'>
                 <small class='profile-username'>{user.email}</small>
               </p>

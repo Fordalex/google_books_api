@@ -44,7 +44,7 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
   return (
     <Fragment>
       <nav>
-        <p class="nav-app-name">Note Worthy</p>
+        <Link class="nav-app-name" to="/">Note Worthy</Link>
         {!auth.isAuthenticated ? (
           <Link
             to='login'
@@ -72,7 +72,7 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
                       <p>Loading...</p>
                     ) : (
                       <Fragment>
-                        <h3>{user.name}</h3>
+                        <h3>{user.firstName} {user.lastName}</h3>
                         <p>{user.email}</p>
                       </Fragment>
                     )}

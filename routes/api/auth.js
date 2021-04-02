@@ -17,7 +17,8 @@ if (!REACT_APP_JWT_SECRET) {
 // @desc         Register a new user & get jwt
 // @access       Pubic
 router.post('/',[
-    check("name", 'Name is required').not().isEmpty(),
+    check("firstName", 'First name is required').not().isEmpty(),
+    check("lastName", 'Last name is required').not().isEmpty(),
     check("email", 'Please include a valid email').isEmail(),
     check("password", 'Please enter a password with 6 or more characters').isLength({ min: 6 })
 ], async(req, res) => {
@@ -27,7 +28,8 @@ router.post('/',[
     }
     // destructure the request
     const {
-        name,
+        firstName,
+        lastName,
         email,
         password
     } = req.body;
@@ -41,7 +43,8 @@ router.post('/',[
         }
 
         user = new User({
-            name,
+            firstName,
+            lastName,
             email,
             password,
         });

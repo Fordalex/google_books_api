@@ -24,7 +24,7 @@ export const loadUser = () => async dispatch => {
 }
 
 // Register a user
-export const register = ({name, email, password}) => async dispatch  => {
+export const register = ({firstName, lastName, email, password}) => async dispatch  => {
     if (localStorage.token) {
         setAuthToken(localStorage.token);
     }
@@ -35,7 +35,7 @@ export const register = ({name, email, password}) => async dispatch  => {
         }
     };
 
-    const body = { name, email, password };
+    const body = { firstName, lastName, email, password };
 
     stringifyObject(body, {
         indent: '  ',

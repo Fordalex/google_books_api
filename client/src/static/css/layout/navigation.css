@@ -10,7 +10,7 @@ nav {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 99;
+    z-index: 300;
 }
 
 .burger-menu-container div {
@@ -72,4 +72,5 @@ nav {
 .nav-app-name {
     margin: 11px 0;
     color: #b0b0b0;
+    text-decoration: none;
 }

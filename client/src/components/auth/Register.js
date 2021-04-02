@@ -7,13 +7,14 @@ import {setAlert} from '../../actions/alert';
 
 const Register = ({ register, auth, setAlert }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     password2: "",
   });
 
-  const { name, email, password, password2 } = formData;
+  const { firstName, lastName, email, password, password2 } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,7 +24,7 @@ const Register = ({ register, auth, setAlert }) => {
     if (password !== password2) {
         setAlert('Passwords do not match','danger');
     } else {
-        register({name, email, password});
+        register({firstName, lastName, email, password});
     }
   };
 
@@ -37,11 +38,20 @@ const Register = ({ register, auth, setAlert }) => {
         </h1>
         <form className='form' onSubmit={(e) => onSubmit(e)}>
           <div className='form-group'>
+        
             <input
               type='text'
-              placeholder='Name'
-              name='name'
-              value={name}
+              placeholder='First Name'
+              name='firstName'
+              value={firstName}
+              onChange={(e) => onChange(e)}
+              required
+            />
+            <input
+              type='text'
+              placeholder='Last Name'
+              name='lastName'
+              value={lastName}
               onChange={(e) => onChange(e)}
               required
             />
