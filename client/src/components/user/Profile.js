@@ -86,6 +86,10 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
                     <p class="justify-content-between"><b>Started:</b> <Moment format="DD MMM YYYY">{book.startDate}</Moment></p>
                     <p class="justify-content-between"><b>Total Pages:</b> {book.totalPages}</p>
                     <p class="justify-content-between"><b>Current Page:</b> {book.currentPage}</p>
+                    <div class="book-loading-container">
+                      
+                      <div class="book-loading-bar" style={{width: `${100 / (book.totalPages / book.currentPage)}%`}}></div>
+                    </div>
                   </div>
                 </Link>
               ))}
