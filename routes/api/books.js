@@ -17,7 +17,9 @@ if (!REACT_APP_GOOGLE_API_KEY) {
 // @access       Private
 router.get("/:search", auth, async (req, res) => {
   try {
-    console.log(`https://www.googleapis.com/books/v1/volumes?q=${req.params.search}&key=${REACT_APP_GOOGLE_API_KEY}`)
+    console.log(
+      `https://www.googleapis.com/books/v1/volumes?q=${req.params.search}&key=${REACT_APP_GOOGLE_API_KEY}`
+    );
     const books = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=${req.params.search}&key=${REACT_APP_GOOGLE_API_KEY}`
     );
@@ -40,7 +42,6 @@ router.post(
   ],
   auth,
   async (req, res) => {
-
     try {
       // destructure the request
       const {
@@ -52,7 +53,7 @@ router.post(
         title,
         img,
         rating,
-        totalPages
+        totalPages,
       } = req.body;
 
       var book = new Book({
@@ -65,12 +66,56 @@ router.post(
         img,
         user: req.user.id,
         rating,
-        totalPages
+        totalPages,
       });
 
       book.save();
+    } catch (err) {
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
+// @route        POST api/books/add-note
+// @desc         Add a note to a book
+// @access       Pubic
+router.post(
+  "/add-note",
+  [
+    check("noteInfo", "Please add note info").not().isEmpty(),
+    check("noteType", "Please add the note type").not().isEmpty(),
+    check("note", "Please add your note").not().isEmpty(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    console.log('trying to save note')
+    // destructure the request
+    const { noteInfo, noteType, pageNumber, note, bookId } = req.body;
+
+    const newNote = {
+      noteInfo,
+      noteType,
+      pageNumber,
+      note,
+      bookId,
+    };
+    console.log(newNote);
+
+    try {
+      let book = await Book.findOne({ _id: bookId });
+      console.log(book);
+
+      book.notes.unshift(newNote);
+
+      console.log(book);
+
+      await book.save();
 
     } catch (err) {
+      console.error(err.message);
       res.status(500).send("Server Error");
     }
   }

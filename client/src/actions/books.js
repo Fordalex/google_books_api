@@ -35,7 +35,10 @@ export const getBooks = ({ srch }) => async (dispatch) => {
       delay: anime.stagger(100, { easing: "easeOutQuad" }),
     });
   } catch (err) {
-    return err;
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };
 

@@ -8,7 +8,6 @@ export const getCurrentProfile = () => async dispatch => {
     }
 
     try {
-
         const res = await axios.get('/api/profile/me');
         dispatch({
             type: "GET_PROFILE",

@@ -40,14 +40,22 @@ const BookSchema = new mongoose.Schema({
         required: false,
     },
     notes: [{
-        page: {
-            type: Number,
+        noteInfo: {
+            type: String,
             required: true,
+        },
+        noteType: {
+            type: String,
+            required: true,
+        },
+        pageNumber: {
+            type: Number,
+            required: false,
         },
         note: {
             type: String,
             required: true,
-        },
+        }
     }],
     user: {
         type: Schema.Types.ObjectId,

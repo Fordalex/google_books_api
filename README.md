@@ -9,7 +9,7 @@ As soon as a users refreshes the page they get logged out.
 
 User
 
-    Remove account
+    Remove account (Don't forget to remove the users books.)
     Change password
 
 Book
@@ -18,7 +18,6 @@ Book
     Remove book
     Edit details
     Show pages per day on profile
-    Add a loading bar till complete
 
 ##### Feature upgrads
 

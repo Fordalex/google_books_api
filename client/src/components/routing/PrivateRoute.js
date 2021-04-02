@@ -13,6 +13,8 @@ const PrivateRoute = ({
   ...rest
 }) => {
 
+  window.scrollTo(0, 0);
+
   return (
     <Route
       {...rest}

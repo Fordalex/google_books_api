@@ -1,40 +1,40 @@
 import React, { Fragment, useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {saveNote} from '../../actions/note';
+import PropTypes from 'prop-types';
 
 const AddNote = ({
   profile: {
     profile: { books },
     book: { id },
   },
+  saveNote
 }) => {
 var book = books.filter((book) => (book._id == id ? book : null))[0];
 
   const [formSubmited, setFormSubmited] = useState(false);
 
   const onSubmit = async (e) => {
-    // e.preventDefault();
-    // var startDate = document.getElementsByName("startDate")[0].value;
-    // var finishedDate = document.getElementsByName("finishedDate")[0].value;
-    // var currentPage = document.getElementsByName("currentPage")[0].value;
-    // var rating = document.getElementsByName("rating")[0].value;
-    // addBook({
-    //   startDate,
-    //   finishedDate,
-    //   currentPage,
-    //   finished,
-    //   title,
-    //   img,
-    //   bookId,
-    //   rating,
-    //   totalPages,
-    // });
-    // setFormSubmited(true);
+    e.preventDefault();
+    var noteInfo = document.getElementsByName("noteInfo")[0].value;
+    var noteType = document.getElementsByName("noteType")[0].value;
+    var pageNumber = document.getElementsByName("pageNumber")[0].value;
+    var note = document.getElementsByName("note")[0].value;
+
+    saveNote({
+      noteInfo,
+      noteType,
+      pageNumber,
+      note,
+      bookId: id,
+    });
+    setFormSubmited(true);
   };
 
   const pageHandler = (e) => {
     var noteStyle = e.target.value;
-    var pageInput = document.getElementById("pageNumberInput");
+    var pageInput = document.getElementsByName("pageNumber")[0];
     noteStyle == "page"
       ? pageInput.classList.remove("hidden")
       : pageInput.classList.add("hidden");
@@ -63,7 +63,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
               <form className='form mt-2' onSubmit={(e) => onSubmit(e)}>
                 <div className='form-group'>
                   <div>
-                    <select class='input-style'>
+                    <select class='input-style' name="noteInfo">
                       <option value='note'>Note</option>
                       <option value='quote'>Quote</option>
                       <option value='information'>Information</option>
@@ -74,7 +74,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                   <div>
                     <select
                       class='input-style'
-                      id='noteSelect'
+                      name='noteType'
                       onChange={(e) => pageHandler(e)}
                     >
                       <option value='page'>Page</option>
@@ -83,15 +83,15 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                   </div>
                   <div>
                     <input
-                      id='pageNumberInput'
+                      name='pageNumber'
                       type='number'
                       placeholder='Page Number'
-                      name='currentPage'
                     />
                   </div>
                   <hr />
                   <div class='justify-content-center'>
                     <textarea
+                    name="note"
                       class='input-style note-textarea'
                       placeholder='Enter your note here...'
                     ></textarea>
@@ -111,8 +111,13 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
   );
 };
 
+AddNote.propTypes = {
+  saveNote: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+}
+
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps)(AddNote);
+export default connect(mapStateToProps, {saveNote})(AddNote);
