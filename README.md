@@ -18,6 +18,7 @@ Book
     Remove book
     Edit details
     Show pages per day on profile
+    Add a loading bar till complete
 
 ##### Feature upgrads
 
