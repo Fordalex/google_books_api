@@ -16,3 +16,11 @@ export const getCurrentProfile = () => async dispatch => {
         })
     }
 }
+
+export const addBookId = (id) => async (dispatch) => {
+    dispatch({
+      type: "BOOK_ID",
+      payload: id,
+    });
+  };
+  

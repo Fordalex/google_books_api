@@ -55,7 +55,7 @@ export const addBook = ({
   img,
   bookId,
   rating,
-  totalPages
+  totalPages,
 }) => async (dispatch) => {
   const config = {
     header: {
@@ -72,7 +72,7 @@ export const addBook = ({
     img,
     bookId,
     rating,
-    totalPages
+    totalPages,
   };
 
   stringifyObject(body, {
@@ -83,7 +83,6 @@ export const addBook = ({
   try {
     dispatch(setAlert(`${title} added.`, "success"));
     const res = await axios.post("/api/books/add", body, config);
-  
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

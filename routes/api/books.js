@@ -17,6 +17,7 @@ if (!REACT_APP_GOOGLE_API_KEY) {
 // @access       Private
 router.get("/:search", auth, async (req, res) => {
   try {
+    console.log(`https://www.googleapis.com/books/v1/volumes?q=${req.params.search}&key=${REACT_APP_GOOGLE_API_KEY}`)
     const books = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=${req.params.search}&key=${REACT_APP_GOOGLE_API_KEY}`
     );

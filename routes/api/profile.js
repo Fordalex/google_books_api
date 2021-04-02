@@ -21,22 +21,16 @@ router.get("/me", auth, async(req, res) => {
         }
 
         // Get all the users books
-        const readBooks = await Books.find({
+        const usersBooks = await Books.find({
             user: req.user.id,
-            finished: true,
         })
 
-        const readingBooks = await Books.find({
-            user: req.user.id,
-            finished: false,
-        })
 
-        user.readBooks = readBooks;
-        user.readingBooks = readingBooks;
+        user.usersBooks = usersBooks;
+
         profile = {
             user: user,
-            reading: readingBooks,
-            read: readBooks
+            books: usersBooks,
         }
         res.json(profile);
     } catch (err) {

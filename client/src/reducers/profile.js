@@ -1,9 +1,9 @@
 const initialState = {
   profile: {
     user: null,
-    reading: null,
-    read: null
+    books: null,
   },
+  book: null,
   loading: true,
   error: {},
 };
@@ -30,12 +30,16 @@ export default function (state = initialState, action) {
         ...state,
         profile: {
           user: null,
-          reading: null,
-          read: null
+          books: null,
         },
         repos: [],
         loading: false,
       };
+    case "BOOK_ID":
+      return {
+        ...state,
+        book: payload,
+      }
     default:
       return state;
   }

@@ -3,14 +3,26 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import UserImage from "../../static/img/user-image.png";
-import { getCurrentProfile } from "../../actions/profile";
+import { getCurrentProfile, addBookId } from "../../actions/profile"; 
 import Moment from 'react-moment';
 
 
-const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCurrentProfile }) => {
+const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentProfile, addBookId }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
+
+  // Filter the books the user has and hasn't read.
+  try {
+    var reading = books.filter((book) => !book.finished ? book : null)
+    var read = books.filter((book) => book.finished ? book : null)
+  } catch(err) {
+    return null
+  }
+
+  const bookIdHandler = (b) => {
+    addBookId({id: b._id})
+  }
 
   return (
     <Fragment>
@@ -41,6 +53,11 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
               </div>
             </div>
             <hr />
+            <div class="justify-content-center px-2 py-1">
+            <Link to="book-search" class="btn-main w-100 text-center">Add Book</Link>
+            </div>
+            <hr/>
+    
             <div class='justify-content-between align-items-center m-1'>
               <h3>Currently Reading</h3>
               <p>
@@ -52,7 +69,7 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
           ):(
             <div class='currently-reading'>
               {reading.map((book) => (
-                <Link to="book-data" class="profile-book-container">
+                <Link to="book-data" class="profile-book-container" onClick={() => bookIdHandler(book)}>
                   <img src={book.img} />
                   <div class="profile-book-info-container">
                   <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
@@ -78,7 +95,7 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
             ):(
               <div class='currently-reading'>
               {read.map((book) => (
-               <Link to="book-data" class="profile-book-container">
+               <Link to="book-data" class="profile-book-container" onClick={() => bookIdHandler(book)}>
                <img src={book.img} />
                <div class="profile-book-info-container">
                <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
@@ -88,7 +105,7 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
                  <p class="justify-content-between"><b>Total Pages:</b> {book.totalPages}</p>
                  <p class="justify-content-between"><b>Time Taken:</b> <Moment from={book.startDate} to={book.finishedDate}></Moment></p>
                  <p class="justify-content-between"><b>PPD:</b> </p>
-                 <p class="justify-content-between"><b>Your Rating:</b> {book.notes.length} / 5</p>
+                 <p class="justify-content-between"><b>Your Rating:</b> {book.rating} / 5</p>
 
                </div>
              </Link>
@@ -107,10 +124,11 @@ const Profile = ({ profile: { profile: { user, reading, read }, loading }, getCu
 Profile.propTypes = {
   profile: PropTypes.object.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
+  addBookId: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Profile);
+export default connect(mapStateToProps, { getCurrentProfile, addBookId })(Profile);
