@@ -10,6 +10,7 @@ const Books = require("../../models/Book");
 // @desc         Get current user logged in
 // @access       Private
 router.get("/me", auth, async(req, res) => {
+
     try {
         // Get the user
         const user = await User.findOne({

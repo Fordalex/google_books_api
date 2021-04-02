@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator/check");
 //  Add user model
 const User = require("../../models/User");
@@ -72,6 +73,19 @@ router.post('/',[
         res.status(500).send("Server Error");
     }
 
+});
+
+// @route        GET api/auth
+// @desc         Test route
+// @access       Pubic
+router.get('/authenticated', auth, async(req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json(user);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Sever Error')
+    }
 });
 
 // @route        POST api/auth/login

@@ -3,6 +3,26 @@ import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 const stringifyObject = require('stringify-object');
 
+// Load User
+export const loadUser = () => async dispatch => {
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    }
+
+    try {
+        const res = await axios.get('/api/auth/authenticated');
+
+        dispatch({
+            type: "USER_LOADED",
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: "AUTH_ERROR"
+        })
+    }
+}
+
 // Register a user
 export const register = ({name, email, password}) => async dispatch  => {
     if (localStorage.token) {
@@ -47,7 +67,6 @@ export const register = ({name, email, password}) => async dispatch  => {
 
 }
 
-
 // Login User
 export const login = ({ email, password }) => async dispatch => {
     if (localStorage.token) {
@@ -71,13 +90,14 @@ export const login = ({ email, password }) => async dispatch => {
         const res = await axios.post('/api/auth/login', body, config);
 
         dispatch(setAlert("Login Successful", 'success'));
+        console.log(res.data)
 
         dispatch({
             type: "LOGIN_SUCCESS",
             payload: res.data
         });
 
-        // dispatch(loadUser());
+        dispatch(loadUser());
 
     } catch (err) {
         const errors = err.response.data.errors;
@@ -98,3 +118,10 @@ export const logout = () => dispatch => {
     dispatch({type: "LOGOUT"})
     dispatch(setAlert("Logged Out", ''));
 }
+
+// Check if the users jwt if valid;
+export const checkUserAuthenticated = () => dispatch => {
+    dispatch({
+        type: "IS_AUTHENTICATED",
+    })
+  }
