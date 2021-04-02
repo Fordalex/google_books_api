@@ -19,6 +19,15 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
   } catch(err) {
     return null
   }
+  // Get the users profile information
+  try {
+    var firstName = user.firstName;
+    var lastName = user.lastName;
+    var email = user.email;
+
+  } catch(err) {
+    return null
+  }
 
   const bookIdHandler = (b) => {
     addBookId({id: b._id})
@@ -33,9 +42,9 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
           <div class='profile-container'>
             <div class='profile-wrapper'>
               <img src={UserImage} class='profile-image' />
-              <h1 class='text-center m-0 profile-name'>{user.firstName} {user.lastName}</h1>
+              <h1 class='text-center m-0 profile-name'>{firstName} {lastName}</h1>
               <p class='text-center m-0'>
-                <small class='profile-username'>{user.email}</small>
+                <small class='profile-username'>{email}</small>
               </p>
               <div class='profile-stats-container'>
                 <div>
