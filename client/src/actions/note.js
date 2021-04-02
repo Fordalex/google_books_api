@@ -11,9 +11,9 @@ export const saveNote = ({noteInfo, noteType, pageNumber, note, bookId}) => asyn
         };
     
         const body = { noteInfo, noteType, pageNumber, note, bookId };
-        console.log(body, "action")
         const res = await axios.post('api/books/add-note', body, config)
-        console.log(res)
+
+        dispatch(setAlert(`Note added to ${res.data.title}`, "success"))
 
     } catch (err) {
         const errors = err.response.data.errors;

@@ -55,6 +55,10 @@ const BookSchema = new mongoose.Schema({
         note: {
             type: String,
             required: true,
+        },
+        date: {
+            type: Date,
+            default: Date.now,
         }
     }],
     user: {

@@ -91,7 +91,6 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    console.log('trying to save note')
     // destructure the request
     const { noteInfo, noteType, pageNumber, note, bookId } = req.body;
 
@@ -102,17 +101,14 @@ router.post(
       note,
       bookId,
     };
-    console.log(newNote);
 
     try {
       let book = await Book.findOne({ _id: bookId });
-      console.log(book);
-
       book.notes.unshift(newNote);
 
-      console.log(book);
-
       await book.save();
+
+      return res.json(book)
 
     } catch (err) {
       console.error(err.message);

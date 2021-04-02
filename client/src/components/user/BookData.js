@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import anime from "animejs/lib/anime.es.js";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Moment from 'react-moment';
+import Moment from "react-moment";
 
 const BookData = ({
   profile: {
@@ -40,34 +40,38 @@ const BookData = ({
           </div>
         </div>
         <hr />
-        <div class="book-data-info-container">
-        <p class='justify-content-between'>
-          <b>Started:</b> <Moment format='DD MMM YYYY'>{book.startDate}</Moment>
-        </p>
-        <p class='justify-content-between'>
-          <b>Finished:</b>{" "}
-          <Moment format='DD MMM YYYY'>{book.finishedDate}</Moment>
-        </p>
-        <p class='justify-content-between'>
-          <b>Total Pages:</b> {book.totalPages}
-        </p>
-        <p class='justify-content-between'>
-          <b>Time Taken:</b>{" "}
-          <Moment from={book.startDate} to={book.finishedDate}></Moment>
-        </p>
-        <p class='justify-content-between'>
-          <b>PPD:</b>{" "}
-        </p>
-        <p class='justify-content-between'>
-          <b>Your Rating:</b> {book.rating} / 5
-        </p>
+        <div class='book-data-info-container'>
+          <p class='justify-content-between'>
+            <b>Started:</b>{" "}
+            <Moment format='DD MMM YYYY'>{book.startDate}</Moment>
+          </p>
+          <p class='justify-content-between'>
+            <b>Finished:</b>{" "}
+            <Moment format='DD MMM YYYY'>{book.finishedDate}</Moment>
+          </p>
+          <p class='justify-content-between'>
+            <b>Total Pages:</b> {book.totalPages}
+          </p>
+          <p class='justify-content-between'>
+            <b>Time Taken:</b>{" "}
+            <Moment from={book.startDate} to={book.finishedDate}></Moment>
+          </p>
+          <p class='justify-content-between'>
+            <b>PPD:</b>{" "}
+          </p>
+          <p class='justify-content-between'>
+            <b>Your Rating:</b> {book.rating} / 5
+          </p>
         </div>
-        <hr/>
+        <hr />
         <div class='justify-content-center'>
           <Link to='add-note' class='btn-main w-100 text-center'>
             Add Note
           </Link>
-          <Link to='edit-book-info' class='btn-secondary w-100 text-center ml-1'>
+          <Link
+            to='edit-book-info'
+            class='btn-secondary w-100 text-center ml-1'
+          >
             Update Info
           </Link>
         </div>
@@ -75,7 +79,25 @@ const BookData = ({
         {book.notes.length < 1 ? (
           <p class='text-secondary'>You haven't added any notes yet.</p>
         ) : (
-          <p>notes</p>
+          <Fragment>
+            <h2>Notes</h2>
+            {book.notes.map((note) => (
+              <div class='note-container'>
+                <h3>{note.noteInfo}</h3>
+                <hr />
+                {note.pageNumber && (
+                    <small class='justify-content-between'>
+                      <b>Page Number:</b>
+                      {note.pageNumber}
+                    </small>
+                )}
+                <p class="note-wrapper">{note.note}</p>
+                <p class='note-date text-secondary'>
+                  <Moment format='DD MMM YYYY'>{note.date}</Moment>
+                </p>
+              </div>
+            ))}
+          </Fragment>
         )}
       </div>
     </div>
