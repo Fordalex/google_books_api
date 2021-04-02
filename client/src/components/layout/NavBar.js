@@ -44,7 +44,7 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
   return (
     <Fragment>
       <nav>
-        <img src='https://img.icons8.com/flat-round/40/000000/book.png' />
+        <p class="nav-app-name">Note Worthy</p>
         {!auth.isAuthenticated ? (
           <Link
             to='login'

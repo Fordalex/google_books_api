@@ -165,3 +165,16 @@ hr {
 .text-dark {
     color: black !important;
 }
+
+.input-style {
+    width: 100%;
+    padding: 15px 15px;
+    border: none;
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(145, 145, 145) !important;
+}
+
+.form-group div {
+    margin-top: 15px;
+}
+

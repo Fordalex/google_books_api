@@ -68,3 +68,8 @@ nav {
 .nav-link-container li a {
     text-decoration: none;
 }
+
+.nav-app-name {
+    margin: 11px 0;
+    color: #b0b0b0;
+}

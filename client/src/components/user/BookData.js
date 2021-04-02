@@ -68,7 +68,7 @@ const BookData = ({
             Add Note
           </Link>
           <Link to='edit-book-info' class='btn-secondary w-100 text-center ml-1'>
-            Edit Info
+            Update Info
           </Link>
         </div>
         <hr />
