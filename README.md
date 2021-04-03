@@ -2,10 +2,16 @@
 
 ### Bugs
 
-When a user registers an account they don't get logged in straight away.
-As soon as a users refreshes the page they get logged out.
+Error thown on login in somtimes... Fixes after refresh.
+Problem adding tyson fury book, jim crow macat.
 
 ### Features left to implement
+
+fix alert to the top of the page.
+Total pages to finish current books.
+Total note count.
+sort notes option.
+Fix view all page.
 
 User
 
@@ -14,10 +20,13 @@ User
 
 Book
 
-    Add notes to books
     Remove book
+    Remove notes
     Edit details
     Show pages per day on profile
+    Remove keyboard after user has searched for a book.
+    Add button keeps getting hidden under phone back button.
+    Don't allow a user to put in conflicting dates when adding a book.
 
 ##### Feature upgrads
 

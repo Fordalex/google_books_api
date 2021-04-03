@@ -75,7 +75,7 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
               </p>
             </div>
           {reading < 1 ? (
-            <p class="m-2 mb-4"><Link to="book-search" class="text-main">Search</Link> your first book!</p>
+            <p class="m-2 mb-4"><Link to="book-search" class="text-main">Search</Link> a book your reading!</p>
           ):(
             <div class='currently-reading'>
               {reading.map((book) => (

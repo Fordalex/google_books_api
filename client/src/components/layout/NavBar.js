@@ -44,7 +44,7 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
   return (
     <Fragment>
       <nav>
-        <Link class="nav-app-name" to="/">Note Worthy</Link>
+        <Link class="nav-app-name" to="/">Noteworthy</Link>
         {!auth.isAuthenticated ? (
           <Link
             to='login'
