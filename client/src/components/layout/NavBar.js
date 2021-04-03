@@ -41,6 +41,18 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
     }
   };
 
+  // Get the users profile information
+  try {
+    var firstName = user.firstName;
+    var lastName = user.lastName;
+    var email = user.email;
+
+  } catch(err) {
+    var firstName = null
+    var lastName = null
+    var email = null
+  }
+
   return (
     <Fragment>
       <nav>
@@ -72,8 +84,8 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
                       <p>Loading...</p>
                     ) : (
                       <Fragment>
-                        <h3>{user.firstName} {user.lastName}</h3>
-                        <p>{user.email}</p>
+                        <h3>{firstName} {lastName}</h3>
+                        <p>{email}</p>
                       </Fragment>
                     )}
                   </div>

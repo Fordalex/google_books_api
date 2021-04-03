@@ -19,14 +19,16 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
   } catch(err) {
     return null
   }
-  // Get the users profile information
-  try {
+   // Get the users profile information
+   try {
     var firstName = user.firstName;
     var lastName = user.lastName;
     var email = user.email;
 
   } catch(err) {
-    return null
+    var firstName = null
+    var lastName = null
+    var email = null
   }
 
 
