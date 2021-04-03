@@ -31,14 +31,22 @@ const Books = ({ profile: { profile: { user, books }, loading } }) => {
     });
   }, [])
 
+   // Filter the books the user has and hasn't read.
+   try {
+    var reading = books.filter((book) => !book.finished ? book : null)
+    var read = books.filter((book) => book.finished ? book : null)
+  } catch(err) {
+    return null
+  }
+
   const bookSizeHandler = (e) => {
     setView(e.target.value)
   }
 
   return (
         <Fragment>
-          <div class="p-1">
-          <label>View Size</label>
+          <div class="p-1 form-group">
+          <p>View Size</p>
           <select class="input-style" onChange={(e) => bookSizeHandler(e)}>
             <option value="medium">Medium</option>
             <option value="small">Small</option>
@@ -49,27 +57,27 @@ const Books = ({ profile: { profile: { user, books }, loading } }) => {
               <h2 class="p-2 m-0">Reading</h2>
 
             {view == 'medium' ? (
-              books.map((book, index) => (
+              reading.map((book, index) => (
                 <BookMedium book={book} key={index} index={index}/>
               ))
             ): (
-              books.map((book, index) => (
+              reading.map((book, index) => (
                 <BookSmall book={book} key={index} index={index}/>
               ))
             )}
-            <p class="m-1">Results: {books.length}</p>
+            <p class="m-1">Results: {reading.length}</p>
             <hr/>
             <h2 class="p-2 m-0">Read</h2>
             {view == 'medium' ? (
-              books.map((book, index) => (
+              read.map((book, index) => (
                 <BookMedium book={book} key={index} index={index}/>
               ))
             ): (
-              books.map((book, index) => (
+              read.map((book, index) => (
                 <BookSmall book={book} key={index} index={index}/>
               ))
             )}
-            <p class="m-1">Results: {books.length}</p>
+            <p class="m-1">Results: {read.length}</p>
         </Fragment>
   );
 };

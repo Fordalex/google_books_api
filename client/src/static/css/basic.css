@@ -178,6 +178,11 @@ hr {
     margin-top: 15px;
 }
 
+.form-group p {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
 .opacity-1 {
     opacity: 1 !important;
 }

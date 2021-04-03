@@ -3,7 +3,6 @@
 ### Bugs
 
 Error thown on login in somtimes... Fixes after refresh.
-Fix view all page.
 Add Book button to be shown at the top of the page.
 
 ### Features left to implement
