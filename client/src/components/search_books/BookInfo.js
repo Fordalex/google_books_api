@@ -54,7 +54,9 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
 
   return (
     <div>
+      
       <div>
+      
         <img
           onClick={backHandler}
           class='info-back-button'
@@ -67,20 +69,28 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
       ) : (
         <p class='book-info-img'>No Image</p>
       )}
+      
       <div class='book-all-info-container'>
-        <div class='book-all-title-container'>
+      <div class='justify-content-center mt-1'>
+          <a
+            href={books.items[bookIndex].volumeInfo.previewLink}
+            target='_blank'
+            class='btn-secondary w-100 text-center'
+          >
+            Preview Book
+          </a>
+          <Link class='btn-main w-100  ml-1 text-center' to='add-book'>
+          Add Book
+        </Link>
+        </div>
+        <hr class="mt-2"/>
+
           <div>
             <h2>{title}</h2>
             <p>{books.items[bookIndex].volumeInfo.subtitle}</p>
             <small class='mb-3'>Author: {authors}</small>
           </div>
-          <div class='d-flex-center'>
-            <img
-              class='love-icon'
-              src='https://img.icons8.com/material-outlined/24/000000/filled-like.png'
-            />
-          </div>
-        </div>
+
 
         <hr />
         <div class='justify-content-between align-items-center'>
@@ -122,20 +132,7 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
         ) : (
           <p>No Description</p>
         )}
-        <hr />
-        <div class='justify-content-center mb-2'>
-          <a
-            href={books.items[bookIndex].volumeInfo.previewLink}
-            target='_blank'
-            class='btn-secondary w-100'
-          >
-            Preview Book
-          </a>
-        </div>
-
-        <Link class='add-book' to='add-book'>
-          Add Book
-        </Link>
+       
       </div>
     </div>
   );

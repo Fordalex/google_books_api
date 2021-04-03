@@ -2,7 +2,6 @@
 
 ### Bugs
 
-Error thown on login in somtimes... Fixes after refresh.
 Add Book button to be shown at the top of the page.
 
 ### Features left to implement
@@ -38,3 +37,4 @@ Fix alert to the top of the page.
 Total pages to finish current books.
 Total note count.
 sort notes option.
+Stop book images from being stetched.

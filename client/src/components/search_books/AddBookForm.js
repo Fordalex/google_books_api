@@ -2,11 +2,10 @@ import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addBook } from "../../actions/books";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
-
-  const [formSubmited, setFormSubmited] = useState(false)
+  const [formSubmited, setFormSubmited] = useState(false);
 
   //   Check if book has title
   try {
@@ -77,69 +76,74 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
   return (
     <Fragment>
       {formSubmited ? (
-        <Redirect to="profile"/>
-      ): (
+        <Redirect to='profile' />
+      ) : (
         <Fragment>
-        <div>
-        <img
-          class='info-back-button'
-          src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
-        />
-        <div class='p-2'>
-          <h3 class='text-center p-1 m-0'>{title}</h3>
-          <p class='text-secondary text-center mt-0'>
-            Please fill out the information below.
-          </p>
-          <hr />
-          <form className='form mt-2' onSubmit={(e) => onSubmit(e)}>
-            <div className='form-group'>
-              <p>Start Date</p>
-              <input type='date' name='startDate' required />
-              <hr/>
-              <div class='justify-content-around align-items-center mb-2'>
-                <p class='text-dark m-0'>Have you finished this book?</p>
-                <div>
-                  Yes
-                  <input
-                    type='radio'
-                    name='reading'
-                    id='yes'
-                    onChange={finsihedBook}
-                  />
+          <div>
+            <Link to='book-search'>
+              <img
+                class='info-back-button'
+                src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
+              />
+            </Link>
+            <div class='p-2'>
+              <h3 class='text-center p-1 m-0'>{title}</h3>
+              <p class='text-secondary text-center mt-0'>
+                Please fill out the information below.
+              </p>
+              <hr />
+              <form className='form mt-2' onSubmit={(e) => onSubmit(e)}>
+                <div className='form-group'>
+                  <p>Start Date</p>
+                  <input type='date' name='startDate' required />
+                  <hr />
+                  <div class='justify-content-around align-items-center mb-2'>
+                    <p class='text-dark m-0'>Have you finished this book?</p>
+                    <div>
+                      Yes
+                      <input
+                        type='radio'
+                        name='reading'
+                        id='yes'
+                        onChange={finsihedBook}
+                      />
+                    </div>
+                    <div>
+                      No
+                      <input
+                        type='radio'
+                        name='reading'
+                        id='no'
+                        onChange={finsihedBook}
+                      />
+                    </div>
+                  </div>
+                  <div class='hidden' id='finishedInput'>
+                    <p>Finished Date</p>
+                    <input type='date' name='finishedDate' />
+                    <p>Rating</p>
+                    <input min='0' max='5' type='number' name='rating' />
+                  </div>
+                  <div class='hidden' id='pageInput'>
+                    <input
+                      type='number'
+                      placeholder='Current Page'
+                      name='currentPage'
+                    />
+                  </div>
                 </div>
-                <div>
-                  No
-                  <input
-                    type='radio'
-                    name='reading'
-                    id='no'
-                    onChange={finsihedBook}
-                  />
+                <div
+                  className='justify-content-center mt-2 hidden'
+                  id='doneButton'
+                >
+                  <button type='submit' className='btn-main w-100'>
+                    Done
+                  </button>
                 </div>
-              </div>
-              <div class='hidden' id='finishedInput'>
-                <p>Finished Date</p>
-                <input type='date' name='finishedDate' />
-                <p>Rating</p>
-                <input min="0" max="5" type='number' name='rating'/>
-              </div>
-              <div class='hidden' id='pageInput'>
-                <input
-                  type='number'
-                  placeholder='Current Page'
-                  name='currentPage'
-                />
-              </div>
+              </form>
             </div>
-            <div className='justify-content-center mt-2 hidden' id='doneButton'>
-              <button type='submit' className='btn-main w-100'>
-                Done
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-      </Fragment>
+          </div>
+        </Fragment>
       )}
     </Fragment>
   );

@@ -180,8 +180,8 @@ button:focus {
 }
 
 .book-all-info-container .add-book {
-    position: sticky;
-    bottom: 77px;
+    position: fixed;
+    top: 77px;
     right: 0;
     left: 0;
     padding: 18px;
