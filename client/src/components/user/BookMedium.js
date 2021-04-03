@@ -5,8 +5,9 @@ import { setBookIndex } from "../../actions/books";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from 'react-moment';
+import { addBookId } from "../../actions/profile"; 
 
-const Book = ({ book, index }) => {
+const BookMedium = ({ book, index, addBookId }) => {
   // Check if book has image
   var imgLink = "";
   try {
@@ -24,8 +25,12 @@ const Book = ({ book, index }) => {
     var authors = "";
   }
 
+  const bookIdHandler = (b) => {
+    addBookId({id: b._id})
+  }
+
   return (
-    <div class='book-container'>
+    <div class='book-container opacity-1'>
       <div class='book-img-container'>
         {imgLink ? (
           <img class='book-img' src={imgLink} />
@@ -42,7 +47,7 @@ const Book = ({ book, index }) => {
           <p class="justify-content-between"><b>Current Page:</b> {book.currentPage}</p>
         )}
         <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
-        <Link to='book-data'>
+        <Link to="book-data" class='small-book-img-container' onClick={() => bookIdHandler(book)}>
           <img
             class='add-icon'
             id={"book-info-".concat(index)}
@@ -54,8 +59,9 @@ const Book = ({ book, index }) => {
   );
 };
 
-Book.propTypes = {
+BookMedium.propTypes = {
   setBookIndex: PropTypes.func.isRequired,
+  addBookId: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setBookIndex })(Book);
+export default connect(null, { setBookIndex, addBookId })(BookMedium);

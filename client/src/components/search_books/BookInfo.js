@@ -39,11 +39,17 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
   }
 
   // Check if book has image
-  var imgLink = "";
   try {
-    imgLink = books.items[bookIndex].volumeInfo.imageLinks.thumbnail;
+    var imgLink = books.items[bookIndex].volumeInfo.imageLinks.thumbnail;
   } catch {
-    imgLink = "";
+    var imgLink = "";
+  }
+
+  // Check if book has categories
+  try {
+    var categories = books.items[bookIndex].volumeInfo.categories.map();
+  } catch {
+    var categories = null;
   }
 
   return (
@@ -95,16 +101,18 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
             )}
           </div>
         </div>
-        <hr/>
-        <h4>Categories</h4>
-        <ul>
-        {
-          books.items[bookIndex].volumeInfo.categories.map((cat) => (
-            <li>{cat}</li>
-          ))
-        }
-        </ul>
         <hr />
+        {categories && (
+          <Fragment>
+            <h4>Categories</h4>
+            <ul>
+              {categories.map((cat) => (
+                <li>{cat}</li>
+              ))}
+            </ul>
+            <hr />
+          </Fragment>
+        )}
 
         {books.items[bookIndex].volumeInfo.description ? (
           <Fragment>
@@ -114,11 +122,16 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
         ) : (
           <p>No Description</p>
         )}
-        <hr/>
-        <div class="justify-content-center mb-2">
-        <a href={books.items[bookIndex].volumeInfo.previewLink} target="_blank" class="btn-secondary w-100">Preview Book</a>
+        <hr />
+        <div class='justify-content-center mb-2'>
+          <a
+            href={books.items[bookIndex].volumeInfo.previewLink}
+            target='_blank'
+            class='btn-secondary w-100'
+          >
+            Preview Book
+          </a>
         </div>
-     
 
         <Link class='add-book' to='add-book'>
           Add Book

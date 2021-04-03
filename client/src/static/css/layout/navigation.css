@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
 nav {
     background-color: white;
     padding: 8px 14px;
@@ -70,7 +72,9 @@ nav {
 }
 
 .nav-app-name {
-    margin: 11px 0;
+    margin: 2px 5px;
     color: #b0b0b0;
+    font-family: 'Parisienne', cursive;
     text-decoration: none;
+    font-size: 1.7em;
 }

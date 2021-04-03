@@ -1,11 +1,14 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Loading from "../../static/img/book-loading.gif";
-import Book from "./Book";
+import BookMedium from "./BookMedium";
+import BookSmall from "./BookSmall";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import anime from "animejs/lib/anime.es.js";
 
-const Books = ({ profile: { profile: { user, reading, read }, loading } }) => {
+const Books = ({ profile: { profile: { user, books }, loading } }) => {
+
+  const [view, setView] = useState('medium');
 
   useEffect(() => {
     anime({
@@ -28,19 +31,45 @@ const Books = ({ profile: { profile: { user, reading, read }, loading } }) => {
     });
   }, [])
 
+  const bookSizeHandler = (e) => {
+    setView(e.target.value)
+  }
+
   return (
         <Fragment>
+          <div class="p-1">
+          <label>View Size</label>
+          <select class="input-style" onChange={(e) => bookSizeHandler(e)}>
+            <option value="medium">Medium</option>
+            <option value="small">Small</option>
+          </select>
+          </div>
+         
+          <hr/>
               <h2 class="p-2 m-0">Reading</h2>
-            {reading.map((book, index) => (
-              <Book book={book} key={index} index={index}/>
-            ))}
-            <p class="m-1">Results: {reading.length}</p>
+
+            {view == 'medium' ? (
+              books.map((book, index) => (
+                <BookMedium book={book} key={index} index={index}/>
+              ))
+            ): (
+              books.map((book, index) => (
+                <BookSmall book={book} key={index} index={index}/>
+              ))
+            )}
+            <p class="m-1">Results: {books.length}</p>
             <hr/>
             <h2 class="p-2 m-0">Read</h2>
-            {read.map((book, index) => (
-              <Book book={book} key={index} index={index}/>
-            ))}
-            <p class="m-1">Results: {read.length}</p>
+            {view == 'medium' ? (
+              books.map((book, index) => (
+                <BookMedium book={book} key={index} index={index}/>
+              ))
+            ): (
+              books.map((book, index) => (
+                <BookSmall book={book} key={index} index={index}/>
+              ))
+            )}
+            <p class="m-1">Results: {books.length}</p>
         </Fragment>
   );
 };

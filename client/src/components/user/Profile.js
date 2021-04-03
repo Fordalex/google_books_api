@@ -79,7 +79,6 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
           ):(
             <div class='currently-reading'>
               {reading.map((book) => (
-                
                 <Link to="book-data" class="profile-book-container" onClick={() => bookIdHandler(book)}>
                   <img src={book.img} />
                   <div class="profile-book-info-container">

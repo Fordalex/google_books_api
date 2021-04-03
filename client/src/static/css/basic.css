@@ -178,3 +178,6 @@ hr {
     margin-top: 15px;
 }
 
+.opacity-1 {
+    opacity: 1 !important;
+}

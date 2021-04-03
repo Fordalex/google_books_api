@@ -21,6 +21,7 @@ import "./static/css/auth/auth.css";
 import "./static/css/search_books/searchBooks.css";
 import "./static/css/user/profile.css";
 import "./static/css/user/bookData.css";
+import "./static/css/user/viewAll.css";
 import "./static/css/layout/navigation.css";
 import "./static/css/layout/alert.css";
 import "./static/css/basic.css";

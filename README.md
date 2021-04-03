@@ -3,15 +3,10 @@
 ### Bugs
 
 Error thown on login in somtimes... Fixes after refresh.
-Problem adding tyson fury book, jim crow macat.
+Fix view all page.
+Add Book button to be shown at the top of the page.
 
 ### Features left to implement
-
-fix alert to the top of the page.
-Total pages to finish current books.
-Total note count.
-sort notes option.
-Fix view all page.
 
 User
 
@@ -37,3 +32,10 @@ Icons on the rating from 0 - 5
 Allow the users to make their notes public or private to be shown to other users.
 Show average time taken to read by all users.
 Allow uses to search their own books.
+
+### Improvments
+
+Fix alert to the top of the page.
+Total pages to finish current books.
+Total note count.
+sort notes option.
