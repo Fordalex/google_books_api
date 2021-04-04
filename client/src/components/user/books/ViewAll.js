@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Loading from "../../static/img/book-loading.gif";
 import BookMedium from "./BookMedium";
 import BookSmall from "./BookSmall";
 import {connect} from 'react-redux';

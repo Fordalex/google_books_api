@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {saveNote} from '../../actions/note';
+import {saveNote} from '../../../actions/note';
 import PropTypes from 'prop-types';
 
 const AddNote = ({

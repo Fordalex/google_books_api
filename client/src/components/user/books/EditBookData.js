@@ -1,17 +1,20 @@
 import React, { Fragment } from "react";
-import anime from "animejs/lib/anime.es.js";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 
-const BookData = ({
+const EditBookData = ({
   profile: {
     profile: { books },
     book: { id },
   },
 }) => {
   var book = books.filter((book) => (book._id == id ? book : null))[0];
+
+  var startDateFormatted = <Moment format='YYYY-MM-DD'>{book.startDate}</Moment>;
+  console.log(startDateFormatted.toString())
+
 
   return (
     <div>
@@ -43,14 +46,17 @@ const BookData = ({
         <div class='book-data-info-container'>
           <p class='justify-content-between'>
             <b>Started:</b>{" "}
-            <Moment format='DD MMM YYYY'>{book.startDate}</Moment>
+            <input type="date" value={book.startDate.slice(0,10)}/>
           </p>
           <p class='justify-content-between'>
             <b>Finished:</b>{" "}
-            <Moment format='DD MMM YYYY'>{book.finishedDate}</Moment>
+            <input type="date" value={book.finishedDate ? book.finishedDate.slice(0,10) : ""}/>
           </p>
           <p class='justify-content-between'>
             <b>Total Pages:</b> {book.totalPages}
+          </p>
+          <p class='justify-content-between'>
+            <b>Current Page:</b> <input type="number" value={book.currentPage} style={{width: "50px"}}/>
           </p>
           <p class='justify-content-between'>
             <b>Time Taken:</b>{" "}
@@ -60,51 +66,22 @@ const BookData = ({
             <b>PPD:</b>{" "}
           </p>
           <p class='justify-content-between'>
-            <b>Your Rating:</b> {book.rating} / 5
+            <b>Your Rating:</b> <span><input type="number" min="0" max="5" value={book.rating} style={{width: "50px"}}/> / 5</span>
           </p>
         </div>
         <hr />
         <div class='justify-content-center'>
-          <Link to='add-note' class='btn-main w-100 text-center'>
-            Add Note
-          </Link>
-          <Link
-            to='edit-book-info'
-            class='btn-secondary w-100 text-center ml-1'
-          >
-            Update Info
-          </Link>
+          <div to='add-note' class='btn-main w-100 text-center'>
+            Done
+          </div>
         </div>
-        <hr />
-        {book.notes.length < 1 ? (
-          <p class='text-secondary'>You haven't added any notes yet.</p>
-        ) : (
-          <Fragment>
-            <h2>Notes</h2>
-            {book.notes.map((note) => (
-              <div class='note-container'>
-                <h3>{note.noteInfo}</h3>
-                <hr />
-                {note.pageNumber && (
-                    <small class='justify-content-between'>
-                      <b>Page Number:</b>
-                      {note.pageNumber}
-                    </small>
-                )}
-                <p class="note-wrapper">{note.note}</p>
-                <p class='note-date text-secondary'>
-                  <Moment format='DD MMM YYYY'>{note.date}</Moment>
-                </p>
-              </div>
-            ))}
-          </Fragment>
-        )}
+       
       </div>
     </div>
   );
 };
 
-BookData.propTypes = {
+EditBookData.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
@@ -112,4 +89,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps)(BookData);
+export default connect(mapStateToProps)(EditBookData);

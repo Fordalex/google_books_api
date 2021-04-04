@@ -1,11 +1,10 @@
 import React from "react";
-import anime from "animejs/lib/anime.es.js";
 import {Link} from "react-router-dom";
-import { setBookIndex } from "../../actions/books";
+import { setBookIndex } from "../../../actions/books";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from 'react-moment';
-import { addBookId } from "../../actions/profile"; 
+import { addBookId } from "../../../actions/profile"; 
 
 const BookMedium = ({ book, index, addBookId }) => {
   // Check if book has image
