@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -11,6 +11,17 @@ const BookData = ({
   },
 }) => {
   var book = books.filter((book) => (book._id == id ? book : null))[0];
+
+  useEffect(() => {
+    try {
+      const avgPagesPerDay = document.getElementById("avgPagesPerDay");
+      const timeTaken = document.getElementById("timeTaken").innerHTML;
+
+      avgPagesPerDay.innerHTML = book.totalPages / timeTaken;
+    } catch {
+      var avgPagesPerDay = 0;
+    }
+  }, []);
 
   return (
     <div>
@@ -26,9 +37,12 @@ const BookData = ({
       ) : (
         <p class='book-info-img'>No Image</p>
       )}
-                <div class="book-loading-container">
-                      <div class="book-loading-bar" style={{width: `${100 / (book.totalPages / book.currentPage)}%`}}></div>
-                    </div>
+      <div class='book-loading-container'>
+        <div
+          class='book-loading-bar'
+          style={{ width: `${100 / (book.totalPages / book.currentPage)}%` }}
+        ></div>
+      </div>
       <div class='book-all-info-container'>
         <div class='book-all-title-container'>
           <div>
@@ -41,33 +55,58 @@ const BookData = ({
             />
           </div>
         </div>
-        
         <hr />
-        
         <div class='book-data-info-container'>
           <p class='justify-content-between'>
-            <b>Started:</b>{" "}
+            <b>Started:</b>
             <Moment format='DD MMM YYYY'>{book.startDate}</Moment>
           </p>
           <p class='justify-content-between'>
-            <b>Finished:</b>{" "}
-            <Moment format='DD MMM YYYY'>{book.finishedDate}</Moment>
+            <b>Finished:</b>
+            {book.finishedDate ? (
+              <Moment format='DD MMM YYYY'>{book.finishedDate}</Moment>
+            ) : (
+              <small class='text-secondary'>
+                Press edit when you've finished
+              </small>
+            )}
           </p>
           <p class='justify-content-between'>
             <b>Total Pages:</b> {book.totalPages}
           </p>
+          {book.currentPage && (
+            <p class='justify-content-between'>
+              <b>Current Page:</b> {book.currentPage}
+            </p>
+          )}
           <p class='justify-content-between'>
-            <b>Current Page:</b> {book.currentPage}
+            <b>Time Taken:</b>
+            <span>
+              <Moment
+                id="timeTaken"
+                duration={book.startDate}
+                date={book.finishedDate}
+                format='D'
+              ></Moment>{" "}
+              Days
+            </span>
           </p>
+          {book.finished && (
+            <p class='justify-content-between'>
+              <b>Avg Pages Per Day:</b>
+              <span id='avgPagesPerDay'></span>
+            </p>
+          )}
           <p class='justify-content-between'>
-            <b>Time Taken:</b>{" "}
-            <Moment from={book.startDate} to={book.finishedDate}></Moment>
-          </p>
-          <p class='justify-content-between'>
-            <b>PPD:</b>{" "}
-          </p>
-          <p class='justify-content-between'>
-            <b>Your Rating:</b> {book.rating} / 5
+            <b>Your Rating:</b>{" "}
+            <span>
+              {book.rating ? (
+                book.rating
+              ) : (
+                <small class='text-secondary'>Press edit to add rating</small>
+              )}{" "}
+              / 5
+            </span>
           </p>
         </div>
         <hr />
@@ -90,15 +129,18 @@ const BookData = ({
             <h2>Notes</h2>
             {book.notes.map((note) => (
               <div class='note-container'>
+                <div class='note-edit-button'>
+                  <img src='https://img.icons8.com/fluent/28/000000/edit.png' />
+                </div>
                 <h3>{note.noteInfo}</h3>
                 <hr />
                 {note.pageNumber && (
-                    <small class='justify-content-between'>
-                      <b>Page Number:</b>
-                      {note.pageNumber}
-                    </small>
+                  <small class='justify-content-between'>
+                    <b>Page Number:</b>
+                    {note.pageNumber}
+                  </small>
                 )}
-                <p class="note-wrapper">{note.note}</p>
+                <p class='note-wrapper'>{note.note}</p>
                 <p class='note-date text-secondary'>
                   <Moment format='DD MMM YYYY'>{note.date}</Moment>
                 </p>

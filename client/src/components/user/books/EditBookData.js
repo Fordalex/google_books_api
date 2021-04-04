@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -12,8 +12,18 @@ const EditBookData = ({
 }) => {
   var book = books.filter((book) => (book._id == id ? book : null))[0];
 
-  var startDateFormatted = <Moment format='YYYY-MM-DD'>{book.startDate}</Moment>;
-  console.log(startDateFormatted.toString())
+  useEffect(() => {
+    const startDateInput = document.getElementsByName('startDate')[0];
+    const finishedDateInput = document.getElementsByName('finishedDate')[0];
+    const currentPageInput = document.getElementsByName('currentPage')[0];
+    const ratingInput = document.getElementsByName('rating')[0];
+
+
+    startDateInput.value = book.startDate.slice(0,10);
+    finishedDateInput.value = book.finishedDate ? book.finishedDate.slice(0,10) : "";
+    currentPageInput.value = book.currentPage;
+    ratingInput.value = book.rating;
+  }, [])
 
 
   return (
@@ -46,27 +56,20 @@ const EditBookData = ({
         <div class='book-data-info-container'>
           <p class='justify-content-between'>
             <b>Started:</b>{" "}
-            <input type="date" value={book.startDate.slice(0,10)}/>
+            <input type="date" name="startDate"/>
           </p>
           <p class='justify-content-between'>
             <b>Finished:</b>{" "}
-            <input type="date" value={book.finishedDate ? book.finishedDate.slice(0,10) : ""}/>
+            <input type="date" name="finishedDate"/>
           </p>
           <p class='justify-content-between'>
             <b>Total Pages:</b> {book.totalPages}
           </p>
           <p class='justify-content-between'>
-            <b>Current Page:</b> <input type="number" value={book.currentPage} style={{width: "50px"}}/>
+            <b>Current Page:</b> <input type="number" name="currentPage" style={{width: "50px"}}/>
           </p>
           <p class='justify-content-between'>
-            <b>Time Taken:</b>{" "}
-            <Moment from={book.startDate} to={book.finishedDate}></Moment>
-          </p>
-          <p class='justify-content-between'>
-            <b>PPD:</b>{" "}
-          </p>
-          <p class='justify-content-between'>
-            <b>Your Rating:</b> <span><input type="number" min="0" max="5" value={book.rating} style={{width: "50px"}}/> / 5</span>
+            <b>Your Rating:</b> <span><input type="number" min="0" max="5" name="rating" style={{width: "50px"}}/> / 5</span>
           </p>
         </div>
         <hr />

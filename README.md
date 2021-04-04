@@ -3,6 +3,7 @@
 ### Bugs
 
 The navigation bar goes over the menu button.
+The reloaded page needs to redirect the user to the correct page.
 
 ### Features left to implement
 
