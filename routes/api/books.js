@@ -117,4 +117,26 @@ router.post(
   }
 );
 
+// @route        POST api/books/remove/:id
+// @desc         Add a note to a book
+// @access       Pubic
+router.delete(
+  "/remove/:id",
+auth,
+  async (req, res) => {
+  
+    try {
+      let book = await Book.findOne({ _id: req.params.id });
+
+      await book.remove();
+
+      return res.json({msg: "Book Removed"})
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
 module.exports = router;

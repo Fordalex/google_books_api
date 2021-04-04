@@ -17,7 +17,7 @@ const BookData = ({
       const avgPagesPerDay = document.getElementById("avgPagesPerDay");
       const timeTaken = document.getElementById("timeTaken").innerHTML;
 
-      avgPagesPerDay.innerHTML = book.totalPages / timeTaken;
+      avgPagesPerDay.innerHTML = Math.round(book.totalPages / timeTaken, 2);
     } catch {
       var avgPagesPerDay = 0;
     }
@@ -38,10 +38,17 @@ const BookData = ({
         <p class='book-info-img'>No Image</p>
       )}
       <div class='book-loading-container'>
-        <div
+        {book.finished ? (
+            <div
+            class='book-loading-bar'
+            style={{ width: `100%` }}
+          ></div>
+        ):(
+          <div
           class='book-loading-bar'
           style={{ width: `${100 / (book.totalPages / book.currentPage)}%` }}
         ></div>
+        )}
       </div>
       <div class='book-all-info-container'>
         <div class='book-all-title-container'>
@@ -129,9 +136,9 @@ const BookData = ({
             <h2>Notes</h2>
             {book.notes.map((note) => (
               <div class='note-container'>
-                <div class='note-edit-button'>
+                <Link class='note-edit-button' to="edit-note">
                   <img src='https://img.icons8.com/fluent/28/000000/edit.png' />
-                </div>
+                </Link>
                 <h3>{note.noteInfo}</h3>
                 <hr />
                 {note.pageNumber && (

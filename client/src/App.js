@@ -13,6 +13,7 @@ import ViewAll from "./components/user/books/ViewAll";
 import BookData from "./components/user/books/BookData";
 import EditBookData from "./components/user/books/EditBookData";
 import AddNote from "./components/user/notes/AddNote";
+import EditNote from "./components/user/notes/EditNote";
 import Settings from "./components/settings/Settings";
 import PrivateRoute from './components/routing/PrivateRoute';
 // css
@@ -56,6 +57,7 @@ function App() {
               <PrivateRoute exact path='/book-data' component={BookData} />
               <PrivateRoute exact path='/edit-book-data' component={EditBookData} />
               <PrivateRoute exact path='/add-note' component={AddNote} />
+              <PrivateRoute exact path='/edit-note' component={EditNote} />
               <PrivateRoute exact path='/book-search' component={BookSearch} />
               <PrivateRoute exact path='/add-book' component={AddBookForm} />
               <PrivateRoute exact path='/settings' component={Settings} />

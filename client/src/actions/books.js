@@ -93,3 +93,23 @@ export const addBook = ({
     }
   }
 };
+
+export const removeBook = ({id, title}) => async dispatch => {
+
+  if (window.confirm('Are you sure? This can Not be undone!')) {
+    try {
+      const res = await axios.delete(`api/books/remove/${id}`);
+  
+      dispatch(setAlert(`${title} removed`, 'success'));
+      return true;
+  
+    } catch (err) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+    }
+  } else {
+    return false;
+  }
+};
