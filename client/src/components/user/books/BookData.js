@@ -108,13 +108,13 @@ const BookData = ({
             </p>
           )}
           <p class='justify-content-between'>
-            <b>Your Rating:</b>{" "}
+            <b>Your Rating:</b>
             <span>
               {book.rating ? (
                 book.rating
               ) : (
                 <small class='text-secondary'>Press edit to add rating</small>
-              )}{" "}
+              )}
               / 5
             </span>
           </p>
@@ -137,9 +137,9 @@ const BookData = ({
         ) : (
           <Fragment>
             <h2>Notes</h2>
-            {book.notes.map((note, index) => (
+            {book.notes.map((note) => (
               <div class='note-container'>
-                <Link class='note-edit-button' to="edit-note" onClick={() => editNote({noteId:index})}>
+                <Link class='note-edit-button' to="edit-note" onClick={() => editNote({noteId:note._id})}>
                   <img src='https://img.icons8.com/fluent/28/000000/edit.png' />
                 </Link>
                 <h3>{note.noteInfo}</h3>

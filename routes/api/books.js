@@ -118,8 +118,8 @@ router.post(
 );
 
 // @route        POST api/books/remove/:id
-// @desc         Add a note to a book
-// @access       Pubic
+// @desc         Remove a book from the database.
+// @access       Private
 router.delete(
   "/remove/:id",
 auth,
@@ -131,6 +131,35 @@ auth,
       await book.remove();
 
       return res.json({msg: "Book Removed"})
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
+// @route        POST api/books/remove-note/:bookId/:noteId
+// @desc         Remove note for a selected book.
+// @access       Private
+router.delete(
+  "/remove-note/:bookId/:noteId",
+auth,
+  async (req, res) => {
+  
+    try {
+      let book = await Book.findOne({ _id: req.params.bookId });
+
+      // Get remove index
+      const removeIndex = book.notes
+      .map((item) => item.id)
+      .indexOf(req.params.noteId);
+
+      book.notes.splice(removeIndex, 1);
+
+      await book.save();
+
+      return res.json({msg: "Note Removed"})
 
     } catch (err) {
       console.error(err.message);

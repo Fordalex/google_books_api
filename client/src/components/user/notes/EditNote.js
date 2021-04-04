@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {saveNote} from '../../../actions/note';
+import {saveNote, deleteNote} from '../../../actions/note';
 import PropTypes from 'prop-types';
 import profile from "../../../reducers/profile";
 
@@ -11,26 +11,28 @@ const EditNote = ({
     book: { id },
     noteId
   },
-  saveNote
+  saveNote,
+  deleteNote
 }) => {
 var book = books.filter((book) => (book._id == id ? book : null))[0];
+var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
 
   const [formSubmited, setFormSubmited] = useState(false);
 
   const onSubmit = async (e) => {
-    e.preventDefault();
-    var noteInfo = document.getElementsByName("noteInfo")[0].value;
-    var noteType = document.getElementsByName("noteType")[0].value;
-    var pageNumber = document.getElementsByName("pageNumber")[0].value;
-    var note = document.getElementsByName("note")[0].value;
+    // e.preventDefault();
+    // var noteInfo = document.getElementsByName("noteInfo")[0].value;
+    // var noteType = document.getElementsByName("noteType")[0].value;
+    // var pageNumber = document.getElementsByName("pageNumber")[0].value;
+    // var note = document.getElementsByName("note")[0].value;
 
-    saveNote({
-      noteInfo,
-      noteType,
-      pageNumber,
-      note,
-      bookId: id,
-    });
+    // saveNote({
+    //   noteInfo,
+    //   noteType,
+    //   pageNumber,
+    //   note,
+    //   bookId: id,
+    // });
     setFormSubmited(true);
   };
 
@@ -41,8 +43,6 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
       ? pageInput.classList.remove("hidden")
       : pageInput.classList.add("hidden");
   };
-
-  console.log(noteId)
 
   return (
     <Fragment>
@@ -76,7 +76,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                     </select>
                   </div>
                   <div>
-                  {book.notes[noteId].noteType == "page" ?(
+                  {note.noteType == "page" ?(
                     <select
                     class='input-style'
                     name='noteType'
@@ -98,12 +98,12 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                    
                   </div>
                   <div>
-                  {book.notes[noteId].pageNumber && (
+                  {note.pageNumber && (
                       <input
                       name='pageNumber'
                       type='number'
                       placeholder='Page Number'
-                      value={book.notes[noteId].pageNumber}
+                      value={note.pageNumber}
                     />
                   )}
                  
@@ -114,7 +114,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                     name="note"
                       class='input-style note-textarea'
                       placeholder='Enter your note here...'
-                    >{book.notes[noteId].note}</textarea>
+                    >{note.note}</textarea>
                   </div>
                 </div>
                 <div className='justify-content-center mt-2' id='doneButton'>
@@ -123,7 +123,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                   </button>
                 </div>
                 <div className='justify-content-center mt-2' id='doneButton'>
-                  <button type='submit' className='btn-danger w-100'>
+                  <button type='submit' className='btn-danger w-100' onClick={() => deleteNote({noteId,bookId:id})}>
                     Delete
                   </button>
                 </div>
@@ -138,6 +138,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
 
 EditNote.propTypes = {
   saveNote: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 }
 
@@ -145,4 +146,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, {saveNote})(EditNote);
+export default connect(mapStateToProps, {saveNote, deleteNote})(EditNote);

@@ -14,7 +14,6 @@ User
 
 Book
 
-    Remove book
     Edit details
     Show average pages per day on profile book sections.
     Remove keyboard after user has searched for a book.
