@@ -15,15 +15,19 @@ User
 Book
 
     Edit details
-    Show average pages per day on profile book sections.
     Remove keyboard after user has searched for a book.
     Don't allow a user to put in conflicting dates when adding a book.
 
 Note
 
-    Remove notes
     Update notes
     Add title
+
+### Problems
+
+Note
+
+    After a note is added and the users is redirected to the book data page the note isn't showing until the page is refreshed.
 
 ##### Futrue upgrads
 

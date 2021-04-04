@@ -22,13 +22,14 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
     var pageNumber = document.getElementsByName("pageNumber")[0].value;
     var note = document.getElementsByName("note")[0].value;
 
-    saveNote({
+    await saveNote({
       noteInfo,
       noteType,
       pageNumber,
       note,
       bookId: id,
     });
+
     setFormSubmited(true);
   };
 
@@ -43,7 +44,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
   return (
     <Fragment>
       {formSubmited ? (
-        <Redirect to='profile' />
+        <Redirect to='book-data' />
       ) : (
         <Fragment>
           <div>

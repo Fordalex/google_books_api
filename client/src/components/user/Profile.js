@@ -31,7 +31,6 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
     var email = null
   }
 
-
   const bookIdHandler = (b) => {
     addBookId({id: b._id})
   }
@@ -119,7 +118,6 @@ const Profile = ({ profile: { profile: { user, books }, loading }, getCurrentPro
                  <p class="justify-content-between"><b>Finished:</b> <Moment format="DD MMM YYYY">{book.finishedDate}</Moment></p>
                  <p class="justify-content-between"><b>Total Pages:</b> {book.totalPages}</p>
                  <p class="justify-content-between"><b>Time Taken:</b> <span><Moment from={book.startDate} to={book.finishedDate} format="D"></Moment> Days</span></p>
-                 <p class="justify-content-between"><b>PPD:</b> {book.totalPages}</p>
                  <p class="justify-content-between"><b>Your Rating:</b> {book.rating} / 5</p>
 
                </div>

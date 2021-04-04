@@ -78,7 +78,9 @@ p,a,li,small,button,div {
 .mt-2 {
     margin-top: 20px;
 }
-
+.mb-1 {
+    margin-bottom: 10px;
+}
 .mb-2 {
     margin-bottom: 20px;
 }

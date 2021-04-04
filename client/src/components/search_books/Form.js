@@ -3,11 +3,6 @@ import {getBooks} from '../../actions/books';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-// api key
-const {REACT_APP_GOOGLE_API_KEY} = process.env;
-
-console.log(process.env)
-
 const Form = ({ getBooks }) => {
 
   const searchBookHandler = async (e) => {

@@ -86,8 +86,8 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
         <hr class="mt-2"/>
 
           <div>
-            <h2>{title}</h2>
-            <p>{books.items[bookIndex].volumeInfo.subtitle}</p>
+            <h2 class="mb-1">{title}</h2>
+            <p class="mb-1 text-secondary">{books.items[bookIndex].volumeInfo.subtitle}</p>
             <small class='mb-3'>Author: {authors}</small>
           </div>
 

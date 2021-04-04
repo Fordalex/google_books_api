@@ -8,7 +8,7 @@ const Book = ({ book, index, setBookIndex }) => {
   // Check if book has image
   var imgLink = "";
   try {
-    imgLink = book.volumeInfo.imageLinks.smallThumbnail;
+    imgLink = book.volumeInfo.imageLinks.thumbnail;
   } catch {
     imgLink = "";
   }
@@ -54,53 +54,25 @@ const Book = ({ book, index, setBookIndex }) => {
       </div>
       <div class='book-info-container'>
         <h3>{book.volumeInfo.title}</h3>
-
-        <p class='autor'>{authors}</p>
-
-        
-
-        {book.volumeInfo.averageRating ? (
-          <p class='rating'>
-            <img src='https://img.icons8.com/color/25/000000/filled-star--v1.png' />{" "}
-            {book.volumeInfo.averageRating} / 5
-          </p>
-        ) : (
-          <p class='rating'>
-            <img src='https://img.icons8.com/color/25/000000/filled-star--v1.png' />{" "}
-            No Rating
-          </p>
-        )}
-
-        {book.volumeInfo.pageCount ? (
-          <small class='page-count'>
-            <img src='https://img.icons8.com/color/25/000000/open-book--v1.png' />{" "}
-            {book.volumeInfo.pageCount} Pages
+        <p class='mb-1 text-secondary'>{authors}</p>
+        <hr/>
+          <small class="justify-content-between">
+            Rating: <span>{book.volumeInfo.averageRating ? book.volumeInfo.averageRating+" / 5" : "N/A"}</span>
           </small>
-        ) : (
-          <small class='page-count'>
-            <img src='https://img.icons8.com/color/25/000000/open-book--v1.png' />{" "}
-            No Info
+          <small class="justify-content-between">
+            Pages: <span>{book.volumeInfo.pageCount ? book.volumeInfo.pageCount : "N/A"}</span>
           </small>
-        )}
-
-        {book.volumeInfo.publishedDate ? (
-          <small class='page-count'>
-            <img src='https://img.icons8.com/color/25/000000/date-to.png' />
-            {book.volumeInfo.publishedDate}
+          <small class="justify-content-between">
+            Published: <span>{book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "N/A"}</span>
           </small>
-        ) : (
-          <small class='page-count'>
-            <img src='https://img.icons8.com/color/25/000000/date-to.png' />
-            No Info
+          <small class="justify-content-between">
+            Publisher: <span>{book.volumeInfo.publisher ? book.volumeInfo.publisher : "N/A"}</span>
           </small>
-        )}
-
-        <img
-          onClick={showBookInfoHandler}
-          class='add-icon'
-          id={"book-info-".concat(index)}
-          src="https://img.icons8.com/fluent/48/000000/info.png"
-        />
+        <img 
+            onClick={showBookInfoHandler}
+            class='info-icon'
+            id={"book-info-".concat(index)}
+        src="https://img.icons8.com/fluent/50/000000/information.png"/>
       </div>
     </div>
   );
