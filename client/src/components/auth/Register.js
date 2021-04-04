@@ -79,9 +79,9 @@ const Register = ({ register, auth, setAlert }) => {
               onChange={(e) => onChange(e)}
             />
           </div>
-          <div class="d-flex-center m-1">
+          <div class="d-flex-center py-1">
             <input type="checkbox" class="m-1"/>
-            <p>I agree to the <span class="text-main">Terms</span> and <span class="text-main">Privacy Policy</span>.</p>
+            <small>I agree to the <span class="text-main">Terms</span> and <span class="text-main">Privacy Policy</span>.</small>
           </div>
         <div className="justify-content-center">
           <button type='submit' className='btn-main w-100'>Register</button>

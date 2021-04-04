@@ -2,7 +2,7 @@
 
 ### Bugs
 
-Add Book button to be shown at the top of the page.
+The navigation bar goes over the menu button.
 
 ### Features left to implement
 
@@ -21,9 +21,12 @@ Book
     Add button keeps getting hidden under phone back button.
     Don't allow a user to put in conflicting dates when adding a book.
 
-##### Feature upgrads
+##### Futrue upgrads
 
 Icons on the rating from 0 - 5
+
+Book recommendations for users.
+Book club with a month book to read each month. Also, a poll for users to choose the book.
 
 ##### Bigger Feature upgrades
 

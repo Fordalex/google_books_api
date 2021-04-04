@@ -6,7 +6,14 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
 
-const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
+const NavBar = ({
+  auth,
+  logout,
+  profile: {
+    loading,
+    profile: { user },
+  },
+}) => {
   const toggleNavHandler = (log) => {
     if (log == "logout") {
       logout();
@@ -46,33 +53,28 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
     var firstName = user.firstName;
     var lastName = user.lastName;
     var email = user.email;
-
-  } catch(err) {
-    var firstName = null
-    var lastName = null
-    var email = null
+  } catch (err) {
+    var firstName = null;
+    var lastName = null;
+    var email = null;
   }
 
   return (
     <Fragment>
       <nav>
-        <Link class="nav-app-name" to="/">Noteworthy</Link>
+        <Link class='nav-app-name' to='/'>
+          Noteworthy
+        </Link>
         {!auth.isAuthenticated ? (
           <Link
             to='login'
-            class='btn-main p-1
+            class='btn-main
           '
           >
             Login
           </Link>
         ) : (
           <Fragment>
-            <div class='burger-menu-container' onClick={toggleNavHandler}>
-              <div class='top-burger'></div>
-              <div class='mid-burger'></div>
-              <div class='bottom-burger'></div>
-            </div>
-
             <div id='nav-container'>
               <div class='justify-content-start m-1'>
                 <div>
@@ -84,7 +86,9 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
                       <p>Loading...</p>
                     ) : (
                       <Fragment>
-                        <h3>{firstName} {lastName}</h3>
+                        <h3>
+                          {firstName} {lastName}
+                        </h3>
                         <p>{email}</p>
                       </Fragment>
                     )}
@@ -135,6 +139,12 @@ const NavBar = ({ auth, logout, profile :{loading, profile: {user}} }) => {
                 </li>
               </ul>
             </div>
+            <div class='burger-menu-container' onClick={toggleNavHandler}>
+              <div class='top-burger'></div>
+              <div class='mid-burger'></div>
+              <div class='bottom-burger'></div>
+            </div>
+            
           </Fragment>
         )}
       </nav>
