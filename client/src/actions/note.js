@@ -37,7 +37,7 @@ export const editNote = ({ noteId }) => async (dispatch) => {
 export const deleteNote = ({ noteId, bookId }) => async (dispatch) => {
   if (window.confirm("Are you sure?")) {
     try {
-        console.log(noteId, bookId)
+      console.log(noteId, bookId);
       const res = await axios.delete(
         `api/books/remove-note/${bookId}/${noteId}`
       );
@@ -50,6 +50,27 @@ export const deleteNote = ({ noteId, bookId }) => async (dispatch) => {
       }
     }
   } else {
-      return false;
+    return false;
+  }
+};
+
+export const updateNote = ({ noteInfo, noteType, pageNumber, note, bookId, noteId }) => async (dispatch) => {
+  try {
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = { noteInfo, noteType, pageNumber, note, bookId };
+    console.log(body)
+    const res = await axios.put(`api/books/update-note/${noteId}`, body, config);
+    
+    return true;
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };

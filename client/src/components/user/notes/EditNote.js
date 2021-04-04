@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {saveNote, deleteNote} from '../../../actions/note';
+import {updateNote, deleteNote} from '../../../actions/note';
 import PropTypes from 'prop-types';
 import profile from "../../../reducers/profile";
 
@@ -11,7 +11,7 @@ const EditNote = ({
     book: { id },
     noteId
   },
-  saveNote,
+  updateNote,
   deleteNote
 }) => {
 var book = books.filter((book) => (book._id == id ? book : null))[0];
@@ -20,20 +20,25 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
   const [formSubmited, setFormSubmited] = useState(false);
 
   const onSubmit = async (e) => {
-    // e.preventDefault();
-    // var noteInfo = document.getElementsByName("noteInfo")[0].value;
-    // var noteType = document.getElementsByName("noteType")[0].value;
-    // var pageNumber = document.getElementsByName("pageNumber")[0].value;
-    // var note = document.getElementsByName("note")[0].value;
+    e.preventDefault();
+    var noteInfo = document.getElementsByName("noteInfo")[0].value;
+    var noteType = document.getElementsByName("noteType")[0].value;
+    var pageNumber = document.getElementsByName("pageNumber")[0].value;
+    var note = document.getElementsByName("note")[0].value;
 
-    // saveNote({
-    //   noteInfo,
-    //   noteType,
-    //   pageNumber,
-    //   note,
-    //   bookId: id,
-    // });
-    setFormSubmited(true);
+    const res = await updateNote({
+      noteInfo,
+      noteType,
+      pageNumber,
+      note,
+      noteId,
+      bookId: id,
+    });
+    console.log(res)
+    if (res) {
+      setFormSubmited(true);
+    }
+
   };
 
   const pageHandler = (e) => {
@@ -47,7 +52,7 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
   return (
     <Fragment>
       {formSubmited ? (
-        <Redirect to='profile' />
+        <Redirect to='book-data' />
       ) : (
         <Fragment>
           <div>
@@ -118,12 +123,12 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
                   </div>
                 </div>
                 <div className='justify-content-center mt-2' id='doneButton'>
-                  <button type='submit' className='btn-main w-100'>
+                  <button type='submit' className='btn-main w-100' >
                     Update
                   </button>
                 </div>
                 <div className='justify-content-center mt-2' id='doneButton'>
-                  <button type='submit' className='btn-danger w-100' onClick={() => deleteNote({noteId,bookId:id})}>
+                  <button className='btn-danger w-100' onClick={() => deleteNote({noteId,bookId:id})}>
                     Delete
                   </button>
                 </div>
@@ -137,7 +142,7 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
 };
 
 EditNote.propTypes = {
-  saveNote: PropTypes.func.isRequired,
+  updateNote: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 }
@@ -146,4 +151,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, {saveNote, deleteNote})(EditNote);
+export default connect(mapStateToProps, {updateNote, deleteNote})(EditNote);

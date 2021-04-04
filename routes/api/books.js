@@ -168,4 +168,47 @@ auth,
   }
 );
 
+// @route        POST api/books/update-note/:noteId
+// @desc         Remove note for a selected book.
+// @access       Private
+router.put(
+  "/update-note/:noteId",
+  [
+    check("noteInfo", "Please add note info").not().isEmpty(),
+    check("noteType", "Please add the note type").not().isEmpty(),
+    check("note", "Please add your note").not().isEmpty(),
+  ],
+auth,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { noteInfo, noteType, pageNumber, note, bookId } = req.body;
+    
+    try {
+
+      let book = await Book.findOneAndUpdate({ _id: bookId }, {new:true});
+
+      // Update note
+      const updateIndex = book.notes
+      .map((item) => item.id)
+      .indexOf(req.params.noteId);
+    
+      book.notes[updateIndex].note = note;
+      book.notes[updateIndex].noteInfo = noteInfo;
+      book.notes[updateIndex].noteType = noteType;
+      book.notes[updateIndex].pageNumber = pageNumber;
+
+      await book.save();
+
+      return res.json({msg: "Note Updated"})
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
 module.exports = router;
