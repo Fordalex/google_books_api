@@ -12,6 +12,7 @@ nav {
     top: 0;
     right: 0;
     left: 0;
+    height: 56px;
     z-index: 300;
 }
 .burger-menu-container {
@@ -86,6 +87,8 @@ nav {
     display: none;
 }
 
+
+
 @media screen and (min-width: 700px) {
     .burger-menu-container {
         display: none;
@@ -106,6 +109,7 @@ nav {
         border-right: solid 1px white;
         border-left: solid 1px white;
         border-bottom: solid 5px white;
+        color: black;
     }
     .desktop-nav-links li a:hover {
         border-bottom: solid 5px var(--mainColour);

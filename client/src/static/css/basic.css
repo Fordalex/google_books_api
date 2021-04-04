@@ -85,7 +85,10 @@ p,a,li,small,button,div {
 .mt-3 {
     margin-top: 30px;
 }
-
+.mx-1 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
 .mb-05 {
     margin-bottom: 5px;
 }

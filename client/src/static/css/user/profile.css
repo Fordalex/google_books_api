@@ -1,4 +1,8 @@
 .profile-page-container {
+    display: block;
+}
+
+.profile-info-container {
 background: url('../../img/book-background.jpeg');
 background-size: contain;
    padding-top: 140px;
@@ -44,6 +48,11 @@ background-size: contain;
     margin-top: 30px;
     color: rgb(155, 155, 155);
     font-size: 1.1em;
+}
+
+.profile-books-container {
+    width: 100%;
+    background-color: white;
 }
 
 .currently-reading {
@@ -110,4 +119,25 @@ background-size: contain;
     height: 4px;
     border-radius: 4px;
     background-color: var(--mainColour);
+}
+
+/* desktop view */
+@media screen and (min-width: 750px) {
+    .profile-page-container {
+        display: flex;
+        justify-content: center;
+    }
+    .profile-info-container {
+        margin: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 25px 0 rgba(0,0,0,0.1);
+        width: 40%;
+    }
+    .profile-books-container {
+        margin: 40px;
+        width: 60%;
+        border-radius: 8px;
+        box-shadow: 0 0 25px 0 rgba(0,0,0,0.1);
+        padding: 15px;
+    }
 }
