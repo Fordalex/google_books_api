@@ -21,16 +21,22 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
     var noteType = document.getElementsByName("noteType")[0].value;
     var pageNumber = document.getElementsByName("pageNumber")[0].value;
     var note = document.getElementsByName("note")[0].value;
+    var title = document.getElementsByName('title')[0].value;
 
-    await saveNote({
+    console.log(title)
+    const res = await saveNote({
+      title,
       noteInfo,
       noteType,
       pageNumber,
       note,
       bookId: id,
     });
+    console.log(res)
+    if (res) {
+      setFormSubmited(true);
+    }
 
-    setFormSubmited(true);
   };
 
   const pageHandler = (e) => {
@@ -57,10 +63,19 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
 
             <div class='p-2'>
               <h3 class='text-center p-1 m-0'>{book.title}</h3>
-              <p class='text-secondary text-center mt-0'>
+              <p class='text-secondary text-center mt-0 mb-3'>
                 Add your note below.
               </p>
               <hr />
+              <div class="justify-content-center py-1">
+                    <input
+                      name='title'
+                      class="input-style"
+                      type='text'
+                      placeholder='Note title'
+                    />
+                  </div>
+                  <hr/>
               <form className='form mt-2' onSubmit={(e) => onSubmit(e)}>
                 <div className='form-group'>
                   <div>
@@ -82,7 +97,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                       <option value='book'>Book</option>
                     </select>
                   </div>
-                  <div>
+                  <div class="mb-1 pb-1">
                     <input
                       name='pageNumber'
                       type='number'
@@ -93,7 +108,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                   <div class='justify-content-center'>
                     <textarea
                     name="note"
-                      class='input-style note-textarea'
+                      class='input-style note-textarea mt-1'
                       placeholder='Enter your note here...'
                     ></textarea>
                   </div>

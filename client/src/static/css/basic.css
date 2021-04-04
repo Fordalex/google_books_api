@@ -78,6 +78,9 @@ p,a,li,small,button,div {
 .mt-2 {
     margin-top: 20px;
 }
+.mb-05 {
+    margin-bottom: 5px;
+}
 .mb-1 {
     margin-bottom: 10px;
 }
@@ -102,6 +105,10 @@ p,a,li,small,button,div {
 
 .p-2 {
     padding: 20px;
+}
+
+.pb-1 {
+    padding-bottom: 10px;
 }
 
 .px-2 {

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { setAlert } from "../actions/alert";
+import {getCurrentProfile} from './profile';
 
 export const saveNote = ({
   noteInfo,
@@ -7,6 +8,7 @@ export const saveNote = ({
   pageNumber,
   note,
   bookId,
+  title
 }) => async (dispatch) => {
   try {
     const config = {
@@ -15,10 +17,12 @@ export const saveNote = ({
       },
     };
 
-    const body = { noteInfo, noteType, pageNumber, note, bookId };
+    const body = { noteInfo, noteType, pageNumber, note, bookId, title };
     const res = await axios.post("api/books/add-note", body, config);
 
     dispatch(setAlert(`Note added to ${res.data.title}`, "success"));
+    dispatch(getCurrentProfile())
+    return true;
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -37,11 +41,11 @@ export const editNote = ({ noteId }) => async (dispatch) => {
 export const deleteNote = ({ noteId, bookId }) => async (dispatch) => {
   if (window.confirm("Are you sure?")) {
     try {
-      console.log(noteId, bookId);
       const res = await axios.delete(
         `api/books/remove-note/${bookId}/${noteId}`
       );
 
+      getCurrentProfile()
       return true;
     } catch (err) {
       const errors = err.response.data.errors;
@@ -63,9 +67,8 @@ export const updateNote = ({ noteInfo, noteType, pageNumber, note, bookId, noteI
     };
 
     const body = { noteInfo, noteType, pageNumber, note, bookId };
-    console.log(body)
     const res = await axios.put(`api/books/update-note/${noteId}`, body, config);
-    
+    dispatch(getCurrentProfile())
     return true;
   } catch (err) {
     const errors = err.response.data.errors;

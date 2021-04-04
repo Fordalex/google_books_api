@@ -40,6 +40,11 @@ const BookSchema = new mongoose.Schema({
         required: false,
     },
     notes: [{
+        title: {
+            type: String,
+            required: true,
+            default: "Title",
+        },
         noteInfo: {
             type: String,
             required: true,

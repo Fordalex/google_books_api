@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {updateNote, deleteNote} from '../../../actions/note';
@@ -19,6 +19,12 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
 
   const [formSubmited, setFormSubmited] = useState(false);
 
+  useEffect(() => {
+    const pageNumber = document.getElementsByName('pageNumber')[0];
+
+    pageNumber.value = note.pageNumber
+  }, [])
+
   const onSubmit = async (e) => {
     e.preventDefault();
     var noteInfo = document.getElementsByName("noteInfo")[0].value;
@@ -34,7 +40,6 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
       noteId,
       bookId: id,
     });
-    console.log(res)
     if (res) {
       setFormSubmited(true);
     }
@@ -108,7 +113,6 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
                       name='pageNumber'
                       type='number'
                       placeholder='Page Number'
-                      value={note.pageNumber}
                     />
                   )}
                  

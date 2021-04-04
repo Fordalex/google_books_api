@@ -142,12 +142,21 @@ const BookData = ({
                 <Link class='note-edit-button' to="edit-note" onClick={() => editNote({noteId:note._id})}>
                   <img src='https://img.icons8.com/fluent/28/000000/edit.png' />
                 </Link>
-                <h3>{note.noteInfo}</h3>
+                <h3>{note.title}</h3>
                 <hr />
-                {note.pageNumber && (
+                <small class='justify-content-between mb-05'>
+                    <b>Note Type:</b>
+                    {note.noteInfo}
+                  </small>
+                
+                {note.noteType == 'page' ? (
                   <small class='justify-content-between'>
                     <b>Page Number:</b>
                     {note.pageNumber}
+                  </small>
+                ):(
+                  <small class='justify-content-between '>
+                    <b>About The Book</b>
                   </small>
                 )}
                 <p class='note-wrapper'>{note.note}</p>
