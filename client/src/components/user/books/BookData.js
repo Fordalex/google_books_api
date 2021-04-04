@@ -3,12 +3,14 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+import {editNote} from '../../../actions/note';
 
 const BookData = ({
   profile: {
     profile: { books },
     book: { id },
   },
+  editNote
 }) => {
   var book = books.filter((book) => (book._id == id ? book : null))[0];
 
@@ -22,6 +24,7 @@ const BookData = ({
       var avgPagesPerDay = 0;
     }
   }, []);
+
 
   return (
     <div>
@@ -134,9 +137,9 @@ const BookData = ({
         ) : (
           <Fragment>
             <h2>Notes</h2>
-            {book.notes.map((note) => (
+            {book.notes.map((note, index) => (
               <div class='note-container'>
-                <Link class='note-edit-button' to="edit-note">
+                <Link class='note-edit-button' to="edit-note" onClick={() => editNote({noteId:index})}>
                   <img src='https://img.icons8.com/fluent/28/000000/edit.png' />
                 </Link>
                 <h3>{note.noteInfo}</h3>
@@ -162,10 +165,11 @@ const BookData = ({
 
 BookData.propTypes = {
   profile: PropTypes.object.isRequired,
+  editNote: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps)(BookData);
+export default connect(mapStateToProps, {editNote})(BookData);

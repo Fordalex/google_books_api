@@ -10,10 +10,12 @@ export default function(state = initialState, action) {
     switch (type) {
         case "SEARCHING_BOOKS":
             return {
+                ...state,
                 loading: true,
             }
         case "SEARCHED_BOOKS":
             return {
+                ...state,
                 books: payload,
                 loading: false,
             }

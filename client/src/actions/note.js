@@ -22,3 +22,12 @@ export const saveNote = ({noteInfo, noteType, pageNumber, note, bookId}) => asyn
         }
       }
 }
+
+export const editNote = ({noteId}) => async dispatch => {
+
+    dispatch({
+        type: "EDIT_NOTE",
+        payload: noteId,
+    })
+
+}

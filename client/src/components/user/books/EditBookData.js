@@ -100,7 +100,7 @@ const EditBookData = ({
             </div>
             <hr />
             <div class='justify-content-center'>
-              <div class='btn-main w-100 text-center'>Done</div>
+              <div class='btn-main w-100 text-center'>Update</div>
             </div>
             <div className='justify-content-center mt-2'>
               <button

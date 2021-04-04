@@ -3,11 +3,13 @@ import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {saveNote} from '../../../actions/note';
 import PropTypes from 'prop-types';
+import profile from "../../../reducers/profile";
 
 const EditNote = ({
   profile: {
     profile: { books },
     book: { id },
+    noteId
   },
   saveNote
 }) => {
@@ -39,6 +41,8 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
       ? pageInput.classList.remove("hidden")
       : pageInput.classList.add("hidden");
   };
+
+  console.log(noteId)
 
   return (
     <Fragment>
@@ -72,21 +76,37 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                     </select>
                   </div>
                   <div>
+                  {book.notes[noteId].noteType == "page" ?(
                     <select
+                    class='input-style'
+                    name='noteType'
+                    onChange={(e) => pageHandler(e)}
+                    >
+                    <option value='page'>Page</option>
+                    <option value='book'>Book</option>
+                    </select>
+                    ):(
+                      <select
                       class='input-style'
                       name='noteType'
                       onChange={(e) => pageHandler(e)}
                     >
-                      <option value='page'>Page</option>
                       <option value='book'>Book</option>
+                      <option value='page'>Page</option>
                     </select>
+                    )}
+                   
                   </div>
                   <div>
-                    <input
+                  {book.notes[noteId].pageNumber && (
+                      <input
                       name='pageNumber'
                       type='number'
                       placeholder='Page Number'
+                      value={book.notes[noteId].pageNumber}
                     />
+                  )}
+                 
                   </div>
                   <hr />
                   <div class='justify-content-center'>
@@ -94,7 +114,7 @@ var book = books.filter((book) => (book._id == id ? book : null))[0];
                     name="note"
                       class='input-style note-textarea'
                       placeholder='Enter your note here...'
-                    ></textarea>
+                    >{book.notes[noteId].note}</textarea>
                   </div>
                 </div>
                 <div className='justify-content-center mt-2' id='doneButton'>

@@ -3,6 +3,7 @@ const initialState = {
     user: null,
     books: null,
   },
+  noteId: null,
   book: null,
   loading: true,
   error: {},
@@ -39,6 +40,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         book: payload,
+      }
+    case "EDIT_NOTE":
+      return {
+        ...state,
+        noteId: payload
       }
     default:
       return state;

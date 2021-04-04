@@ -15,12 +15,16 @@ User
 Book
 
     Remove book
-    Remove notes
     Edit details
-    Show pages per day on profile
+    Show average pages per day on profile book sections.
     Remove keyboard after user has searched for a book.
-    Add button keeps getting hidden under phone back button.
     Don't allow a user to put in conflicting dates when adding a book.
+
+Note
+
+    Remove notes
+    Update notes
+    Add title
 
 ##### Futrue upgrads
 
