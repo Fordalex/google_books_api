@@ -13,7 +13,7 @@ const Form = ({ getBooks }) => {
 
 
   return (
-    <form onSubmit={searchBookHandler} id='bookForm'>
+    <form onSubmit={searchBookHandler} id='bookForm' class="mt-3">
       <img src='https://img.icons8.com/ios-glyphs/30/000000/search.png' />
       <input type='text' id='searchInput' placeholder='Search...' autoComplete="off"/>
       <button>Search</button>

@@ -2,6 +2,16 @@
     width: 100%;
 }
 
+.search-book-page-container {
+    display: flex;
+    justify-content: center;
+}
+
+.search-book-page-wrapper {
+    max-width: 530px;
+    width: 100%;
+}
+
 .rating-icon {
     width: 25px;
     height: 25px;
@@ -15,7 +25,7 @@
 
 #bookForm {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin: 10px 10px 30px 10px;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
@@ -61,7 +71,7 @@ button:focus {
 
 .book-container {
     position: relative;
-    margin: 15px;
+    margin: 10px;
     padding: 10px;
     opacity: 0;
 }
@@ -76,15 +86,15 @@ button:focus {
     box-shadow: 3px 3px 11px 11px rgba(0,0,0,0.02);
     border-radius: 8px;
     padding: 10px;
-    padding-left: 110px;
+    padding-left: 70px;
     margin: 10px;
     background-color: rgb(252, 252, 252);
 }
 
 .book-container .book-img {
     box-shadow: 3px 3px 10px 10px rgba(0,0,0,0.03);
-    width: 100px;
-    height: 150px;
+    width: 80px;
+    height: 110px;
     border-radius: 8px;
     background-color: white;
     position: absolute;
@@ -196,4 +206,14 @@ button:focus {
     display: block;
     text-decoration: none;
     text-align: center;
+}
+
+@media screen and (min-width: 320px) {
+    .book-container .book-img{
+        width: 100px;
+        height: 150px;
+    }
+    .book-info-container {
+        padding-left: 95px;
+    }
 }

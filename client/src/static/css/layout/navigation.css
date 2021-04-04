@@ -2,7 +2,7 @@
 
 nav {
     background-color: white;
-    padding: 8px 14px;
+    padding: 0px 14px;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
@@ -13,6 +13,9 @@ nav {
     right: 0;
     left: 0;
     z-index: 300;
+}
+.burger-menu-container {
+    cursor: pointer;
 }
 
 .burger-menu-container div {
@@ -55,19 +58,19 @@ nav {
     margin-right: 10px;
 }
 
-.nav-link-container {   
+.mobile-nav-link-container {   
     list-style: none;
     padding: 0 10px;
     margin: 0;
 }
 
-.nav-link-container li {
+.mobile-nav-link-container li {
     margin: 15px 0;
     display: flex;
     align-items: center;
 }
 
-.nav-link-container li a {
+.mobile-nav-link-container li a {
     text-decoration: none;
 }
 
@@ -77,4 +80,36 @@ nav {
     font-family: 'Parisienne', cursive;
     text-decoration: none;
     font-size: 1.7em;
+}
+
+.desktop-nav-links {
+    display: none;
+}
+
+@media screen and (min-width: 700px) {
+    .burger-menu-container {
+        display: none;
+    }
+    .desktop-nav-links {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+    .desktop-nav-links li {
+        display: inline-flex;
+        margin-right: 10px;
+        align-items: center;
+    }
+    .desktop-nav-links li a {
+        text-decoration: none;
+        padding: 16px;
+        border-right: solid 1px white;
+        border-left: solid 1px white;
+        border-bottom: solid 5px white;
+    }
+    .desktop-nav-links li a:hover {
+        border-bottom: solid 5px var(--mainColour);
+        border-right: solid 1px grey;
+        border-left: solid 1px grey;
+    }
 }

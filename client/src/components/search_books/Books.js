@@ -40,6 +40,7 @@ const Books = ({ books: {books, loading}, setBookIndex}) => {
         </Fragment>
       ) : (
         <Fragment>
+          
             {books.items.map((book, index) => (
               <Book book={book} key={index} index={index} setBookIndex={setBookIndex}/>
             ))}

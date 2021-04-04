@@ -2,7 +2,6 @@
 
 ### Bugs
 
-The navigation bar goes over the menu button.
 The reloaded page needs to redirect the user to the correct page.
 
 ### Features left to implement
@@ -18,21 +17,13 @@ Book
     Remove keyboard after user has searched for a book.
     Don't allow a user to put in conflicting dates when adding a book.
 
-Note
-
-    Update notes
-    Add title
-
 ### Problems
-
-Note
-
-    After a note is added and the users is redirected to the book data page the note isn't showing until the page is refreshed.
 
 ##### Futrue upgrads
 
 Icons on the rating from 0 - 5
 
+Make the navigation more animated.
 Book recommendations for users.
 Book club with a month book to read each month. Also, a poll for users to choose the book.
 

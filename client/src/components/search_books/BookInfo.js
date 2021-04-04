@@ -59,7 +59,7 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
       
         <img
           onClick={backHandler}
-          class='info-back-button'
+          class='info-back-button clickable'
           src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
         />
       </div>
@@ -86,7 +86,7 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
         <hr class="mt-2"/>
 
           <div>
-            <h2 class="mb-1">{title}</h2>
+            <h2 class="mb-1 mt-1">{title}</h2>
             <p class="mb-1 text-secondary">{books.items[bookIndex].volumeInfo.subtitle}</p>
             <small class='mb-3'>Author: {authors}</small>
           </div>

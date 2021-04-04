@@ -47,11 +47,9 @@ const BookMedium = ({ book, index, addBookId }) => {
         )}
         <p class="justify-content-between"><b>Notes:</b> {book.notes.length}</p>
         <Link to="book-data" class='small-book-img-container' onClick={() => bookIdHandler(book)}>
-          <img
-            class='add-icon'
-            id={"book-info-".concat(index)}
-            src='https://img.icons8.com/fluent/48/000000/info.png'
-          />
+          <img 
+            class='info-icon'
+        src="https://img.icons8.com/fluent/50/000000/information.png"/>
         </Link>
       </div>
     </div>

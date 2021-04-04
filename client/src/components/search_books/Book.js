@@ -70,7 +70,7 @@ const Book = ({ book, index, setBookIndex }) => {
           </small>
         <img 
             onClick={showBookInfoHandler}
-            class='info-icon'
+            class='info-icon clickable'
             id={"book-info-".concat(index)}
         src="https://img.icons8.com/fluent/50/000000/information.png"/>
       </div>

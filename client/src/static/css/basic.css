@@ -4,6 +4,10 @@
     --mainColour: rgb(81, 206, 195);
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .btn-main {
     border-radius: 5px;
     border: none;
@@ -78,6 +82,10 @@ p,a,li,small,button,div {
 .mt-2 {
     margin-top: 20px;
 }
+.mt-3 {
+    margin-top: 30px;
+}
+
 .mb-05 {
     margin-bottom: 5px;
 }
@@ -205,4 +213,8 @@ hr {
 
 .opacity-1 {
     opacity: 1 !important;
+}
+
+.clickable {
+    cursor: pointer;
 }

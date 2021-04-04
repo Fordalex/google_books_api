@@ -68,9 +68,7 @@ const NavBar = ({
         {!auth.isAuthenticated ? (
           <Link
             to='login'
-            class='btn-main
-          '
-          >
+            class='btn-main'>
             Login
           </Link>
         ) : (
@@ -96,7 +94,7 @@ const NavBar = ({
                 </div>
               </div>
               <hr />
-              <ul class='nav-link-container'>
+              <ul class='mobile-nav-link-container'>
                 <li>
                   <img
                     src='https://img.icons8.com/fluent/30/000000/user-male-circle.png'
@@ -144,7 +142,33 @@ const NavBar = ({
               <div class='mid-burger'></div>
               <div class='bottom-burger'></div>
             </div>
-            
+            <ul class='desktop-nav-links'>
+                <li>
+                  <Link to='profile'>
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link to='book-search' >
+                    Search Books
+                  </Link>
+                </li>
+                <li>
+                  <Link to='settings' >
+                    Settings
+                  </Link>
+                </li>
+              </ul>
+              <ul class='desktop-nav-links'>
+              <li>
+                  <Link onClick={() => {
+                      toggleNavHandler("logout");
+                    }}
+                  >
+                    Log Out
+                  </Link>
+                </li>
+              </ul>
           </Fragment>
         )}
       </nav>
