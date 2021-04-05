@@ -24,38 +24,41 @@ const Login = ({ login, auth }) => {
   return (
     <Fragment>
       {auth.isAuthenticated ? (
-        <Redirect to="profile"/>
-      ): (
-        <div class='p-2'>
-        <h1 className='text-center m-2'>Login</h1>
-        <form className='form' onSubmit={(e) => onSubmit(e)}>
-          <div className='form-group'>
-            <input
-              type='email'
-              placeholder='Email Address'
-              name='email'
-              value={email}
-              onChange={(e) => onChange(e)}
-            />
+        <Redirect to='profile' />
+      ) : (
+        <div class='form-page-container'>
+          <div class='form-wrapper'>
+            <h1 className='text-center m-2'>Login</h1>
+            <form className='form' onSubmit={(e) => onSubmit(e)}>
+              <div className='form-group'>
+                <input
+                  type='email'
+                  placeholder='Email Address'
+                  name='email'
+                  className="input-style"
+                  value={email}
+                  onChange={(e) => onChange(e)}
+                />
 
-            <input
-              type='password'
-              placeholder='Password'
-              name='password'
-              minLength='6'
-              value={password}
-              onChange={(e) => onChange(e)}
-            />
+                <input
+                  type='password'
+                  placeholder='Password'
+                  name='password'
+                  minLength='6'
+                  className="input-style"
+                  value={password}
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+              <div className='justify-content-center'>
+                <button type='submit' className='btn-main w-100 mt-2'>
+                  Login
+                </button>
+              </div>
+            </form>
           </div>
-          <div className='justify-content-center'>
-            <button type='submit' className='btn-main w-100 mt-2'>
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
       )}
-     
     </Fragment>
   );
 };

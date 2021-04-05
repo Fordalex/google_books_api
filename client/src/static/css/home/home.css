@@ -70,3 +70,22 @@
     bottom: 40px;
     right: 30px;
 }
+
+.home-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+
+@media screen and (min-width: 580px) {
+    .home-page-section {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 25px 0 rgba(0,0,0,0.08);
+    }
+}

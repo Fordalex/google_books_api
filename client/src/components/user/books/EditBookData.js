@@ -116,7 +116,6 @@ const EditBookData = ({
                 <div className='form-group'>
                   <p>Start Date</p>
                   <input type='date' name='startDate' required />
-                  <hr />
                   <p>Reading Status</p>
                   <select
                     class='input-style'

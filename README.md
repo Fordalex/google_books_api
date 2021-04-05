@@ -9,8 +9,7 @@ The alerts on desktop are annoying.
 
 User
 
-    Remove account (Don't forget to remove the users books.)
-    Change password
+    More stats on profile page.
 
 Book
 
@@ -20,9 +19,17 @@ Book
 
 Uncompleted Books
 
-    Needs to be added to the form.
     Needs to be added to the profile filter.
     Add to the view all filter.
+
+Settings
+
+    Remove account (Don't forget to remove the users books.)
+    Change password
+
+Home
+
+    Allow users to change the slide by pressing the correct circle.
 
 ### Responsive
 

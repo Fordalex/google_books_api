@@ -70,7 +70,7 @@ const Home = ({ auth }) => {
       {auth.isAuthenticated ? (
         <Redirect to='profile' />
       ) : (
-        <div>
+        <div class="home-page-container">
           <div id='homePageOne' className='home-page-section'>
             <div>
               <img src={BookIllustrationOne} className='home-illustration' />
@@ -106,6 +106,7 @@ const Home = ({ auth }) => {
               src='https://img.icons8.com/windows/32/000000/left.png'
               className='hidden'
               id='homeLeftIcon'
+              class="clickable"
               onClick={onPageChangeHandler}
             />
             <div
@@ -118,6 +119,7 @@ const Home = ({ auth }) => {
               <img
                 src='https://img.icons8.com/windows/32/000000/right.png'
                 id='homeRightIcon'
+                class="clickable"
                 onClick={onPageChangeHandler}
               />
               <Link
