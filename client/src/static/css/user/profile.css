@@ -6,7 +6,7 @@
 background: url('../../img/book-background.jpeg');
 max-height: 500px;
 background-size: contain;
-   padding-top: 140px;
+   padding-top: 110px;
    overflow: hidden;
 }
 
@@ -18,7 +18,7 @@ background-size: contain;
 
 .profile-wrapper {
     position: relative;
-    bottom: 30px;
+    bottom: 20px;
 }
 
 .profile-image {
@@ -30,8 +30,8 @@ background-size: contain;
     margin: auto;
     overflow: hidden;
     position: relative;
-    bottom: 30px;
-    box-shadow: 3px 3px 11px 11px rgba(0,0,0,0.02);
+    bottom: 10px;
+    box-shadow: 3px 3px 18px 0px rgba(0,0,0,0.06);
 }
 
 .profile-name {
@@ -45,11 +45,17 @@ background-size: contain;
 }
 
 .profile-stats-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 15px;
     color: rgb(155, 155, 155);
     font-size: 1.1em;
+}
+
+.profile-stats-container .label {
+    text-align: center;
+    margin-top: 2px;
+    font-size: 0.8em;
 }
 
 .profile-books-container {
@@ -171,13 +177,13 @@ background-size: contain;
         justify-content: center;
     }
     .profile-info-container {
-        margin: 30px 30px 0px 30px;
+        margin: 20px 20px 0px 20px;
         border-radius: 8px;
         box-shadow: 0 0 25px 0 rgba(0,0,0,0.1);
         width: 35%;
     }
     .profile-books-container {
-        margin: 30px 30px 0px 0px;
+        margin: 20px 20px 0px 0px;
         width: 65%;
         border-radius: 8px;
         box-shadow: 0 0 25px 0 rgba(0,0,0,0.1);

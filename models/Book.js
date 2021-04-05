@@ -48,6 +48,10 @@ const BookSchema = new mongoose.Schema({
         type: Number,
         required: false,
     },
+    categories: {
+        type: Array,
+        required: false,
+    },
     notes: [{
         title: {
             type: String,

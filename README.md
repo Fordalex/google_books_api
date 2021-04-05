@@ -9,13 +9,20 @@ The alerts on desktop are annoying.
 
 User
 
-    More stats on profile page.
+    Pie chart for the users genres.
 
 Book
 
-    Edit details
+    Edit details.
+    Add categories.
     Remove keyboard after user has searched for a book.
     Don't allow a user to put in conflicting dates when adding a book.
+    Adding book forms really buggy.
+    Don't allow the user to add a current page greater than the total pages.
+
+Notes
+
+    Add alerts when inputs aren't filled in on creation.
 
 Uncompleted Books
 

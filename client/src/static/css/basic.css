@@ -199,10 +199,12 @@ hr {
 
 .input-style {
     width: 100%;
+    box-sizing: border-box;
     padding: 15px 15px;
-    border: none;
-    background-color: rgb(255, 255, 255) !important;
+    border: solid rgb(230, 230, 230) 1px;
+    background-color: rgb(250, 250, 250) !important;
     color: rgb(145, 145, 145) !important;
+    border-radius: 5px;
 }
 
 .form-group div {
@@ -234,6 +236,8 @@ hr {
 }   
 
 .form-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 100%;
     height: 100vh;
     padding: 20px;
@@ -241,6 +245,7 @@ hr {
     background-color: #ffffff;
     border-radius: 0px;
     box-shadow: 0 0 25px 0 rgba(0,0,0,0.08);
+    box-sizing: border-box;
 }
 
 @media screen and (min-width: 500px) {

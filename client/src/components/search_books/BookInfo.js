@@ -47,7 +47,7 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
 
   // Check if book has categories
   try {
-    var categories = books.items[bookIndex].volumeInfo.categories.map();
+    var categories = books.items[bookIndex].volumeInfo.categories
   } catch {
     var categories = null;
   }

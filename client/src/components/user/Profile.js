@@ -22,12 +22,32 @@ const Profile = ({
 
   // Filter the books the user has and hasn't read.
   try {
-    var reading = books.filter((book) => (book.readingStatus == 'reading' ? book : null));
-    var read = books.filter((book) => (book.readingStatus == 'read' ? book : null));
-    var uncompleted = books.filter((book) => (book.readingStatus == 'uncompleted' ? book : null));
+    var reading = books.filter((book) =>
+      book.readingStatus == "reading" ? book : null
+    );
+    var read = books.filter((book) =>
+      book.readingStatus == "read" ? book : null
+    );
+    var uncompleted = books.filter((book) =>
+      book.readingStatus == "uncompleted" ? book : null
+    );
   } catch (err) {
     return null;
   }
+  var totalNotesTaken = books.reduce(
+    (total, book) => total + book.notes.length,
+    0
+  );
+  var totalPagesRead = books.reduce(
+    (total, book) => {
+      if (book.readingStatus == 'read') {
+        return total + book.totalPages
+      } else {
+        return total + book.currentPage
+      }
+    }, 0
+  )
+
   // Get the users profile information
   var firstName;
   var lastName;
@@ -43,10 +63,12 @@ const Profile = ({
     readContainer = document.getElementById("readContainer");
     uncompletedContainer = document.getElementById("uncompletedContainer");
     try {
-      var currentlyReadingLink = document.getElementById("currentlyReadingLink");
+      var currentlyReadingLink = document.getElementById(
+        "currentlyReadingLink"
+      );
       var readLink = document.getElementById("readLink");
       var uncompletedLink = document.getElementById("uncompletedLink");
-  
+
       if (viewBooks == "currentlyReading") {
         currentlyReadingLink.classList.add("nav-profile-selected");
         currentlyReadingContainer.classList.remove("hidden");
@@ -69,11 +91,11 @@ const Profile = ({
         uncompletedLink.classList.add("nav-profile-selected");
         uncompletedContainer.classList.remove("hidden");
       }
-    return true;
+      return true;
     } catch (err) {
       return false;
     }
-  }
+  };
 
   try {
     firstName = user.firstName;
@@ -93,8 +115,8 @@ const Profile = ({
       uncompletedContainer.classList.remove("hidden");
     } else if (!res) {
       setTimeout(() => {
-        checkWindowWidth()
-      }, 1000)
+        checkWindowWidth();
+      }, 20);
     }
   };
 
@@ -117,19 +139,35 @@ const Profile = ({
                   <p class='text-center m-0'>
                     <small class='profile-username'>{email}</small>
                   </p>
-                  <div class='profile-stats-container'>
-                    <div>
-                      <p class='m-0 text-center text-main'>
-                        <b>{reading.length}</b>
-                      </p>
-                      <p class='m-0 text-center'>Reading</p>
-                    </div>
-                    <div>
-                      <p class='m-0 text-center text-main'>
-                        <b>{read.length}</b>
-                      </p>
-                      <p class='m-0 text-center'>Read</p>
-                    </div>
+                </div>
+                <div class='profile-stats-container'>
+                  <div>
+                    <p class='m-0 text-center text-main'>
+                      <b>{reading.length}</b>
+                    </p>
+                    <p class='label'>Reading</p>
+                  </div>
+                  <div>
+                    <p class='m-0 text-center text-main'>
+                      <b>{read.length}</b>
+                    </p>
+                    <p class='label'>Read</p>
+                  </div>
+                </div>
+                <div class='profile-stats-container mb-2'>
+                  <div>
+                    <p class='m-0 text-center text-main'>
+                      <b>{totalNotesTaken}</b>
+                    </p>
+                    <p class='label'>Total Notes</p>
+                  </div>
+                  <div>
+                    <p class='m-0 text-center text-main'>
+                      <b>{totalPagesRead}</b>
+                    </p>
+                    <p class='label'>
+                      Total Pages Read
+                    </p>
                   </div>
                 </div>
                 <hr />
@@ -139,12 +177,12 @@ const Profile = ({
                   </Link>
                 </div>
                 <hr />
-                <div class="p-1">
-                  <p>more account information and stats</p>
-                  <p>more account information and stats</p>
-                  </div>
+                <div class='px-2'>
+                  <h3>Genres</h3>
+                </div>
               </div>
             </div>
+      
             <div class='profile-books-container'>
               <nav class='profile-nav'>
                 <ul>
@@ -183,7 +221,7 @@ const Profile = ({
               </div>
               <div id='currentlyReadingContainer'>
                 {reading < 1 ? (
-                  <p class='m-2 mb-4'>
+                  <p class='m-2'>
                     <Link to='book-search' class='text-main'>
                       Search
                     </Link>{" "}
@@ -192,7 +230,7 @@ const Profile = ({
                 ) : (
                   <div class='currently-reading'>
                     {reading.map((book) => (
-                      <ProfileBook book={book}/>
+                      <ProfileBook book={book} />
                     ))}
                   </div>
                 )}
@@ -217,7 +255,7 @@ const Profile = ({
                 ) : (
                   <div class='currently-reading'>
                     {read.map((book) => (
-                      <ProfileBook book={book}/>
+                      <ProfileBook book={book} />
                     ))}
                   </div>
                 )}
@@ -241,13 +279,12 @@ const Profile = ({
                   </p>
                 ) : (
                   <div class='currently-reading'>
-                 
                     {uncompleted.map((book) => (
                       <ProfileBook book={book} />
                     ))}
                   </div>
-
                 )}
+                <hr/>
               </div>
             </div>
           </div>
