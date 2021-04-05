@@ -65,14 +65,15 @@ Profile
 Icons on the rating from 0 - 5
 
 Make the navigation more animated.
-Book recommendations for users.
-Book club with a month book to read each month. Also, a poll for users to choose the book.
+Allow users to add images.
 
 ##### Bigger Feature upgrades
 
 Allow the users to make their notes public or private to be shown to other users.
 Show average time taken to read by all users.
 Allow uses to search their own books.
+Book recommendations for users.
+Book club with a month book to read each month. Also, a poll for users to choose the book.
 
 ### Improvments
 

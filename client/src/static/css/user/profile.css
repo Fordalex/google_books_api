@@ -124,6 +124,10 @@ background-size: contain;
     background-color: var(--mainColour);
 }
 
+.progress-bar-danger {
+    background-color: red;
+}
+
 
 .profile-nav {
     display: none;

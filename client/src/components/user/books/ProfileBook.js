@@ -14,7 +14,7 @@ const ProfileBook = ({book, addBookId}) => {
 
   return (
       <Fragment>
-          {book.finishedDate ? (
+          {book.readingStatus == 'read' ? (
                <Link
                to='book-data'
                class='profile-book-container'
@@ -50,9 +50,17 @@ const ProfileBook = ({book, addBookId}) => {
                  <p class='justify-content-between'>
                    <b>Your Rating:</b> {book.rating} / 5
                  </p>
+                 <div class='book-loading-container'>
+                <div
+                  class='book-loading-bar'
+                  style={{
+                    width: '100%',
+                  }}
+                ></div>
+              </div>
                </div>
              </Link>
-          ): (
+          ) : book.readingStatus == 'reading' ? (
             <Link
             to='book-data'
             class='profile-book-container'
@@ -77,6 +85,41 @@ const ProfileBook = ({book, addBookId}) => {
               <div class='book-loading-container'>
                 <div
                   class='book-loading-bar'
+                  style={{
+                    width: `${
+                      100 / (book.totalPages / book.currentPage)
+                    }%`,
+                  }}
+                ></div>
+              </div>
+            </div>
+          </Link>
+          ): (
+            <Link
+            to='book-data'
+            class='profile-book-container'
+            onClick={() => bookIdHandler(book)}
+          >
+            <img src={book.img} />
+            <div class='profile-book-info-container'>
+              <p class='justify-content-between'>
+                <p>uncompleted</p>
+                <b>Notes:</b> {book.notes.length}
+              </p>
+              <hr />
+              <p class='justify-content-between'>
+                <b>Started:</b>{" "}
+                <Moment format='DD MMM YYYY'>{book.startDate}</Moment>
+              </p>
+              <p class='justify-content-between'>
+                <b>Total Pages:</b> {book.totalPages}
+              </p>
+              <p class='justify-content-between'>
+                <b>Current Page:</b> {book.currentPage}
+              </p>
+              <div class='book-loading-container'>
+                <div
+                  class='book-loading-bar progress-bar-danger'
                   style={{
                     width: `${
                       100 / (book.totalPages / book.currentPage)
