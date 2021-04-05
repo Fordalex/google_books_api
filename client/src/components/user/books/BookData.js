@@ -113,7 +113,7 @@ const BookData = ({
               {book.rating ? (
                 book.rating
               ) : (
-                <small class='text-secondary'>Press edit to add rating</small>
+                <small class='text-secondary'>Press edit to add rating </small>
               )}
               / 5
             </span>

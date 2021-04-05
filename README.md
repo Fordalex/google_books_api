@@ -18,6 +18,12 @@ Book
     Remove keyboard after user has searched for a book.
     Don't allow a user to put in conflicting dates when adding a book.
 
+Uncompleted Books
+
+    Needs to be added to the form.
+    Needs to be added to the profile filter.
+    Add to the view all filter.
+
 ### Responsive
 
 Profile

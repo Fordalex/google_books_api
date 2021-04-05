@@ -45,6 +45,8 @@ router.post(
     try {
       // destructure the request
       const {
+        uncompletedReason,
+        readingStatus,
         bookId,
         currentPage,
         finished,
@@ -57,6 +59,8 @@ router.post(
       } = req.body;
 
       var book = new Book({
+        uncompletedReason,
+        readingStatus,
         bookId,
         currentPage,
         finished,

@@ -22,8 +22,9 @@ const Profile = ({
 
   // Filter the books the user has and hasn't read.
   try {
-    var reading = books.filter((book) => (!book.finished ? book : null));
-    var read = books.filter((book) => (book.finished ? book : null));
+    var reading = books.filter((book) => (book.readingStatus == 'reading' ? book : null));
+    var read = books.filter((book) => (book.readingStatus == 'read' ? book : null));
+    var uncompleted = books.filter((book) => (book.readingStatus == 'uncompleted' ? book : null));
   } catch (err) {
     return null;
   }
@@ -62,14 +63,16 @@ const Profile = ({
         uncompletedContainer.classList.add("hidden");
       } else {
         currentlyReadingLink.classList.remove("nav-profile-selected");
+        currentlyReadingContainer.classList.add("hidden");
         readLink.classList.remove("nav-profile-selected");
+        readContainer.classList.add("hidden");
         uncompletedLink.classList.add("nav-profile-selected");
+        uncompletedContainer.classList.remove("hidden");
       }
     } catch (err) {
       setTimeout(() => {
         makeResponsive()
       }, 200)
-      
     }
   }
 
@@ -227,24 +230,26 @@ const Profile = ({
                 </p>
               </div>
               <div id='uncompletedContainer'>
-                {read < 1 ? (
+                {uncompleted < 1 ? (
                   <p class='m-2'>
                     <Link to='book-search' class='text-main'>
                       Add
                     </Link>{" "}
-                    a book you've already read.
+                    a book if you didn't manage to finish it.
                   </p>
                 ) : (
                   <div class='currently-reading'>
-                    {read.map((book) => (
+                 
+                    {uncompleted.map((book) => (
                       <ProfileBook book={book} />
                     ))}
                   </div>
+
                 )}
               </div>
             </div>
           </div>
-          {makeResponsive()}
+          {checkWindowWidth()}
         </Fragment>
       )}
     </Fragment>

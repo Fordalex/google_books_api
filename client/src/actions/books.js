@@ -50,6 +50,8 @@ export const setBookIndex = ({ idNum }) => async (dispatch) => {
 };
 
 export const addBook = ({
+  uncompletedReason,
+  readingStatus,
   currentPage,
   finishedDate,
   startDate,
@@ -67,6 +69,8 @@ export const addBook = ({
   };
 
   const body = {
+    uncompletedReason,
+    readingStatus,
     currentPage,
     finishedDate,
     startDate,

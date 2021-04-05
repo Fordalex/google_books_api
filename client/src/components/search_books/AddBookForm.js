@@ -41,8 +41,12 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
     var finishedDate = document.getElementsByName("finishedDate")[0].value;
     var currentPage = document.getElementsByName("currentPage")[0].value;
     var rating = document.getElementsByName("rating")[0].value;
+    var uncompletedReason = document.getElementsByName('uncompletedReason')[0].value;
+    var readingStatus = document.getElementsByName('readingStatus')[0].value;
 
     addBook({
+      uncompletedReason,
+      readingStatus,
       startDate,
       finishedDate,
       currentPage,
@@ -56,19 +60,27 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
     setFormSubmited(true);
   };
 
-  const finsihedBook = (e) => {
+  const readingStatus = (e) => {
     var finsiehdInput = document.getElementById("finishedInput");
     var pageInput = document.getElementById("pageInput");
+    var reasonInput = document.getElementById('reasonInput');
     var doneButton = document.getElementById("doneButton");
+    var val = e.target.value;
 
-    if (e.target.id == "yes") {
+    if (val == "read") {
       pageInput.classList.add("hidden");
       finished = true;
       finsiehdInput.classList.remove("hidden");
-    } else {
+      reasonInput.classList.add('hidden');
+    } else if (val == 'reading') {
       finsiehdInput.classList.add("hidden");
       finished = false;
       pageInput.classList.remove("hidden");
+      reasonInput.classList.add('hidden');
+    } else {
+      finsiehdInput.classList.add("hidden");
+      pageInput.classList.remove("hidden");
+      reasonInput.classList.remove('hidden');
     }
     doneButton.classList.remove("hidden");
   };
@@ -97,39 +109,30 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
                   <p>Start Date</p>
                   <input type='date' name='startDate' required />
                   <hr />
-                  <div class='justify-content-around align-items-center mb-2'>
-                    <p class='text-dark m-0'>Have you finished this book?</p>
-                    <div>
-                      Yes
-                      <input
-                        type='radio'
-                        name='reading'
-                        id='yes'
-                        onChange={finsihedBook}
-                      />
-                    </div>
-                    <div>
-                      No
-                      <input
-                        type='radio'
-                        name='reading'
-                        id='no'
-                        onChange={finsihedBook}
-                      />
-                    </div>
-                  </div>
+                  <p>Reading Status</p>
+                  <select class="input-style" name="readingStatus" onChange={readingStatus}>
+                    <option value="reading">Reading</option>
+                    <option value="read">Read</option>
+                    <option value="uncompleted">Uncompleted</option>
+                  </select>
+                  <hr/>
                   <div class='hidden' id='finishedInput'>
                     <p>Finished Date</p>
                     <input type='date' name='finishedDate' />
-                    <p>Rating</p>
-                    <input min='0' max='5' type='number' name='rating' />
+                    <input min='0' max='5' type='number' name='rating' placeholder="Rating" />
                   </div>
-                  <div class='hidden' id='pageInput'>
+                  <div id='pageInput'>
                     <input
                       type='number'
                       placeholder='Current Page'
                       name='currentPage'
                     />
+                  </div>
+                  <div class="hidden" id="reasonInput">
+                    <input 
+                    type="text"
+                    placeholder="Reason..."
+                    name="uncompletedReason"/>
                   </div>
                 </div>
                 <div

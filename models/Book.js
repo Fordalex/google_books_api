@@ -35,6 +35,15 @@ const BookSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
+    readingStatus: {
+        type: String,
+        required: true,
+        default: 'reading',
+    },
+    uncompletedReason: {
+        type: String,
+        required: false,
+    },
     rating: {
         type: Number,
         required: false,
