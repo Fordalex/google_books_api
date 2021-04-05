@@ -45,7 +45,8 @@ export const deleteNote = ({ noteId, bookId }) => async (dispatch) => {
         `api/books/remove-note/${bookId}/${noteId}`
       );
 
-      getCurrentProfile()
+      dispatch(setAlert("Note Removed", "success"))
+      dispatch(getCurrentProfile())
       return true;
     } catch (err) {
       const errors = err.response.data.errors;
@@ -69,6 +70,7 @@ export const updateNote = ({ noteInfo, noteType, pageNumber, note, bookId, noteI
     const body = { noteInfo, noteType, pageNumber, note, bookId };
     const res = await axios.put(`api/books/update-note/${noteId}`, body, config);
     dispatch(getCurrentProfile())
+    dispatch(setAlert("Note Updated", "success"))
     return true;
   } catch (err) {
     const errors = err.response.data.errors;

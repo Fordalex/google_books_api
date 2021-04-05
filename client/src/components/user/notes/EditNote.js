@@ -43,8 +43,14 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
     if (res) {
       setFormSubmited(true);
     }
-
   };
+
+  const removeNoteHandler = async () => {
+    const res = await deleteNote({noteId,bookId:id})
+    if (res) {
+      setFormSubmited(true);
+    }
+  }
 
   const pageHandler = (e) => {
     var noteStyle = e.target.value;
@@ -132,7 +138,7 @@ var note = book.notes.filter((note) => (note._id == noteId ? note : null))[0];
                   </button>
                 </div>
                 <div className='justify-content-center mt-2' id='doneButton'>
-                  <button className='btn-danger w-100' onClick={() => deleteNote({noteId,bookId:id})}>
+                  <button className='btn-danger w-100' onClick={() => removeNoteHandler()}>
                     Delete
                   </button>
                 </div>
