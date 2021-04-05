@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import UserImage from "../../static/img/user-image.png";
-import { getCurrentProfile, addBookId } from "../../actions/profile";
-import Moment from "react-moment";
+import { getCurrentProfile } from "../../actions/profile";
 import ProfileBook from "./books/ProfileBook";
 
 const Profile = ({
@@ -35,10 +34,6 @@ const Profile = ({
     var lastName = null;
     var email = null;
   }
-
-  const bookIdHandler = (b) => {
-    addBookId({ id: b._id });
-  };
 
   return (
     <Fragment>
@@ -83,6 +78,15 @@ const Profile = ({
               </div>
             </div>
             <div class='profile-books-container'>
+              <nav class="profile-nav">
+                <ul>
+                  <li class="nav-profile-selected">Currently Reading</li>
+                  <li>Read</li>
+                  <li>Uncompleted</li>
+                </ul>
+                <hr class="mt-2"/>
+              </nav>
+       
               <div class='justify-content-between align-items-center mx-1'>
                 <h3>Currently Reading</h3>
                 <p>
@@ -140,13 +144,12 @@ const Profile = ({
 Profile.propTypes = {
   profile: PropTypes.object.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  addBookId: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, addBookId })(
+export default connect(mapStateToProps, { getCurrentProfile })(
   Profile
 );

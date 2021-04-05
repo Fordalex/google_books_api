@@ -3,6 +3,7 @@
 ### Bugs
 
 The reloaded page needs to redirect the user to the correct page.
+The alerts on desktop are annoying.
 
 ### Features left to implement
 
@@ -17,7 +18,31 @@ Book
     Remove keyboard after user has searched for a book.
     Don't allow a user to put in conflicting dates when adding a book.
 
+### Responsive
+
+Profile
+
+    The desktop needs some work. The reading and read nav needs finishing.
+
+Search Books
+
+    The top margin is too small. On small mobile the view is too squashed.
+
+Settings
+
+    ...
+
+View all
+
+    The desktop needs to be started.
+
+Login
+
+    A container needs creating for all forms and hopfully that will also work for the intro section.
+
 ### Problems
+
+None...
 
 ##### Futrue upgrads
 

@@ -61,7 +61,7 @@ const NavBar = ({
 
   return (
     <Fragment>
-      <nav>
+      <nav class="main-nav">
         <Link class='nav-app-name' to='/'>
           Noteworthy
         </Link>
