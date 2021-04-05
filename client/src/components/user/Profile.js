@@ -69,9 +69,11 @@ const Profile = ({
         uncompletedLink.classList.add("nav-profile-selected");
         uncompletedContainer.classList.remove("hidden");
       }
+    return true;
     } catch (err) {
       setTimeout(() => {
-        makeResponsive()
+        makeResponsive();
+        console.log('make responsive')
       }, 200)
     }
   }
@@ -88,12 +90,16 @@ const Profile = ({
   }
 
   const checkWindowWidth = () => {
-    makeResponsive();
-    if (window.innerWidth < 815 && currentlyReadingContainer !== null) {
+    var res = makeResponsive();
+    if (window.innerWidth < 815 && res) {
       currentlyReadingContainer.classList.remove("hidden");
       readContainer.classList.remove("hidden");
       uncompletedContainer.classList.remove("hidden");
-    } 
+    } else if (!res) {
+      setTimeout(() => {
+        checkWindowWidth()
+      }, 1000)
+    }
   };
 
   window.addEventListener("resize", checkWindowWidth);
@@ -190,7 +196,7 @@ const Profile = ({
                 ) : (
                   <div class='currently-reading'>
                     {reading.map((book) => (
-                      <ProfileBook book={book} />
+                      <ProfileBook book={book}/>
                     ))}
                   </div>
                 )}
@@ -215,7 +221,7 @@ const Profile = ({
                 ) : (
                   <div class='currently-reading'>
                     {read.map((book) => (
-                      <ProfileBook book={book} />
+                      <ProfileBook book={book}/>
                     ))}
                   </div>
                 )}

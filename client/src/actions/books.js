@@ -98,15 +98,13 @@ export const addBook = ({
   }
 };
 
-export const removeBook = ({id, title}) => async dispatch => {
-
-  if (window.confirm('Are you sure? This can Not be undone!')) {
+export const removeBook = ({ id, title }) => async (dispatch) => {
+  if (window.confirm("Are you sure? This can Not be undone!")) {
     try {
       const res = await axios.delete(`api/books/remove/${id}`);
-  
-      dispatch(setAlert(`${title} removed`, 'success'));
+
+      dispatch(setAlert(`${title} removed`, "success"));
       return true;
-  
     } catch (err) {
       const errors = err.response.data.errors;
       if (errors) {
@@ -115,5 +113,50 @@ export const removeBook = ({id, title}) => async dispatch => {
     }
   } else {
     return false;
+  }
+};
+
+export const updateBook = ({
+  
+  uncompletedReason,
+  readingStatus,
+  startDate,
+  finishedDate,
+  currentPage,
+  finished,
+  title,
+  img,
+  bookId,
+  rating,
+  totalPages,
+}) => async (dispatch) => {
+  const config = {
+    header: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const body = {
+    uncompletedReason,
+    readingStatus,
+    startDate,
+    finishedDate,
+    currentPage,
+    finished,
+    title,
+    img,
+    bookId,
+    rating,
+    totalPages,
+  };
+
+  try {
+    const res = await axios.put(`api/books/update/${bookId}`, body, config);
+    return true;
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };
