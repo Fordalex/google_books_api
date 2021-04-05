@@ -1,6 +1,7 @@
 import { setAlert } from "../actions/alert";
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
+
 const stringifyObject = require("stringify-object");
 
 // Load User

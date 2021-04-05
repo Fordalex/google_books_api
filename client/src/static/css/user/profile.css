@@ -69,6 +69,7 @@ background-size: contain;
     border-radius: 13px;
     text-decoration: none;
     color:rgb(61, 61, 61);
+    margin-bottom: 20px;
 }
 
 .profile-book-container img {
@@ -121,6 +122,7 @@ background-size: contain;
     background-color: var(--mainColour);
 }
 
+
 .profile-nav {
     display: none;
 }
@@ -142,8 +144,22 @@ background-size: contain;
     color: black !important;
 }
 
+.mobile-book-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.mobile-book-title-container h3 {
+    margin: 10px;
+}
+
 /* desktop view */
 @media screen and (min-width: 750px) {
+    .mobile-book-title-container {
+        display: none;
+    }
     .profile-page-container {
         display: flex;
         justify-content: center;
@@ -169,11 +185,14 @@ background-size: contain;
         padding: 10px 10px;
     }
     .profile-nav ul li {
-        color: grey;
+        color: rgb(160, 160, 160);
         display: inline;
         margin-right: 30px;
         cursor: pointer;
         position: relative;
+    }
+    .currently-reading {
+        white-space: normal;
     }
 }
 
@@ -181,10 +200,10 @@ background-size: contain;
 @media screen and (min-width: 1100px) {
 
     .profile-info-container {
-        width: 40%;
+        width: 35%;
     }
     .profile-books-container {
-        width: 60%;
+        width: 65%;
     }
 
 }

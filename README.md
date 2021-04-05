@@ -4,6 +4,7 @@
 
 The reloaded page needs to redirect the user to the correct page.
 The alerts on desktop are annoying.
+The first, last name and email aren't showing sometimes.
 
 ### Features left to implement
 
@@ -40,9 +41,19 @@ Login
 
     A container needs creating for all forms and hopfully that will also work for the intro section.
 
+Book info
+
+    This section needs to be started.
+
 ### Problems
 
-None...
+It's working but it's probably not best practice. I've had to use a forceUpdate state on resizing the window.
+
+### Refactoring
+
+Profile
+
+    Desktop book view.
 
 ##### Futrue upgrads
 

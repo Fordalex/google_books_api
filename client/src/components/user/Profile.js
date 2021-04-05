@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import UserImage from "../../static/img/user-image.png";
 import { getCurrentProfile } from "../../actions/profile";
 import ProfileBook from "./books/ProfileBook";
+import { check } from "express-validator";
 
 const Profile = ({
   profile: {
@@ -17,6 +18,9 @@ const Profile = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+  const [viewBooks, setViewBooks] = useState("currentlyReading");
+  const [forceUpdate, setForceUpdate] = useState("")
+
   // Filter the books the user has and hasn't read.
   try {
     var reading = books.filter((book) => (!book.finished ? book : null));
@@ -25,15 +29,62 @@ const Profile = ({
     return null;
   }
   // Get the users profile information
+  var firstName;
+  var lastName;
+  var email;
+  var currentlyReadingContainer;
+  var readContainer;
+  var uncompletedContainer;
+
   try {
-    var firstName = user.firstName;
-    var lastName = user.lastName;
-    var email = user.email;
-  } catch (err) {
-    var firstName = null;
-    var lastName = null;
-    var email = null;
+    var currentlyReadingLink = document.getElementById("currentlyReadingLink");
+    var currentlyReadingContainer = document.getElementById(
+      "currentlyReadingContainer"
+    );
+    var readLink = document.getElementById("readLink");
+    var readContainer = document.getElementById("readContainer");
+    var uncompletedLink = document.getElementById("uncompletedLink");
+    var uncompletedContainer = document.getElementById("uncompletedContainer");
+
+    if (viewBooks == "currentlyReading") {
+      currentlyReadingLink.classList.add("nav-profile-selected");
+      currentlyReadingContainer.classList.remove("hidden");
+      readLink.classList.remove("nav-profile-selected");
+      readContainer.classList.add("hidden");
+      uncompletedLink.classList.remove("nav-profile-selected");
+      uncompletedContainer.classList.add("hidden");
+    } else if (viewBooks == "read") {
+      currentlyReadingLink.classList.remove("nav-profile-selected");
+      currentlyReadingContainer.classList.add("hidden");
+      readLink.classList.add("nav-profile-selected");
+      readContainer.classList.remove("hidden");
+      uncompletedLink.classList.remove("nav-profile-selected");
+      uncompletedContainer.classList.add("hidden");
+    } else {
+      currentlyReadingLink.classList.remove("nav-profile-selected");
+      readLink.classList.remove("nav-profile-selected");
+      uncompletedLink.classList.add("nav-profile-selected");
+    }
+    firstName = user.firstName;
+    lastName = user.lastName;
+    email = user.email;
+  } catch {
+    firstName = null;
+    lastName = null;
+    email = null;
   }
+
+  const checkWindowWidth = () => {
+    if (window.innerWidth < 750 && currentlyReadingContainer !== null) {
+      currentlyReadingContainer.classList.remove("hidden");
+      readContainer.classList.remove("hidden");
+      uncompletedLink.classList.remove("nav-profile-selected");
+    } else {
+      setForceUpdate('update')
+    }
+  };
+
+  window.addEventListener("resize", checkWindowWidth);
 
   return (
     <Fragment>
@@ -78,16 +129,34 @@ const Profile = ({
               </div>
             </div>
             <div class='profile-books-container'>
-              <nav class="profile-nav">
+              <nav class='profile-nav'>
                 <ul>
-                  <li class="nav-profile-selected">Currently Reading</li>
-                  <li>Read</li>
-                  <li>Uncompleted</li>
+                  <li
+                    class='nav-profile-selected'
+                    id='currentlyReadingLink'
+                    onClick={() => setViewBooks("currentlyReading")}
+                  >
+                    Currently Reading
+                  </li>
+                  <li id='readLink' onClick={() => setViewBooks("read")}>
+                    Read
+                  </li>
+                  <li
+                    id='uncompletedLink'
+                    onClick={() => setViewBooks("uncompleted")}
+                  >
+                    Uncompleted
+                  </li>
+                  <li class='float-right m-0'>
+                    <Link to='view-all' class='text-secondary'>
+                      View All
+                    </Link>
+                  </li>
                 </ul>
-                <hr class="mt-2"/>
+                <hr class='mt-2' />
               </nav>
-       
-              <div class='justify-content-between align-items-center mx-1'>
+
+              <div class='mobile-book-title-container'>
                 <h3>Currently Reading</h3>
                 <p>
                   <Link to='view-all' class='text-secondary'>
@@ -95,22 +164,25 @@ const Profile = ({
                   </Link>
                 </p>
               </div>
-              {reading < 1 ? (
-                <p class='m-2 mb-4'>
-                  <Link to='book-search' class='text-main'>
-                    Search
-                  </Link>{" "}
-                  a book your reading!
-                </p>
-              ) : (
-                <div class='currently-reading'>
-                  {reading.map((book) => (
-                    <ProfileBook book={book}/>
-                  ))}
-                </div>
-              )}
-              <hr />
-              <div class='justify-content-between align-items-center m-1'>
+              <div id='currentlyReadingContainer'>
+                {reading < 1 ? (
+                  <p class='m-2 mb-4'>
+                    <Link to='book-search' class='text-main'>
+                      Search
+                    </Link>{" "}
+                    a book your reading!
+                  </p>
+                ) : (
+                  <div class='currently-reading'>
+                    {reading.map((book) => (
+                      <ProfileBook book={book} />
+                    ))}
+                  </div>
+                )}
+                <hr />
+              </div>
+
+              <div class='mobile-book-title-container'>
                 <h3>Read</h3>
                 <p>
                   <Link to='view-all' class='text-secondary'>
@@ -118,21 +190,22 @@ const Profile = ({
                   </Link>
                 </p>
               </div>
-
-              {read < 1 ? (
-                <p class='m-2'>
-                  <Link to='book-search' class='text-main'>
-                    Add
-                  </Link>{" "}
-                  a book you've already read.
-                </p>
-              ) : (
-                <div class='currently-reading'>
-                  {read.map((book) => (
-                    <ProfileBook book={book}/>
-                  ))}
-                </div>
-              )}
+              <div id='readContainer'>
+                {read < 1 ? (
+                  <p class='m-2'>
+                    <Link to='book-search' class='text-main'>
+                      Add
+                    </Link>{" "}
+                    a book you've already read.
+                  </p>
+                ) : (
+                  <div class='currently-reading'>
+                    {read.map((book) => (
+                      <ProfileBook book={book} />
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </Fragment>
@@ -150,6 +223,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(
-  Profile
-);
+export default connect(mapStateToProps, { getCurrentProfile })(Profile);
