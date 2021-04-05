@@ -22,6 +22,7 @@ const EditBookData = ({
     const finishedDateInput = document.getElementsByName("finishedDate")[0];
     const currentPageInput = document.getElementsByName("currentPage")[0];
     const ratingInput = document.getElementsByName("rating")[0];
+    const uncompletedReason = document.getElementsByName("uncompletedReason")[0];
 
     startDateInput.value = book.startDate.slice(0, 10);
     finishedDateInput.value = book.finishedDate
@@ -29,6 +30,7 @@ const EditBookData = ({
       : "";
     currentPageInput.value = book.currentPage ? book.currentPage : "";
     ratingInput.value = book.rating;
+    uncompletedReason.value = book.uncompletedReason ? book.uncompletedReason : "";
   }, []);
 
   const removeBookHandler = async () => {
@@ -38,30 +40,39 @@ const EditBookData = ({
     }
   };
 
-  const readingStatus = (e = book.readingStatus) => {
-    var finishedInput = document.getElementById("finishedInput");
-    var pageInput = document.getElementById("pageInput");
-    var reasonInput = document.getElementById("reasonInput");
+  const readingStatus = (e) => {
+    try {
+      var finishedInput = document.getElementById("finishedInput");
+      var pageInput = document.getElementById("pageInput");
+      var reasonInput = document.getElementById("reasonInput");
+      var readingStatus = document.getElementsByName('readingStatus')[0];
 
-    if (e.target) {
-      var val = e.target.value;
-    } else {
-      var val = e;
-    }
-    
-    console.log(val);
-    if (val == "read") {
-      pageInput.classList.add("hidden");
-      finishedInput.classList.remove("hidden");
-      reasonInput.classList.add("hidden");
-    } else if (val == "reading") {
-      finishedInput.classList.add("hidden");
-      pageInput.classList.remove("hidden");
-      reasonInput.classList.add("hidden");
-    } else if (val == "uncompleted") {
-      finishedInput.classList.add("hidden");
-      pageInput.classList.remove("hidden");
-      reasonInput.classList.remove("hidden");
+      var val;
+      if (e) {
+        val = e.target.value;
+      } else {
+        val = book.readingStatus;
+      }
+      readingStatus.value = val;
+
+      if (val == "read") {
+        pageInput.classList.add("hidden");
+        finishedInput.classList.remove("hidden");
+        reasonInput.classList.add("hidden");
+      } else if (val == "reading") {
+        finishedInput.classList.add("hidden");
+        pageInput.classList.remove("hidden");
+        reasonInput.classList.add("hidden");
+      } else if (val == "uncompleted") {
+        finishedInput.classList.add("hidden");
+        pageInput.classList.remove("hidden");
+        reasonInput.classList.remove("hidden");
+      }
+      return true;
+    } catch {
+      setTimeout(() => {
+        return false;
+      }, 2000)
     }
   };
 
@@ -110,7 +121,7 @@ const EditBookData = ({
                   <select
                     class='input-style'
                     name='readingStatus'
-                    onChange={readingStatus()}
+                    onChange={(e) => readingStatus(e)}
                   >
                     <option value='reading'>Reading</option>
                     <option value='read'>Read</option>
@@ -129,6 +140,7 @@ const EditBookData = ({
                     />
                   </div>
                   <div id='pageInput'>
+                  <p>Rating</p>
                     <input
                       type='number'
                       placeholder='Current Page'
@@ -144,16 +156,22 @@ const EditBookData = ({
                   </div>
                 </div>
                 <div
-                  className='justify-content-center mt-2 hidden'
+                  className='justify-content-center mt-2'
                   id='doneButton'
                 >
                   <button type='submit' className='btn-main w-100'>
-                    Done
+                    Update
+                  </button>
+                </div>
+                <div className='justify-content-center mt-2' id='doneButton'>
+                  <button className='btn-danger w-100' onClick={() => removeBookHandler()}>
+                    Delete
                   </button>
                 </div>
               </form>
             </div>
           </div>
+          <div class="hidden">{readingStatus() ? '' : setTimeout(() => {readingStatus()} ,10)}</div>
         </Fragment>
       )}
     </Fragment>

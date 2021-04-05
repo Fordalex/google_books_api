@@ -74,6 +74,7 @@ Show average time taken to read by all users.
 Allow uses to search their own books.
 Book recommendations for users.
 Book club with a month book to read each month. Also, a poll for users to choose the book.
+Help the little guys (Page to shout out smaller authors.)
 
 ### Improvments
 

@@ -71,13 +71,9 @@ const Profile = ({
       }
     return true;
     } catch (err) {
-      setTimeout(() => {
-        makeResponsive();
-        console.log('make responsive')
-      }, 200)
+      return false;
     }
   }
-
 
   try {
     firstName = user.firstName;
