@@ -4,7 +4,6 @@
 
 The reloaded page needs to redirect the user to the correct page.
 The alerts on desktop are annoying.
-The first, last name and email aren't showing sometimes.
 
 ### Features left to implement
 
@@ -47,7 +46,7 @@ Book info
 
 ### Problems
 
-It's working but it's probably not best practice. I've had to use a forceUpdate state on resizing the window.
+It's working but it's probably not best practice. I've used a try catch block inside a function and the catch just calls the function again... But it works.
 
 ### Refactoring
 
@@ -76,3 +75,4 @@ Total pages to finish current books.
 Total note count.
 sort notes option.
 Stop book images from being stetched.
+Add pagination for the users books.

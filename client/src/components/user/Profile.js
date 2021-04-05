@@ -19,7 +19,6 @@ const Profile = ({
   }, [getCurrentProfile]);
 
   const [viewBooks, setViewBooks] = useState("currentlyReading");
-  const [forceUpdate, setForceUpdate] = useState("")
 
   // Filter the books the user has and hasn't read.
   try {
@@ -36,35 +35,46 @@ const Profile = ({
   var readContainer;
   var uncompletedContainer;
 
-  try {
-    var currentlyReadingLink = document.getElementById("currentlyReadingLink");
-    var currentlyReadingContainer = document.getElementById(
+  const makeResponsive = () => {
+    currentlyReadingContainer = document.getElementById(
       "currentlyReadingContainer"
     );
-    var readLink = document.getElementById("readLink");
-    var readContainer = document.getElementById("readContainer");
-    var uncompletedLink = document.getElementById("uncompletedLink");
-    var uncompletedContainer = document.getElementById("uncompletedContainer");
-
-    if (viewBooks == "currentlyReading") {
-      currentlyReadingLink.classList.add("nav-profile-selected");
-      currentlyReadingContainer.classList.remove("hidden");
-      readLink.classList.remove("nav-profile-selected");
-      readContainer.classList.add("hidden");
-      uncompletedLink.classList.remove("nav-profile-selected");
-      uncompletedContainer.classList.add("hidden");
-    } else if (viewBooks == "read") {
-      currentlyReadingLink.classList.remove("nav-profile-selected");
-      currentlyReadingContainer.classList.add("hidden");
-      readLink.classList.add("nav-profile-selected");
-      readContainer.classList.remove("hidden");
-      uncompletedLink.classList.remove("nav-profile-selected");
-      uncompletedContainer.classList.add("hidden");
-    } else {
-      currentlyReadingLink.classList.remove("nav-profile-selected");
-      readLink.classList.remove("nav-profile-selected");
-      uncompletedLink.classList.add("nav-profile-selected");
+    readContainer = document.getElementById("readContainer");
+    uncompletedContainer = document.getElementById("uncompletedContainer");
+    try {
+      var currentlyReadingLink = document.getElementById("currentlyReadingLink");
+      var readLink = document.getElementById("readLink");
+      var uncompletedLink = document.getElementById("uncompletedLink");
+  
+      if (viewBooks == "currentlyReading") {
+        currentlyReadingLink.classList.add("nav-profile-selected");
+        currentlyReadingContainer.classList.remove("hidden");
+        readLink.classList.remove("nav-profile-selected");
+        readContainer.classList.add("hidden");
+        uncompletedLink.classList.remove("nav-profile-selected");
+        uncompletedContainer.classList.add("hidden");
+      } else if (viewBooks == "read") {
+        currentlyReadingLink.classList.remove("nav-profile-selected");
+        currentlyReadingContainer.classList.add("hidden");
+        readLink.classList.add("nav-profile-selected");
+        readContainer.classList.remove("hidden");
+        uncompletedLink.classList.remove("nav-profile-selected");
+        uncompletedContainer.classList.add("hidden");
+      } else {
+        currentlyReadingLink.classList.remove("nav-profile-selected");
+        readLink.classList.remove("nav-profile-selected");
+        uncompletedLink.classList.add("nav-profile-selected");
+      }
+    } catch (err) {
+      setTimeout(() => {
+        makeResponsive()
+      }, 200)
+      
     }
+  }
+
+
+  try {
     firstName = user.firstName;
     lastName = user.lastName;
     email = user.email;
@@ -75,13 +85,12 @@ const Profile = ({
   }
 
   const checkWindowWidth = () => {
-    if (window.innerWidth < 750 && currentlyReadingContainer !== null) {
+    makeResponsive();
+    if (window.innerWidth < 815 && currentlyReadingContainer !== null) {
       currentlyReadingContainer.classList.remove("hidden");
       readContainer.classList.remove("hidden");
-      uncompletedLink.classList.remove("nav-profile-selected");
-    } else {
-      setForceUpdate('update')
-    }
+      uncompletedContainer.classList.remove("hidden");
+    } 
   };
 
   window.addEventListener("resize", checkWindowWidth);
@@ -125,7 +134,10 @@ const Profile = ({
                   </Link>
                 </div>
                 <hr />
-                more account information and stats
+                <div class="p-1">
+                  <p>more account information and stats</p>
+                  <p>more account information and stats</p>
+                  </div>
               </div>
             </div>
             <div class='profile-books-container'>
@@ -181,7 +193,6 @@ const Profile = ({
                 )}
                 <hr />
               </div>
-
               <div class='mobile-book-title-container'>
                 <h3>Read</h3>
                 <p>
@@ -205,9 +216,35 @@ const Profile = ({
                     ))}
                   </div>
                 )}
+                <hr />
+              </div>
+              <div class='mobile-book-title-container'>
+                <h3>Uncompleted</h3>
+                <p>
+                  <Link to='view-all' class='text-secondary'>
+                    View All
+                  </Link>
+                </p>
+              </div>
+              <div id='uncompletedContainer'>
+                {read < 1 ? (
+                  <p class='m-2'>
+                    <Link to='book-search' class='text-main'>
+                      Add
+                    </Link>{" "}
+                    a book you've already read.
+                  </p>
+                ) : (
+                  <div class='currently-reading'>
+                    {read.map((book) => (
+                      <ProfileBook book={book} />
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
+          {makeResponsive()}
         </Fragment>
       )}
     </Fragment>
