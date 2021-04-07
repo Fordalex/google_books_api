@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import UserImage from "../../static/img/user-image.png";
 import { getCurrentProfile } from "../../actions/profile";
 import ProfileBook from "./books/ProfileBook";
-import { check } from "express-validator";
+import { Pie } from 'react-chartjs-2';
 
 const Profile = ({
   profile: {
@@ -57,6 +57,14 @@ const Profile = ({
   categories.forEach((cat) => {
     allCategories[cat] = (allCategories[cat] || 0) + 1;
   });
+  console.log(allCategories)
+  var categoryLabels = Object.entries(allCategories).map((key) => key[0]);
+  var categoryData = Object.entries(allCategories).map((key) => key[1]);
+  var categoryDataColours = [];
+  for (let i = 0; i < categoryLabels.length; i++){
+    var newColour = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},0.5)`;
+    categoryDataColours.push(newColour);
+  }
 
   // Get the users profile information
   var firstName;
@@ -132,6 +140,8 @@ const Profile = ({
 
   window.addEventListener("resize", checkWindowWidth);
 
+  
+
   return (
     <Fragment>
       {loading ? (
@@ -197,21 +207,34 @@ const Profile = ({
                   </Link>
                 </div>
                 <hr />
+                
                 <div class='px-2'>
-                    <table class='genres-table'>
-                      <tr>
-                        <th>Genre</th>
-                        <th>Count</th>
-                      </tr>
-                      {Object.entries(allCategories).map((key) => {
-                        return (
-                          <tr>
-                            <td>{key[0]}</td>
-                            <td class="text-center">{key[1]}</td>
-                          </tr>
-                        );
-                      })}
-                    </table>
+                  <Pie data={{
+                    labels: categoryLabels,
+                    datasets: [{
+                      label: '# of Votes',
+                      data: categoryData,
+                      backgroundColor: categoryDataColours,
+                      borderWidth: 0.5
+                  }]
+                  }}
+                  height={400}
+                  width={400}
+                  />
+                  <table class='genres-table'>
+                    <tr>
+                      <th>Genre</th>
+                      <th>Count</th>
+                    </tr>
+                    {Object.entries(allCategories).map((key) => {
+                      return (
+                        <tr>
+                          <td>{key[0]}</td>
+                          <td class='text-center'>{key[1]}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
                 </div>
               </div>
             </div>
