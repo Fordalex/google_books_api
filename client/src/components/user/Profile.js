@@ -20,33 +20,43 @@ const Profile = ({
 
   const [viewBooks, setViewBooks] = useState("currentlyReading");
 
-  // Filter the books the user has and hasn't read.
   try {
+    // Filter the books the user is reading
     var reading = books.filter((book) =>
       book.readingStatus == "reading" ? book : null
     );
+    // filter the books the user has read
     var read = books.filter((book) =>
       book.readingStatus == "read" ? book : null
     );
+    // filter the books that the users hasn't completed
     var uncompleted = books.filter((book) =>
       book.readingStatus == "uncompleted" ? book : null
     );
   } catch (err) {
     return null;
   }
+  // Count all the notes the user has created.
   var totalNotesTaken = books.reduce(
     (total, book) => total + book.notes.length,
     0
   );
-  var totalPagesRead = books.reduce(
-    (total, book) => {
-      if (book.readingStatus == 'read') {
-        return total + book.totalPages
-      } else {
-        return total + book.currentPage
-      }
-    }, 0
-  )
+  // Count all the pages the user has read.
+  var totalPagesRead = books.reduce((total, book) => {
+    if (book.readingStatus == "read") {
+      return total + book.totalPages;
+    } else {
+      return total + book.currentPage;
+    }
+  }, 0);
+  // Sort catgories ready for table and pie chart
+  var categoriesArr = books.map((book) => book.categories);
+  var categories = [];
+  categoriesArr.map((cats) => cats.map((cat) => categories.push(cat)));
+  var allCategories = {};
+  categories.forEach((cat) => {
+    allCategories[cat] = (allCategories[cat] || 0) + 1;
+  });
 
   // Get the users profile information
   var firstName;
@@ -109,7 +119,7 @@ const Profile = ({
 
   const checkWindowWidth = () => {
     var res = makeResponsive();
-    if (window.innerWidth < 815 && res) {
+    if (window.innerWidth < 780 && res) {
       currentlyReadingContainer.classList.remove("hidden");
       readContainer.classList.remove("hidden");
       uncompletedContainer.classList.remove("hidden");
@@ -153,6 +163,12 @@ const Profile = ({
                     </p>
                     <p class='label'>Read</p>
                   </div>
+                  <div>
+                    <p class='m-0 text-center text-main'>
+                      <b>{uncompleted.length}</b>
+                    </p>
+                    <p class='label'>Uncompleted</p>
+                  </div>
                 </div>
                 <div class='profile-stats-container mb-2'>
                   <div>
@@ -165,9 +181,13 @@ const Profile = ({
                     <p class='m-0 text-center text-main'>
                       <b>{totalPagesRead}</b>
                     </p>
-                    <p class='label'>
-                      Total Pages Read
+                    <p class='label'>Total Pages Read</p>
+                  </div>
+                  <div>
+                    <p class='m-0 text-center text-main'>
+                      <b>{books.length}</b>
                     </p>
+                    <p class='label'>Total Books</p>
                   </div>
                 </div>
                 <hr />
@@ -178,11 +198,24 @@ const Profile = ({
                 </div>
                 <hr />
                 <div class='px-2'>
-                  <h3>Genres</h3>
+                    <table class='genres-table'>
+                      <tr>
+                        <th>Genre</th>
+                        <th>Count</th>
+                      </tr>
+                      {Object.entries(allCategories).map((key) => {
+                        return (
+                          <tr>
+                            <td>{key[0]}</td>
+                            <td class="text-center">{key[1]}</td>
+                          </tr>
+                        );
+                      })}
+                    </table>
                 </div>
               </div>
             </div>
-      
+
             <div class='profile-books-container'>
               <nav class='profile-nav'>
                 <ul>
@@ -284,7 +317,7 @@ const Profile = ({
                     ))}
                   </div>
                 )}
-                <hr/>
+                <hr />
               </div>
             </div>
           </div>

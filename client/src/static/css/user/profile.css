@@ -3,9 +3,8 @@
 }
 
 .profile-info-container {
-background: url('../../img/book-background.jpeg');
-max-height: 500px;
-background-size: contain;
+    background: url('../../img/book-background.jpeg');
+    background-size: contain;
    padding-top: 110px;
    overflow: hidden;
 }
@@ -13,7 +12,8 @@ background-size: contain;
 .profile-container {
     background-color: white;
     border-radius: 20px 20px 0 0;
-    padding-bottom: 25px;
+    border-bottom: solid rgb(228, 228, 228) 1px;
+    padding-bottom: 15px;
 }
 
 .profile-wrapper {
@@ -46,7 +46,7 @@ background-size: contain;
 
 .profile-stats-container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33% 33% 33%;
     margin-top: 15px;
     color: rgb(155, 155, 155);
     font-size: 1.1em;
@@ -167,8 +167,25 @@ background-size: contain;
     margin: 10px;
 }
 
+.genres-table tr:nth-of-type(even) {
+    background-color: rgb(248, 248, 248);
+}
+
+.genres-table tr td {
+    width: 100%;
+    padding: 3px 8px;
+    border: solid rgb(221, 221, 221) 1px;
+}
+
+.genres-table tr th {
+    text-align: start;
+    padding: 3px 8px;
+    font-weight: 600;
+    background-color: rgb(255, 255, 255);
+}
+
 /* desktop view */
-@media screen and (min-width: 815px) {
+@media screen and (min-width: 780px) {
     .mobile-book-title-container {
         display: none;
     }
@@ -209,13 +226,25 @@ background-size: contain;
 }
 
 /* full desktop view */
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 880px) {
 
     .profile-info-container {
         width: 35%;
     }
     .profile-books-container {
         width: 65%;
+    }
+
+}
+
+/* large desktop view */
+@media screen and (min-width: 1100px) {
+
+    .profile-info-container {
+        width: 30%;
+    }
+    .profile-books-container {
+        width: 70%;
     }
 
 }

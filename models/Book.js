@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const BookSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
+        required: false,
     },
     img: {
         type: String,
-        required: true,
+        required: false,
     },
     bookId: {
         type: String,
@@ -16,7 +16,7 @@ const BookSchema = new mongoose.Schema({
     },
     totalPages: {
         type: Number,
-        required: true,
+        required: false,
     },
     startDate: {
         type: Date,
@@ -30,10 +30,6 @@ const BookSchema = new mongoose.Schema({
     currentPage: {
         type: Number,
         required: false,
-    },
-    finished: {
-        type: Boolean,
-        required: true,
     },
     readingStatus: {
         type: String,

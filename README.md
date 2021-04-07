@@ -15,6 +15,7 @@ Book
 
     Edit details.
     Add categories.
+    Book form validation.
     Remove keyboard after user has searched for a book.
     Don't allow a user to put in conflicting dates when adding a book.
     Adding book forms really buggy.

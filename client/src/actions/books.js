@@ -61,6 +61,7 @@ export const addBook = ({
   bookId,
   rating,
   totalPages,
+  categories
 }) => async (dispatch) => {
   const config = {
     header: {
@@ -80,8 +81,9 @@ export const addBook = ({
     bookId,
     rating,
     totalPages,
+    categories
   };
-
+  
   stringifyObject(body, {
     indent: "  ",
     singleQuotes: false,

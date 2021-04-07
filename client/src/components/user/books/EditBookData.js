@@ -22,7 +22,9 @@ const EditBookData = ({
     const finishedDateInput = document.getElementsByName("finishedDate")[0];
     const currentPageInput = document.getElementsByName("currentPage")[0];
     const ratingInput = document.getElementsByName("rating")[0];
-    const uncompletedReason = document.getElementsByName("uncompletedReason")[0];
+    const uncompletedReason = document.getElementsByName(
+      "uncompletedReason"
+    )[0];
 
     startDateInput.value = book.startDate.slice(0, 10);
     finishedDateInput.value = book.finishedDate
@@ -30,7 +32,9 @@ const EditBookData = ({
       : "";
     currentPageInput.value = book.currentPage ? book.currentPage : "";
     ratingInput.value = book.rating;
-    uncompletedReason.value = book.uncompletedReason ? book.uncompletedReason : "";
+    uncompletedReason.value = book.uncompletedReason
+      ? book.uncompletedReason
+      : "";
   }, []);
 
   const removeBookHandler = async () => {
@@ -45,7 +49,7 @@ const EditBookData = ({
       var finishedInput = document.getElementById("finishedInput");
       var pageInput = document.getElementById("pageInput");
       var reasonInput = document.getElementById("reasonInput");
-      var readingStatus = document.getElementsByName('readingStatus')[0];
+      var readingStatus = document.getElementsByName("readingStatus")[0];
 
       var val;
       if (e) {
@@ -72,7 +76,7 @@ const EditBookData = ({
     } catch {
       setTimeout(() => {
         return false;
-      }, 2000)
+      }, 2000);
     }
   };
 
@@ -99,78 +103,86 @@ const EditBookData = ({
         <Redirect to='profile' />
       ) : (
         <Fragment>
-          <div>
-            <Link to='book-data'>
-              <img
-                class='info-back-button'
-                src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
-              />
-            </Link>
-            <div class='p-2'>
-              <h3 class='text-center p-1 m-0'>{book.title}</h3>
-              <p class='text-secondary text-center mt-0'>
-                Please edit the information below.
-              </p>
-              <hr />
-              <form className='form mt-2' onSubmit={(e) => onSubmit(e)}>
-                <div className='form-group'>
-                  <p>Start Date</p>
-                  <input type='date' name='startDate' required />
-                  <p>Reading Status</p>
-                  <select
-                    class='input-style'
-                    name='readingStatus'
-                    onChange={(e) => readingStatus(e)}
-                  >
-                    <option value='reading'>Reading</option>
-                    <option value='read'>Read</option>
-                    <option value='uncompleted'>Uncompleted</option>
-                  </select>
-                  <hr />
-                  <div class='hidden' id='finishedInput'>
-                    <p>Finished Date</p>
-                    <input type='date' name='finishedDate' />
-                    <input
-                      min='0'
-                      max='5'
-                      type='number'
-                      name='rating'
-                      placeholder='Rating'
-                    />
+          <div class='form-page-container'>
+            <div class='form-wrapper'>
+              <Link to='book-data'>
+                <img
+                  class='info-back-button'
+                  src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
+                />
+              </Link>
+              <div>
+                <h3 class='text-center p-1 m-0'>{book.title}</h3>
+                <p class='text-secondary text-center mt-0'>
+                  Please edit the information below.
+                </p>
+                <hr />
+                <form className='form mt-2' onSubmit={(e) => onSubmit(e)}>
+                  <div className='form-group'>
+                    <p>Start Date</p>
+                    <input type='date' name='startDate' required />
+                    <p>Reading Status</p>
+                    <select
+                      class='input-style'
+                      name='readingStatus'
+                      onChange={(e) => readingStatus(e)}
+                    >
+                      <option value='reading'>Reading</option>
+                      <option value='read'>Read</option>
+                      <option value='uncompleted'>Uncompleted</option>
+                    </select>
+                    <hr />
+                    <div class='hidden' id='finishedInput'>
+                      <p>Finished Date</p>
+                      <input type='date' name='finishedDate' />
+                      <input
+                        min='0'
+                        max='5'
+                        type='number'
+                        name='rating'
+                        placeholder='Rating'
+                      />
+                    </div>
+                    <div id='pageInput'>
+                      <p>Rating</p>
+                      <input
+                        type='number'
+                        placeholder='Current Page'
+                        name='currentPage'
+                      />
+                    </div>
+                    <div class='hidden' id='reasonInput'>
+                      <input
+                        type='text'
+                        placeholder='Reason...'
+                        name='uncompletedReason'
+                      />
+                    </div>
                   </div>
-                  <div id='pageInput'>
-                  <p>Rating</p>
-                    <input
-                      type='number'
-                      placeholder='Current Page'
-                      name='currentPage'
-                    />
+                  <div className='justify-content-center mt-2' id='doneButton'>
+                    <button type='submit' className='btn-main w-100'>
+                      Update
+                    </button>
                   </div>
-                  <div class='hidden' id='reasonInput'>
-                    <input
-                      type='text'
-                      placeholder='Reason...'
-                      name='uncompletedReason'
-                    />
+                  <div className='justify-content-center mt-2' id='doneButton'>
+                    <button
+                      className='btn-danger w-100'
+                      onClick={() => removeBookHandler()}
+                    >
+                      Delete
+                    </button>
                   </div>
-                </div>
-                <div
-                  className='justify-content-center mt-2'
-                  id='doneButton'
-                >
-                  <button type='submit' className='btn-main w-100'>
-                    Update
-                  </button>
-                </div>
-                <div className='justify-content-center mt-2' id='doneButton'>
-                  <button className='btn-danger w-100' onClick={() => removeBookHandler()}>
-                    Delete
-                  </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
-          <div class="hidden">{readingStatus() ? '' : setTimeout(() => {readingStatus()} ,10)}</div>
+          <div class='hidden'>
+            {readingStatus()
+              ? ""
+              : setTimeout(() => {
+                  readingStatus();
+                }, 10)}
+          </div>
         </Fragment>
       )}
     </Fragment>

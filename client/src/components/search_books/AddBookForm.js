@@ -11,26 +11,32 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
   try {
     var title = books.items[bookIndex].volumeInfo.title;
   } catch {
-    return null;
+    var title;
   }
   //  Check if book has id
   try {
     var bookId = books.items[bookIndex].id;
   } catch {
-    return null;
+    var bookId;
   }
   //  Check if book has id
   // Check if book has image
   try {
     var img = books.items[bookIndex].volumeInfo.imageLinks.thumbnail;
   } catch {
-    return null;
+    var img;
   }
   // Check if book has total pages
   try {
     var totalPages = books.items[bookIndex].volumeInfo.pageCount;
   } catch {
-    return null;
+    var totalPages;
+  }
+  // Check if book has total pages
+  try {
+    var categories = books.items[bookIndex].volumeInfo.categories
+  } catch {
+    var categories;
   }
 
   var finished = false;
@@ -56,6 +62,7 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
       bookId,
       rating,
       totalPages,
+      categories
     });
     setFormSubmited(true);
   };
@@ -91,14 +98,15 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
         <Redirect to='profile' />
       ) : (
         <Fragment>
-          <div>
+          <div class="form-page-container">
+          <div class="form-wrapper">
             <Link to='book-search'>
               <img
                 class='info-back-button'
                 src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
               />
             </Link>
-            <div class='p-2'>
+            <div>
               <h3 class='text-center p-1 m-0'>{title}</h3>
               <p class='text-secondary text-center mt-0'>
                 Please fill out the information below.
@@ -136,7 +144,7 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
                   </div>
                 </div>
                 <div
-                  className='justify-content-center mt-2 hidden'
+                  className='justify-content-center mt-2'
                   id='doneButton'
                 >
                   <button type='submit' className='btn-main w-100'>
@@ -145,6 +153,7 @@ const AddBookForm = ({ books: { books, bookIndex }, addBook }) => {
                 </div>
               </form>
             </div>
+          </div>
           </div>
         </Fragment>
       )}
