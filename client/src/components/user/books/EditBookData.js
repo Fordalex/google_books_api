@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { removeBook, updateBook } from "../../../actions/books";
-import Moment from "react-moment";
 
 const EditBookData = ({
   profile: {
@@ -11,6 +10,7 @@ const EditBookData = ({
     book: { id },
   },
   removeBook,
+  updateBook,
 }) => {
   const [formSubmited, setFormSubmited] = useState(false);
   var book = books.filter((book) => (book._id == id ? book : null))[0];
@@ -44,7 +44,7 @@ const EditBookData = ({
     }
   };
 
-  const readingStatus = (e) => {
+  const readingStatusHandler = (e) => {
     try {
       var finishedInput = document.getElementById("finishedInput");
       var pageInput = document.getElementById("pageInput");
@@ -80,21 +80,29 @@ const EditBookData = ({
     }
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     console.log("working");
-    // updateBook({
-    //   uncompletedReason,
-    //   readingStatus,
-    //   startDate,
-    //   finishedDate,
-    //   currentPage,
-    //   finished,
-    //   title,
-    //   img,
-    //   bookId,
-    //   rating,
-    //   totalPages,
-    // })
+    var currentPage = document.getElementsByName('currentPage')[0].value;
+    var uncompletedReason = document.getElementsByName('uncompletedReason')[0].value;
+    var readingStatus = document.getElementsByName("readingStatus")[0].value;
+    var finishedDate = document.getElementsByName("finishedDate")[0].value;
+    var startDate = document.getElementsByName("startDate")[0].value;
+    var rating = document.getElementsByName("rating")[0].value;
+
+    var res = await updateBook({
+      uncompletedReason,
+      id,
+      readingStatus,
+      currentPage,
+      finishedDate,
+      startDate,
+      title: book.title,
+      rating,
+    });
+    if (res) {
+      setFormSubmited(true)
+    }
   };
 
   return (
@@ -125,7 +133,7 @@ const EditBookData = ({
                     <select
                       class='input-style'
                       name='readingStatus'
-                      onChange={(e) => readingStatus(e)}
+                      onChange={(e) => readingStatusHandler(e)}
                     >
                       <option value='reading'>Reading</option>
                       <option value='read'>Read</option>
@@ -135,6 +143,7 @@ const EditBookData = ({
                     <div class='hidden' id='finishedInput'>
                       <p>Finished Date</p>
                       <input type='date' name='finishedDate' />
+                      <p>Rating</p>
                       <input
                         min='0'
                         max='5'
@@ -144,7 +153,6 @@ const EditBookData = ({
                       />
                     </div>
                     <div id='pageInput'>
-                      <p>Rating</p>
                       <input
                         type='number'
                         placeholder='Current Page'
@@ -177,10 +185,10 @@ const EditBookData = ({
             </div>
           </div>
           <div class='hidden'>
-            {readingStatus()
+            {readingStatusHandler()
               ? ""
               : setTimeout(() => {
-                  readingStatus();
+                  readingStatusHandler();
                 }, 10)}
           </div>
         </Fragment>

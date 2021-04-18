@@ -121,16 +121,13 @@ export const removeBook = ({ id, title }) => async (dispatch) => {
 export const updateBook = ({
   
   uncompletedReason,
+  id,
   readingStatus,
-  startDate,
-  finishedDate,
   currentPage,
-  finished,
+  finishedDate,
+  startDate,
   title,
-  img,
-  bookId,
-  rating,
-  totalPages,
+  rating
 }) => async (dispatch) => {
   const config = {
     header: {
@@ -141,19 +138,17 @@ export const updateBook = ({
   const body = {
     uncompletedReason,
     readingStatus,
-    startDate,
-    finishedDate,
     currentPage,
-    finished,
-    title,
-    img,
-    bookId,
-    rating,
-    totalPages,
+    finishedDate,
+    startDate,
+    rating
   };
+  console.log(body)
 
   try {
-    const res = await axios.put(`api/books/update/${bookId}`, body, config);
+    const res = await axios.put(`api/books/update/${id}`, body, config);
+
+    dispatch(setAlert(`${title} Updated`, "success"));
     return true;
   } catch (err) {
     const errors = err.response.data.errors;

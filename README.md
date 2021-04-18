@@ -1,5 +1,13 @@
 # Noteworthy
 
+# Basics
+
+Run project:
+
+    npm run dev
+
+View project on http://localhost:3000/
+
 ### Bugs
 
 The reloaded page needs to redirect the user to the correct page.
@@ -9,12 +17,13 @@ The alerts on desktop are annoying.
 
 User
 
-    Pie chart for the users genres.
+    The pie chart data needs to be sorted.
+    Show categories on book data page on profile.
 
 Book
 
     Edit details.
-    Add categories.
+    Add categories to view book on profile.
     Book form validation.
     Remove keyboard after user has searched for a book.
     Don't allow a user to put in conflicting dates when adding a book.
@@ -27,7 +36,6 @@ Notes
 
 Uncompleted Books
 
-    Needs to be added to the profile filter.
     Add to the view all filter.
 
 Settings
