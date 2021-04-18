@@ -1,6 +1,9 @@
 {
-  "name": "love_books",
+  "name": "noteworthy",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "description": "Book tracker",
   "main": "server.js",
   "scripts": {
