@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import UserImage from "../../static/img/user-image.png";
 import { getCurrentProfile } from "../../actions/profile";
+import { filterBookByCategory } from "../../actions/books";
 import ProfileBook from "./books/ProfileBook";
-import { Pie } from 'react-chartjs-2';
+import { Pie } from "react-chartjs-2";
 
 const Profile = ({
   profile: {
@@ -13,6 +14,7 @@ const Profile = ({
     loading,
   },
   getCurrentProfile,
+  filterBookByCategory,
 }) => {
   useEffect(() => {
     getCurrentProfile();
@@ -60,8 +62,10 @@ const Profile = ({
   var categoryLabels = Object.entries(allCategories).map((key) => key[0]);
   var categoryData = Object.entries(allCategories).map((key) => key[1]);
   var categoryDataColours = [];
-  for (let i = 0; i < categoryLabels.length; i++){
-    var newColour = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},0.5)`;
+  for (let i = 0; i < categoryLabels.length; i++) {
+    var newColour = `rgba(${Math.random() * 255},${Math.random() * 255},${
+      Math.random() * 255
+    },0.5)`;
     categoryDataColours.push(newColour);
   }
 
@@ -136,10 +140,7 @@ const Profile = ({
       }, 20);
     }
   };
-
   window.addEventListener("resize", checkWindowWidth);
-
-  
 
   return (
     <Fragment>
@@ -206,19 +207,22 @@ const Profile = ({
                   </Link>
                 </div>
                 <hr />
-                
+
                 <div class='px-2'>
-                  <Pie data={{
-                    labels: categoryLabels,
-                    datasets: [{
-                      label: '# of Votes',
-                      data: categoryData,
-                      backgroundColor: categoryDataColours,
-                      borderWidth: 0.5
-                  }]
-                  }}
-                  height={400}
-                  width={400}
+                  <Pie
+                    data={{
+                      labels: categoryLabels,
+                      datasets: [
+                        {
+                          label: "# of Votes",
+                          data: categoryData,
+                          backgroundColor: categoryDataColours,
+                          borderWidth: 0.5,
+                        },
+                      ],
+                    }}
+                    height={400}
+                    width={400}
                   />
                   <table class='genres-table'>
                     <tr>
@@ -228,7 +232,7 @@ const Profile = ({
                     {Object.entries(allCategories).map((key) => {
                       return (
                         <tr>
-                          <td>{key[0]}</td>
+                          <td><Link to="view-books-by-category" onClick={() => filterBookByCategory({category: key[0]})}>{key[0]}</Link></td>
                           <td class='text-center'>{key[1]}</td>
                         </tr>
                       );
@@ -353,10 +357,14 @@ const Profile = ({
 Profile.propTypes = {
   profile: PropTypes.object.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
+  filterBookByCategory: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Profile);
+export default connect(mapStateToProps, {
+  getCurrentProfile,
+  filterBookByCategory,
+})(Profile);

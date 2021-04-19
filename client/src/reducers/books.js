@@ -2,6 +2,7 @@ const initialState = {
     books: null,
     bookIndex: 0,
     loading: false,
+    filteredBooksCategory: null,
 }
 
 export default function(state = initialState, action) {
@@ -23,6 +24,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 bookIndex: payload,
+            }
+        case "FILTERED_BOOK_BY_CATEGORY":
+            return {
+                ...state,
+                filteredBooksCategory: payload,
             }
         default:
             return state

@@ -157,3 +157,11 @@ export const updateBook = ({
     }
   }
 };
+
+export const filterBookByCategory = ({category}) => async dispatch => {
+  dispatch({
+    type: "FILTERED_BOOK_BY_CATEGORY",
+    payload: category,
+  });
+
+}
