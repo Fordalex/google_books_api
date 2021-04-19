@@ -55,6 +55,10 @@ p,a,li,small,button,div,td {
     font-family: 'Maven Pro', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .m-0 {
     margin: 0 !important;
 }

@@ -129,7 +129,11 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     // destructure the request
-    const { noteInfo, noteType, pageNumber, note, bookId, title } = req.body;
+    var { noteInfo, noteType, pageNumber, note, bookId, title } = req.body;
+
+    if (!pageNumber) {
+      pageNumber = 0
+    }
 
     const newNote = {
       noteInfo,

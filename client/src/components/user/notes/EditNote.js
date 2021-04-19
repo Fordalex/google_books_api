@@ -21,8 +21,10 @@ const EditNote = ({
 
   useEffect(() => {
     const pageNumber = document.getElementsByName("pageNumber")[0];
-
     pageNumber.value = note.pageNumber;
+    if (note.noteType == 'book') {
+      pageNumber.classList.add('hidden')
+    }
   }, []);
 
   const onSubmit = async (e) => {
@@ -114,13 +116,11 @@ const EditNote = ({
                       )}
                     </div>
                     <div>
-                      {note.pageNumber && (
-                        <input
-                          name='pageNumber'
-                          type='number'
-                          placeholder='Page Number'
-                        />
-                      )}
+                      <input
+                        name='pageNumber'
+                        type='number'
+                        placeholder='Page Number'
+                      />
                     </div>
                     <hr />
                     <div class='justify-content-center'>

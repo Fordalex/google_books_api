@@ -51,10 +51,11 @@ const Login = ({ login, auth }) => {
                 />
               </div>
               <div className='justify-content-center'>
-                <button type='submit' className='btn-main w-100 mt-2'>
+                <button type='submit' className='btn-main w-100'>
                   Login
                 </button>
               </div>
+              <p class="mt-2 text-secondary">Not got an account? <a href="/signup">Sign Up</a></p>
             </form>
           </div>
         </div>

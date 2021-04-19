@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { saveNote } from "../../../actions/note";
 import PropTypes from "prop-types";
+import { setAlert } from "../../../actions/alert";
 
 const AddNote = ({
   profile: {
@@ -10,6 +11,7 @@ const AddNote = ({
     book: { id },
   },
   saveNote,
+  setAlert
 }) => {
   var book = books.filter((book) => (book._id == id ? book : null))[0];
 
@@ -23,19 +25,30 @@ const AddNote = ({
     var note = document.getElementsByName("note")[0].value;
     var title = document.getElementsByName("title")[0].value;
 
-    console.log(title);
-    const res = await saveNote({
-      title,
-      noteInfo,
-      noteType,
-      pageNumber,
-      note,
-      bookId: id,
-    });
-    console.log(res);
-    if (res) {
-      setFormSubmited(true);
+    // Form validation
+    if (pageNumber || noteType == 'book' && title && note) {
+      const res = await saveNote({
+        title,
+        noteInfo,
+        noteType,
+        pageNumber,
+        note,
+        bookId: id,
+      });
+      if (res) {
+        setFormSubmited(true);
+      } 
+    } else if (!title) {
+      setAlert('Please enter a title for your.', 'danger')
+    } else if (!pageNumber && noteType !== 'book') {
+      setAlert('Please enter a page number or change from page to book.', 'danger')
+    } else if (!note) {
+      setAlert('Please enter a note.', 'danger')
+    } else {
+      setAlert('Make sure all fields are filled in.', 'danger')
     }
+    
+    
   };
 
   const pageHandler = (e) => {
@@ -131,10 +144,11 @@ const AddNote = ({
 AddNote.propTypes = {
   saveNote: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
+  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { saveNote })(AddNote);
+export default connect(mapStateToProps, { saveNote, setAlert })(AddNote);
