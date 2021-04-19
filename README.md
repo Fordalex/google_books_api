@@ -32,7 +32,7 @@ Book
 
 Notes
 
-    When a user clicks 'total notes' on profile page redirect user to a page that displays all notes.
+    n/a
 
 Uncompleted Books
 
@@ -46,6 +46,11 @@ Settings
 Home
 
     Allow users to change the slide by pressing the correct circle.
+
+Additional pages
+
+    When a user clicks 'total notes' on profile page redirect user to a page that displays all notes.
+    When a user clicks on a category on their profile they are reidrect to a page displaying only the book with the selcted genre.
 
 ### Responsive
 

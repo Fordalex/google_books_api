@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
-import {editNote} from '../../../actions/note';
+import { editNote } from "../../../actions/note";
 
 const BookData = ({
   profile: {
     profile: { books },
     book: { id },
   },
-  editNote
+  editNote,
 }) => {
   var book = books.filter((book) => (book._id == id ? book : null))[0];
 
@@ -24,7 +24,6 @@ const BookData = ({
       var avgPagesPerDay = 0;
     }
   }, []);
-
 
   return (
     <div>
@@ -42,15 +41,12 @@ const BookData = ({
       )}
       <div class='book-loading-container'>
         {book.finished ? (
-            <div
-            class='book-loading-bar'
-            style={{ width: `100%` }}
-          ></div>
-        ):(
+          <div class='book-loading-bar' style={{ width: `100%` }}></div>
+        ) : (
           <div
-          class='book-loading-bar'
-          style={{ width: `${100 / (book.totalPages / book.currentPage)}%` }}
-        ></div>
+            class='book-loading-bar'
+            style={{ width: `${100 / (book.totalPages / book.currentPage)}%` }}
+          ></div>
         )}
       </div>
       <div class='book-all-info-container'>
@@ -93,7 +89,7 @@ const BookData = ({
             <b>Time Taken:</b>
             <span>
               <Moment
-                id="timeTaken"
+                id='timeTaken'
                 duration={book.startDate}
                 date={book.finishedDate}
                 format='D'
@@ -118,6 +114,14 @@ const BookData = ({
               / 5
             </span>
           </p>
+          {book.categories && (
+            <p class='justify-content-between'>
+              <b>Categories</b>
+              {book.categories.map((cat) => (
+                <span>{cat}</span>
+              ))}
+            </p>
+          )}
         </div>
         <hr />
         <div class='justify-content-center'>
@@ -139,22 +143,26 @@ const BookData = ({
             <h2>Notes</h2>
             {book.notes.map((note) => (
               <div class='note-container'>
-                <Link to="edit-note"  class='note-edit-button' onClick={() => editNote({noteId:note._id})}>
+                <Link
+                  to='edit-note'
+                  class='note-edit-button'
+                  onClick={() => editNote({ noteId: note._id })}
+                >
                   <img src='https://img.icons8.com/fluent/28/000000/edit.png' />
                 </Link>
                 <h3>{note.title}</h3>
                 <hr />
                 <small class='justify-content-between mb-05'>
-                    <b>Note Type:</b>
-                    {note.noteInfo}
-                  </small>
-                
-                {note.noteType == 'page' ? (
+                  <b>Note Type:</b>
+                  {note.noteInfo}
+                </small>
+
+                {note.noteType == "page" ? (
                   <small class='justify-content-between'>
                     <b>Page Number:</b>
                     {note.pageNumber}
                   </small>
-                ):(
+                ) : (
                   <small class='justify-content-between '>
                     <b>About The Book</b>
                   </small>
@@ -181,4 +189,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, {editNote})(BookData);
+export default connect(mapStateToProps, { editNote })(BookData);

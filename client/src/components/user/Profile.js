@@ -57,7 +57,6 @@ const Profile = ({
   categories.forEach((cat) => {
     allCategories[cat] = (allCategories[cat] || 0) + 1;
   });
-  console.log(allCategories)
   var categoryLabels = Object.entries(allCategories).map((key) => key[0]);
   var categoryData = Object.entries(allCategories).map((key) => key[1]);
   var categoryDataColours = [];
