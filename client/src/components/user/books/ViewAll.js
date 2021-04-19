@@ -32,8 +32,18 @@ const Books = ({ profile: { profile: { user, books }, loading } }) => {
 
    // Filter the books the user has and hasn't read.
    try {
-    var reading = books.filter((book) => !book.finished ? book : null)
-    var read = books.filter((book) => book.finished ? book : null)
+    // Filter the books the user is reading
+    var reading = books.filter((book) =>
+      book.readingStatus == "reading" ? book : null
+    );
+    // filter the books the user has read
+    var read = books.filter((book) =>
+      book.readingStatus == "read" ? book : null
+    );
+    // filter the books that the users hasn't completed
+    var uncompleted = books.filter((book) =>
+      book.readingStatus == "uncompleted" ? book : null
+    );
   } catch(err) {
     return null
   }
@@ -77,6 +87,18 @@ const Books = ({ profile: { profile: { user, books }, loading } }) => {
               ))
             )}
             <p class="m-1">Results: {read.length}</p>
+            <hr/>
+            <h2 class="p-2 m-0">Uncompleted</h2>
+            {view == 'medium' ? (
+              uncompleted.map((book, index) => (
+                <BookMedium book={book} key={index} index={index}/>
+              ))
+            ): (
+              uncompleted.map((book, index) => (
+                <BookSmall book={book} key={index} index={index}/>
+              ))
+            )}
+            <p class="m-1">Results: {uncompleted.length}</p>
         </Fragment>
   );
 };

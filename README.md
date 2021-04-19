@@ -32,7 +32,7 @@ Book
 
 Notes
 
-    Add alerts when inputs aren't filled in on creation.
+    When a user clicks 'total notes' on profile page redirect user to a page that displays all notes.
 
 Uncompleted Books
 
