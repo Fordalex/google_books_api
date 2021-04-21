@@ -76,7 +76,6 @@ const EditNote = ({
                   src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
                 />
               </Link>
-
               <div>
                 <h3 class='text-center p-1 m-0'>{book.title}</h3>
                 <p class='text-secondary text-center mt-0'>
