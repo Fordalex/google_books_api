@@ -13,6 +13,12 @@ View project on http://localhost:3000/
 The reloaded page needs to redirect the user to the correct page.
 The alerts on desktop are annoying.
 
+### Refector
+
+User/Books
+
+    ViewAll and ViewBooksByCategory could probably be the same page.
+
 ### Features left to implement
 
 User
@@ -32,7 +38,7 @@ Book
 
 Notes
 
-    n/a
+    View all notes page needs to show the book title.
 
 Uncompleted Books
 

@@ -15,6 +15,7 @@ import ViewBooksByCategory from "./components/user/books/ViewBooksByCategory";
 import EditBookData from "./components/user/books/EditBookData";
 import AddNote from "./components/user/notes/AddNote";
 import EditNote from "./components/user/notes/EditNote";
+import AllNotes from "./components/user/notes/AllNotes";
 import Settings from "./components/settings/Settings";
 import PrivateRoute from './components/routing/PrivateRoute';
 // css
@@ -54,6 +55,7 @@ function App() {
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
               <PrivateRoute exact path='/profile' component={Profile} />
+              <PrivateRoute exact path='/all-notes' component={AllNotes} />
               <PrivateRoute exact path='/view-all' component={ViewAll} />
               <PrivateRoute exact path='/book-data' component={BookData} />
               <PrivateRoute exact path='/view-books-by-category' component={ViewBooksByCategory} />

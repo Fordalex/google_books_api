@@ -7,7 +7,7 @@ import anime from "animejs/lib/anime.es.js";
 
 const ViewBooksByCategory = ({ profile: { profile: { user, books }, loading }, books: {filteredBooksCategory} }) => {
 
-  const [view, setView] = useState('medium');
+  const [view, setView] = useState('small');
 
   useEffect(() => {
     anime({
@@ -50,8 +50,8 @@ const ViewBooksByCategory = ({ profile: { profile: { user, books }, loading }, b
           <div class="p-1 form-group">
           <p>View Size</p>
           <select class="input-style" onChange={(e) => bookSizeHandler(e)}>
-            <option value="medium">Medium</option>
             <option value="small">Small</option>
+            <option value="medium">Medium</option>
           </select>
           </div>
          

@@ -54,16 +54,13 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
 
   return (
     <div>
-      
       <div>
-      
         <img
           onClick={backHandler}
           class='info-back-button clickable'
           src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
         />
       </div>
-
       {imgLink ? (
         <img class='book-info-img' src={imgLink} />
       ) : (

@@ -181,12 +181,12 @@ const Profile = ({
                   </div>
                 </div>
                 <div class='profile-stats-container mb-2'>
-                  <div>
+                  <Link to="all-notes" class="text-secondary">
                     <p class='m-0 text-center text-main'>
                       <b>{totalNotesTaken}</b>
                     </p>
                     <p class='label'>Total Notes</p>
-                  </div>
+                  </Link>
                   <div>
                     <p class='m-0 text-center text-main'>
                       <b>{totalPagesRead}</b>
