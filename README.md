@@ -35,6 +35,7 @@ Book
     Don't allow a user to put in conflicting dates when adding a book.
     Adding book forms really buggy.
     Don't allow the user to add a current page greater than the total pages.
+    Add a button to allow the user to leave a review on a read book.
 
 Notes
 
@@ -94,7 +95,7 @@ Profile
 
     Desktop book view.
 
-##### Futrue upgrads
+##### Futrue upgrades
 
 Icons on the rating from 0 - 5
 
