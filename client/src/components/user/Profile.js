@@ -238,10 +238,16 @@ const Profile = ({
                       );
                     })}
                   </table>
+                </div>    
+                <hr class="mt-2"/>
+                 <div class='justify-content-center px-2 py-1'>
+                  <Link to='all-notes' class='btn-main w-100 text-center'>
+                    View All Notes
+                  </Link>
                 </div>
               </div>
             </div>
-
+              
             <div class='profile-books-container'>
               <nav class='profile-nav'>
                 <ul>
