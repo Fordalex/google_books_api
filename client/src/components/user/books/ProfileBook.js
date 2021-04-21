@@ -36,17 +36,17 @@ const ProfileBook = ({book, addBookId}) => {
                  <p class='justify-content-between'>
                    <b>Total Pages:</b> {book.totalPages}
                  </p>
-                 <p class='justify-content-between'>
+                 {/* <p class='justify-content-between'>
                    <b>Time Taken:</b>{" "}
                    <span>
                      <Moment
                        from={book.startDate}
                        to={book.finishedDate}
-                       format='D'
+                       format='hh:mm:ss'
                      ></Moment>{" "}
                      Days
                    </span>
-                 </p>
+                 </p> */}
                  <p class='justify-content-between'>
                    <b>Your Rating:</b> {book.rating} / 5
                  </p>
@@ -81,6 +81,9 @@ const ProfileBook = ({book, addBookId}) => {
               </p>
               <p class='justify-content-between'>
                 <b>Current Page:</b> {book.currentPage}
+              </p>
+              <p class='justify-content-between'>
+                <b>Remaining Pages:</b> {book.totalPages - book.currentPage}
               </p>
               <div class='book-loading-container'>
                 <div

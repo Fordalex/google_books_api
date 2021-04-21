@@ -67,16 +67,18 @@ const BookData = ({
             <b>Started:</b>
             <Moment format='DD MMM YYYY'>{book.startDate}</Moment>
           </p>
-          <p class='justify-content-between'>
-            <b>Finished:</b>
-            {book.finishedDate ? (
-              <Moment format='DD MMM YYYY'>{book.finishedDate}</Moment>
-            ) : (
-              <small class='text-secondary'>
-                Press edit when you've finished
-              </small>
-            )}
-          </p>
+          {book.readingStatus !== 'reading' && (
+              <p class='justify-content-between'>
+              <b>Finished:</b>
+              {book.finishedDate ? (
+                <Moment format='DD MMM YYYY'>{book.finishedDate}</Moment>
+              ) : (
+                <small class='text-secondary'>
+                  Press edit when you've finished
+                </small>
+              )}
+            </p>
+          )}
           <p class='justify-content-between'>
             <b>Total Pages:</b> {book.totalPages}
           </p>
