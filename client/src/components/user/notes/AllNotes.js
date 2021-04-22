@@ -38,7 +38,7 @@ const AllNotes = ({
             to='book-data'
             onClick={() => bookIdHandler(book)}
           >
-              <h2 >{book.title}</h2>
+              <h2 class="justify-content-between align-items-center">{book.title}  <img src={book.img} class="mini-book"/></h2>
               {book.notes.map((note) => {
                 return <Note note={note} />
               })}
