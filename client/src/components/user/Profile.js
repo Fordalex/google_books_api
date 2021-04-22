@@ -212,6 +212,7 @@ const Profile = ({
                 </div>
                 {books.length > 0 && (
                   <Fragment>
+                    <hr/>
                     <div class='px-2'>
                       <Pie
                         data={{

@@ -41,7 +41,7 @@ const BookData = ({
         <p class='book-info-img'>No Image</p>
       )}
       <div class='book-loading-container'>
-        {book.finished ? (
+        {book.readingStatus == 'read' ? (
           <div class='book-loading-bar' style={{ width: `100%` }}></div>
         ) : (
           <div
@@ -80,20 +80,7 @@ const BookData = ({
               )}
             </p>
           )}
-          <p class='justify-content-between'>
-            <b>Total Pages:</b> {book.totalPages}
-          </p>
-          {book.readingStatus !== 'read' && (
-            <p class='justify-content-between'>
-              <b>Current Page:</b> {book.currentPage}
-            </p>
-          )}
-          {book.readingStatus !== 'read' && (
-            <p class='justify-content-between'>
-              <b>Remaining Pages:</b> {book.totalPages - book.currentPage}
-            </p>
-          )}
-          {book.readingStatus !== 'reading' && (
+           {book.readingStatus !== 'reading' && (
           <p class='justify-content-between'>
             <b>Time Taken:</b>
             <span>
@@ -107,6 +94,20 @@ const BookData = ({
             </span>
           </p>
           )}
+          <p class='justify-content-between'>
+            <b>Total Pages:</b> {book.totalPages}
+          </p>
+          {book.readingStatus !== 'read' && (
+            <p class='justify-content-between'>
+              <b>Current Page:</b> {book.currentPage}
+            </p>
+          )}
+          {book.readingStatus !== 'read' && (
+            <p class='justify-content-between'>
+              <b>Remaining Pages:</b> {book.totalPages - book.currentPage}
+            </p>
+          )}
+         
           {book.finished && (
             <p class='justify-content-between'>
               <b>Avg Pages Per Day:</b>

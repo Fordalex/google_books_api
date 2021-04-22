@@ -45,7 +45,7 @@ const Login = ({ login, auth }) => {
                   placeholder='Password'
                   name='password'
                   minLength='6'
-                  className="input-style"
+                  className="input-style mb-2"
                   value={password}
                   onChange={(e) => onChange(e)}
                 />

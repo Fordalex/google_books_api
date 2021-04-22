@@ -1,9 +1,4 @@
 
-
-.form-group input:last-child {
-    margin: 0;
-}
-
 .form-group input, .form-group input:-webkit-autofill,
 .form-group input:-webkit-autofill:hover, 
 .form-group input:-webkit-autofill:focus {
