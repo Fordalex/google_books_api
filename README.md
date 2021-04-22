@@ -1,5 +1,7 @@
 # Noteworthy
 
+View the live project [here](https://note-worthy-app.herokuapp.com)
+
 # Basics
 
 Run project:

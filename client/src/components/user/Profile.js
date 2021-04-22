@@ -202,11 +202,14 @@ const Profile = ({
                 </div>
                 <hr />
                 <div class='justify-content-center px-2 py-1'>
-                  <Link to='book-search' class='btn-main w-100 text-center'>
+                  <Link to='all-notes' class='btn-secondary w-100 text-center'>
+                    View All Notes
+                  </Link>
+                  <Link to='book-search' class='btn-main w-100 ml-1 text-center'>
                     Add Book
                   </Link>
+             
                 </div>
-                <hr />
                 {books.length > 0 && (
                   <Fragment>
                     <div class='px-2'>
@@ -249,18 +252,10 @@ const Profile = ({
                         })}
                       </table>
                     </div>
-                    <hr class='mt-2' />
                   </Fragment>
                 )}
-
-                <div class='justify-content-center px-2 py-1'>
-                  <Link to='all-notes' class='btn-main w-100 text-center'>
-                    View All Notes
-                  </Link>
-                </div>
               </div>
             </div>
-
             <div class='profile-books-container'>
               <nav class='profile-nav'>
                 <ul>

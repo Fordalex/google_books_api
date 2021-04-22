@@ -83,11 +83,17 @@ const BookData = ({
           <p class='justify-content-between'>
             <b>Total Pages:</b> {book.totalPages}
           </p>
-          {book.currentPage && (
+          {book.readingStatus !== 'read' && (
             <p class='justify-content-between'>
               <b>Current Page:</b> {book.currentPage}
             </p>
           )}
+          {book.readingStatus !== 'read' && (
+            <p class='justify-content-between'>
+              <b>Remaining Pages:</b> {book.totalPages - book.currentPage}
+            </p>
+          )}
+          {book.readingStatus !== 'reading' && (
           <p class='justify-content-between'>
             <b>Time Taken:</b>
             <span>
@@ -100,12 +106,14 @@ const BookData = ({
               Days
             </span>
           </p>
+          )}
           {book.finished && (
             <p class='justify-content-between'>
               <b>Avg Pages Per Day:</b>
               <span id='avgPagesPerDay'></span>
             </p>
           )}
+           {book.readingStatus !== 'reading' && (
           <p class='justify-content-between'>
             <b>Your Rating:</b>
             <span>
@@ -117,6 +125,7 @@ const BookData = ({
               / 5
             </span>
           </p>
+           )}
           {book.categories && (
             <p class='justify-content-between'>
               <b>Categories</b>

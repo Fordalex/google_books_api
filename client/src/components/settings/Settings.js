@@ -3,7 +3,7 @@ import React from 'react'
 const Settings = () => {
     return (
         <div>
-           Settings
+           <button class="">Remove Account</button>
         </div>
     )
 }
