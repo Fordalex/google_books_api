@@ -7,11 +7,9 @@ import PropTypes from "prop-types";
 
 export const Note = ({note,editNote}) => {
 
-  var pathName = window.location.pathname
-
   return (
     <div class='note-container'>
-      {pathName !== "/all-notes" && (
+
               <Link
               to='edit-note'
               class='note-edit-button'
@@ -19,7 +17,7 @@ export const Note = ({note,editNote}) => {
             >
               <img src='https://img.icons8.com/fluent/28/000000/edit.png' />
             </Link>
-      )}
+      
       <h3>{note.title}</h3>
       <hr />
       <small class='justify-content-between mb-05'>
@@ -27,14 +25,10 @@ export const Note = ({note,editNote}) => {
         {note.noteInfo}
       </small>
 
-      {note.noteType == "page" ? (
+      {note.noteType == "page" && (
         <small class='justify-content-between'>
           <b>Page Number:</b>
           {note.pageNumber}
-        </small>
-      ) : (
-        <small class='justify-content-between '>
-          <b>About The Book</b>
         </small>
       )}
       <p class='note-wrapper'>{note.note}</p>
