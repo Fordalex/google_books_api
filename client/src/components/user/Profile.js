@@ -181,7 +181,7 @@ const Profile = ({
                   </div>
                 </div>
                 <div class='profile-stats-container mb-2'>
-                  <Link to="all-notes" class="text-secondary">
+                  <Link to='all-notes' class='text-secondary'>
                     <p class='m-0 text-center text-main'>
                       <b>{totalNotesTaken}</b>
                     </p>
@@ -207,47 +207,60 @@ const Profile = ({
                   </Link>
                 </div>
                 <hr />
-
-                <div class='px-2'>
-                  <Pie
-                    data={{
-                      labels: categoryLabels,
-                      datasets: [
-                        {
-                          label: "# of Votes",
-                          data: categoryData,
-                          backgroundColor: categoryDataColours,
-                          borderWidth: 0.5,
-                        },
-                      ],
-                    }}
-                    height={400}
-                    width={400}
-                  />
-                  <table class='genres-table'>
-                    <tr>
-                      <th>Genre</th>
-                      <th>Count</th>
-                    </tr>
-                    {Object.entries(allCategories).map((key) => {
-                      return (
+                {books.length > 0 && (
+                  <Fragment>
+                    <div class='px-2'>
+                      <Pie
+                        data={{
+                          labels: categoryLabels,
+                          datasets: [
+                            {
+                              label: "# of Votes",
+                              data: categoryData,
+                              backgroundColor: categoryDataColours,
+                              borderWidth: 0.5,
+                            },
+                          ],
+                        }}
+                        height={400}
+                        width={400}
+                      />
+                      <table class='genres-table'>
                         <tr>
-                          <td><Link to="view-books-by-category" onClick={() => filterBookByCategory({category: key[0]})}>{key[0]}</Link></td>
-                          <td class='text-center'>{key[1]}</td>
+                          <th>Genre</th>
+                          <th>Count</th>
                         </tr>
-                      );
-                    })}
-                  </table>
-                </div>    
-                <hr class="mt-2"/>
-                 <div class='justify-content-center px-2 py-1'>
+                        {Object.entries(allCategories).map((key) => {
+                          return (
+                            <tr>
+                              <td>
+                                <Link
+                                  to='view-books-by-category'
+                                  onClick={() =>
+                                    filterBookByCategory({ category: key[0] })
+                                  }
+                                >
+                                  {key[0]}
+                                </Link>
+                              </td>
+                              <td class='text-center'>{key[1]}</td>
+                            </tr>
+                          );
+                        })}
+                      </table>
+                    </div>
+                    <hr class='mt-2' />
+                  </Fragment>
+                )}
+
+                <div class='justify-content-center px-2 py-1'>
                   <Link to='all-notes' class='btn-main w-100 text-center'>
                     View All Notes
                   </Link>
                 </div>
               </div>
             </div>
-              
+
             <div class='profile-books-container'>
               <nav class='profile-nav'>
                 <ul>

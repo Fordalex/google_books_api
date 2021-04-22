@@ -32,6 +32,7 @@ const AllNotes = ({
         <p>Loading...</p>
       ) : (
         <div class="p-2">
+          {booksWithNotes.length < 1 && <p class="text-secondary">You haven't added any notes yet!</p>}
           {booksWithNotes.map((book) => {
             return <div
             class="text-dark"
