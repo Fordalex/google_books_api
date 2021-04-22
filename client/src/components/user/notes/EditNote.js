@@ -21,7 +21,11 @@ const EditNote = ({
 
   useEffect(() => {
     const pageNumber = document.getElementsByName("pageNumber")[0];
+    const noteTitle = document.getElementsByName('title')[0];
+
     pageNumber.value = note.pageNumber;
+    noteTitle.value = note.title;
+
     if (note.noteType == 'book') {
       pageNumber.classList.add('hidden')
     }
@@ -33,6 +37,7 @@ const EditNote = ({
     var noteType = document.getElementsByName("noteType")[0].value;
     var pageNumber = document.getElementsByName("pageNumber")[0].value;
     var note = document.getElementsByName("note")[0].value;
+    var title = document.getElementsByName('title')[0].value;
 
     const res = await updateNote({
       noteInfo,
@@ -40,6 +45,7 @@ const EditNote = ({
       pageNumber,
       note,
       noteId,
+      title,
       bookId: id,
     });
     if (res) {
@@ -81,6 +87,15 @@ const EditNote = ({
                 <p class='text-secondary text-center mt-0'>
                   Edit your note below.
                 </p>
+                <hr />
+                <div class='justify-content-center py-1'>
+                  <input
+                    name='title'
+                    class='input-style'
+                    type='text'
+                    placeholder='Note title'
+                  />
+                </div>
                 <hr />
                 <form className='form mt-2' onSubmit={(e) => onSubmit(e)}>
                   <div className='form-group'>

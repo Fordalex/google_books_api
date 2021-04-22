@@ -59,7 +59,7 @@ export const deleteNote = ({ noteId, bookId }) => async (dispatch) => {
   }
 };
 
-export const updateNote = ({ noteInfo, noteType, pageNumber, note, bookId, noteId }) => async (dispatch) => {
+export const updateNote = ({ noteInfo, noteType, pageNumber, title, note, bookId, noteId }) => async (dispatch) => {
   try {
     const config = {
       header: {
@@ -67,7 +67,7 @@ export const updateNote = ({ noteInfo, noteType, pageNumber, note, bookId, noteI
       },
     };
 
-    const body = { noteInfo, noteType, pageNumber, note, bookId };
+    const body = { noteInfo, noteType, pageNumber, title, note, bookId };
     const res = await axios.put(`api/books/update-note/${noteId}`, body, config);
     dispatch(getCurrentProfile())
     dispatch(setAlert("Note Updated", "success"))

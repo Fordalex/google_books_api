@@ -213,7 +213,7 @@ router.put(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { noteInfo, noteType, pageNumber, note, bookId } = req.body;
+    const { noteInfo, noteType, pageNumber,title, note, bookId } = req.body;
 
     try {
       let book = await Book.findOneAndUpdate({ _id: bookId }, { new: true });
@@ -227,6 +227,7 @@ router.put(
       book.notes[updateIndex].noteInfo = noteInfo;
       book.notes[updateIndex].noteType = noteType;
       book.notes[updateIndex].pageNumber = pageNumber;
+      book.notes[updateIndex].title = title;
 
       await book.save();
 
