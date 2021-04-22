@@ -112,6 +112,25 @@ export const login = ({ email, password }) => async (dispatch) => {
   }
 };
 
+// Remove user
+export const removeAccount = ({id}) => async (dispatch) => {
+  if (window.confirm("Are you sure? This can't be undone!")) {
+    try {
+
+      const res = await axios.delete(`/api/auth/remove/${id}`);
+  
+      dispatch(setAlert("Account Removed!", "success"));
+  
+    } catch (err) {
+        const errors = err.response.data.errors;
+    
+        if (errors) {
+          errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+        }
+      }
+  }
+}
+
 // Logout / Clear Profile
 export const logout = () => (dispatch) => {
   dispatch({ type: "CLEAR_PROFILE" });
