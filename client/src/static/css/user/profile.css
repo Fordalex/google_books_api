@@ -1,4 +1,4 @@
-.profile-page-container {
+.page-container {
     display: block;
 }
 
@@ -194,7 +194,7 @@
     .mobile-book-title-container {
         display: none;
     }
-    .profile-page-container {
+    .page-container {
         display: flex;
         justify-content: center;
     }

@@ -148,7 +148,7 @@ const Profile = ({
         <p>Loading...</p>
       ) : (
         <Fragment>
-          <div class='profile-page-container'>
+          <div class='page-container'>
             <div class='profile-info-container'>
               <div class='profile-container'>
                 <div class='profile-wrapper'>

@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { editNote } from "../../../actions/note";
-import Note from '../notes/Note';
+import Note from "../notes/Note";
 
 const BookData = ({
   profile: {
     profile: { books },
     book: { id },
   },
-  editNote
+  editNote,
 }) => {
   var book = books.filter((book) => (book._id == id ? book : null))[0];
 
@@ -27,29 +27,34 @@ const BookData = ({
   }, []);
 
   return (
-    <div>
-      <Link to='profile'>
-        <img
-          class='info-back-button'
-          src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
-        />
-      </Link>
+    <div class="page-container">
+      <div class='book-data-book-container'>
+        <Link to='profile'>
+          <img
+            class='info-back-button'
+            src='https://img.icons8.com/ios/35/000000/circled-left-2.png'
+          />
+        </Link>
 
-      {book.img ? (
-        <img class='book-info-img' src={book.img} />
-      ) : (
-        <p class='book-info-img'>No Image</p>
-      )}
-      <div class='book-loading-container'>
-        {book.readingStatus == 'read' ? (
-          <div class='book-loading-bar' style={{ width: `100%` }}></div>
+        {book.img ? (
+          <img class='book-info-img' src={book.img} />
         ) : (
-          <div
-            class='book-loading-bar'
-            style={{ width: `${100 / (book.totalPages / book.currentPage)}%` }}
-          ></div>
+          <p class='book-info-img'>No Image</p>
         )}
+        <div class='book-loading-container'>
+          {book.readingStatus == "read" ? (
+            <div class='book-loading-bar' style={{ width: `100%` }}></div>
+          ) : (
+            <div
+              class='book-loading-bar'
+              style={{
+                width: `${100 / (book.totalPages / book.currentPage)}%`,
+              }}
+            ></div>
+          )}
+        </div>
       </div>
+
       <div class='book-all-info-container'>
         <div class='book-all-title-container'>
           <div>
@@ -68,8 +73,8 @@ const BookData = ({
             <b>Started:</b>
             <Moment format='DD MMM YYYY'>{book.startDate}</Moment>
           </p>
-          {book.readingStatus !== 'reading' && (
-              <p class='justify-content-between'>
+          {book.readingStatus !== "reading" && (
+            <p class='justify-content-between'>
               <b>Finished:</b>
               {book.finishedDate ? (
                 <Moment format='DD MMM YYYY'>{book.finishedDate}</Moment>
@@ -80,53 +85,55 @@ const BookData = ({
               )}
             </p>
           )}
-           {book.readingStatus !== 'reading' && (
-          <p class='justify-content-between'>
-            <b>Time Taken:</b>
-            <span>
-              <Moment
-                id='timeTaken'
-                duration={book.startDate}
-                date={book.finishedDate}
-                format='D'
-              ></Moment>{" "}
-              Days
-            </span>
-          </p>
+          {book.readingStatus !== "reading" && (
+            <p class='justify-content-between'>
+              <b>Time Taken:</b>
+              <span>
+                <Moment
+                  id='timeTaken'
+                  duration={book.startDate}
+                  date={book.finishedDate}
+                  format='D'
+                ></Moment>{" "}
+                Days
+              </span>
+            </p>
           )}
           <p class='justify-content-between'>
             <b>Total Pages:</b> {book.totalPages}
           </p>
-          {book.readingStatus !== 'read' && (
+          {book.readingStatus !== "read" && (
             <p class='justify-content-between'>
               <b>Current Page:</b> {book.currentPage}
             </p>
           )}
-          {book.readingStatus !== 'read' && (
+          {book.readingStatus !== "read" && (
             <p class='justify-content-between'>
               <b>Remaining Pages:</b> {book.totalPages - book.currentPage}
             </p>
           )}
-         
+
           {book.finished && (
             <p class='justify-content-between'>
               <b>Avg Pages Per Day:</b>
               <span id='avgPagesPerDay'></span>
             </p>
           )}
-           {book.readingStatus !== 'reading' && (
-          <p class='justify-content-between'>
-            <b>Your Rating:</b>
-            <span>
-              {book.rating ? (
-                book.rating
-              ) : (
-                <small class='text-secondary'>Press edit to add rating </small>
-              )}
-              / 5
-            </span>
-          </p>
-           )}
+          {book.readingStatus !== "reading" && (
+            <p class='justify-content-between'>
+              <b>Your Rating:</b>
+              <span>
+                {book.rating ? (
+                  book.rating
+                ) : (
+                  <small class='text-secondary'>
+                    Press edit to add rating{" "}
+                  </small>
+                )}
+                / 5
+              </span>
+            </p>
+          )}
           {book.categories && (
             <p class='justify-content-between'>
               <b>Categories</b>
@@ -155,7 +162,7 @@ const BookData = ({
           <Fragment>
             <h2>Notes</h2>
             {book.notes.map((note) => (
-              <Note note={note}/>
+              <Note note={note} />
             ))}
           </Fragment>
         )}

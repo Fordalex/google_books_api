@@ -54,3 +54,53 @@
     align-items: center;
     padding: 5px;
 }
+
+.book-info-img {
+    width: 50vw;
+    max-width: 150px;
+    display: block;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.book-data-book-container {
+    
+}
+
+.book-all-info-container {
+    background-color: white;
+    padding: 15px;
+    padding-bottom: 90px;
+}
+
+.book-all-info-container {
+    
+}
+
+.book-all-info-container .add-book {
+    position: fixed;
+    top: 77px;
+    right: 0;
+    left: 0;
+    padding: 18px;
+    border:none;
+    background-color: var(--mainColour);
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px 15px rgba(0,0,0,0.03);
+    color: white;
+    font-size: 1.2em;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* desktop view */
+@media screen and (min-width: 780px) {
+    .book-data-book-container {
+        width: 40%;
+    }
+    
+    .book-all-info-container {
+        width: 60%;
+    }
+}
