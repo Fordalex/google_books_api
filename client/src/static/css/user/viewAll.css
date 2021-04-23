@@ -1,6 +1,7 @@
 
 .small-book-img-container {
     display: inline-block;
+    position: relative;
 }
 
 .small-book-img-container .book-img {
@@ -14,4 +15,18 @@
 .mini-book {
     width: 30px;
     border-radius: 4px;
+}
+
+.small-book-rating-container {
+    width: 80px;
+    margin: 4px;
+    position: absolute;
+    bottom: 2px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 0 0 10px 10px;
+}
+
+.small-book-rating-container img {
+    margin-left: 1.4px;
 }

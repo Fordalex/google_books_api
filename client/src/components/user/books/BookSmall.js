@@ -27,6 +27,11 @@ const BookSmall = ({ book, index, addBookId }) => {
     addBookId({id: b._id})
   }
 
+  var rating = [];
+  for (let i = 0; i < book.rating; i++) {
+    rating.push('');
+  }
+
   return (
     <Link to="book-data" class='small-book-img-container' onClick={() => bookIdHandler(book)}>
         {imgLink ? (
@@ -34,6 +39,15 @@ const BookSmall = ({ book, index, addBookId }) => {
         ) : (
           <p class='book-img'>No Image</p>
         )}
+        <div class="small-book-rating-container">
+          {
+          book.readingStatus == 'read' && (
+            rating.map((r) => {
+              return <img src="https://img.icons8.com/fluent/14/000000/star.png"/>
+            })
+          )
+          }
+        </div>
       </Link>
   );
 };
