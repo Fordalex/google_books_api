@@ -91,7 +91,6 @@ export const login = ({ email, password }) => async (dispatch) => {
     const res = await axios.post("/api/auth/login", body, config);
 
     dispatch(setAlert("Login Successful", "success"));
-    console.log(res.data);
 
     dispatch({
       type: "LOGIN_SUCCESS",

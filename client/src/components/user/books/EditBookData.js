@@ -82,7 +82,6 @@ const EditBookData = ({
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("working");
     var currentPage = document.getElementsByName('currentPage')[0].value;
     var uncompletedReason = document.getElementsByName('uncompletedReason')[0].value;
     var readingStatus = document.getElementsByName("readingStatus")[0].value;

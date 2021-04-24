@@ -161,7 +161,6 @@ router.post(
 // @access       Private
 router.delete("/remove/:id", auth, async (req, res) => {
   try {
-    console.log('remove getting called')
     //   Get the current user.
     let user = await User.findOne({ _id: req.params.id });
      // Get all the users books.
@@ -169,12 +168,9 @@ router.delete("/remove/:id", auth, async (req, res) => {
         user: req.params.id,
     })
 
-    console.log(user, usersBooks)
 
     await user.remove();
     await usersBooks.remove();
-
-    console.log(user, usersBooks)
 
     return res.json({ msg: "Account removed." });
   } catch (err) {

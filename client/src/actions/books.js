@@ -143,7 +143,6 @@ export const updateBook = ({
     startDate,
     rating
   };
-  console.log(body)
 
   try {
     const res = await axios.put(`api/books/update/${id}`, body, config);
