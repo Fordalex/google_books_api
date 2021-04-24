@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import BookMedium from "./BookMedium";
 import BookSmall from "./BookSmall";
 import { connect } from "react-redux";
+import { useParams } from 'react-router-dom';
 import PropTypes from "prop-types";
 import anime from "animejs/lib/anime.es.js";
 
@@ -11,9 +12,10 @@ const Books = ({
     loading,
   },
 }) => {
+  var {paramCategory} = useParams();
   const [view, setView] = useState("small");
-  const [filterCategory, setFilterCategory] = useState("Science");
-  const [filterReadingStatus, setFilterReadingStatus] = useState("all");
+  const [filterCategory, setFilterCategory] = useState(paramCategory);
+  
 
   useEffect(() => {
     anime({
@@ -34,6 +36,8 @@ const Books = ({
       opacity: 1,
       delay: anime.stagger(100, { easing: "easeOutQuad" }),
     });
+    var cat = document.getElementsByName(filterCategory)[0];
+    cat.setAttribute("selected", "")
   }, []);
 
   try {
@@ -105,7 +109,7 @@ const Books = ({
         <select class='input-style' onChange={(e) => filterCategoryHandler(e)}>
           <option value="all">All</option>
           {Object.entries(allCategories).map((cat) => {
-            return <option value={cat[0]}>{cat[0]} - {cat[1]}</option>
+            return <option value={cat[0]} name={cat[0]}>{cat[0]} - {cat[1]}</option>
           })}
         </select>
       </div>

@@ -13,7 +13,6 @@ import AddBookForm from "./components/search_books/AddBookForm";
 import Profile from "./components/user/Profile";
 import ViewAll from "./components/user/books/ViewAll";
 import BookData from "./components/user/books/BookData";
-import ViewBooksByCategory from "./components/user/books/ViewBooksByCategory";
 import EditBookData from "./components/user/books/EditBookData";
 import AddNote from "./components/user/notes/AddNote";
 import EditNote from "./components/user/notes/EditNote";
@@ -60,9 +59,8 @@ function App() {
               <Route exact path='/new-password/:token' component={NewPassword} />
               <PrivateRoute exact path='/profile' component={Profile} />
               <PrivateRoute exact path='/all-notes' component={AllNotes} />
-              <PrivateRoute exact path='/view-all' component={ViewAll} />
+              <PrivateRoute exact path='/view-all/:paramCategory' component={ViewAll} />
               <PrivateRoute exact path='/book-data' component={BookData} />
-              <PrivateRoute exact path='/view-books-by-category' component={ViewBooksByCategory} />
               <PrivateRoute exact path='/edit-book-data' component={EditBookData} />
               <PrivateRoute exact path='/add-note' component={AddNote} />
               <PrivateRoute exact path='/edit-note' component={EditNote} />

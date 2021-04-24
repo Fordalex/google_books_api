@@ -235,14 +235,12 @@ const Profile = ({
                           <th>Count</th>
                         </tr>
                         {Object.entries(allCategories).map((key) => {
+                          var link = `/view-all/${key[0]}`;
                           return (
                             <tr>
                               <td>
                                 <Link
-                                  to='view-books-by-category'
-                                  onClick={() =>
-                                    filterBookByCategory({ category: key[0] })
-                                  }
+                                  to={link}
                                 >
                                   {key[0]}
                                 </Link>
@@ -277,7 +275,7 @@ const Profile = ({
                     Uncompleted
                   </li>
                   <li class='float-right m-0'>
-                    <Link to='view-all' class='text-secondary'>
+                    <Link to='view-all/all' class='text-secondary'>
                       View All
                     </Link>
                   </li>
@@ -288,7 +286,7 @@ const Profile = ({
               <div class='mobile-book-title-container'>
                 <h3>Currently Reading</h3>
                 <p>
-                  <Link to='view-all' class='text-secondary'>
+                  <Link to='view-all/all' class='text-secondary'>
                     View All
                   </Link>
                 </p>
@@ -313,7 +311,7 @@ const Profile = ({
               <div class='mobile-book-title-container'>
                 <h3>Read</h3>
                 <p>
-                  <Link to='view-all' class='text-secondary'>
+                  <Link to='view-all/all' class='text-secondary'>
                     View All
                   </Link>
                 </p>

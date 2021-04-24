@@ -33,7 +33,7 @@ const BookSmall = ({ book, index, addBookId }) => {
   }
 
   return (
-    <Link to="book-data" class='small-book-img-container' onClick={() => bookIdHandler(book)}>
+    <Link to="/book-data" class='small-book-img-container' onClick={() => bookIdHandler(book)}>
         {imgLink ? (
           <img class='book-img' src={imgLink} />
         ) : (
