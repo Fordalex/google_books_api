@@ -26,6 +26,11 @@ const BookData = ({
     }
   }, []);
 
+  var rating = [];
+  for (let i = 0; i < book.rating; i++) {
+    rating.push('');
+  }
+
   return (
     <div class='page-container'>
       <div class='book-data-book-container'>
@@ -124,13 +129,14 @@ const BookData = ({
               <b>Your Rating:</b>
               <span>
                 {book.rating ? (
-                  book.rating
+                  rating.map((r) => {
+                    return <img src="https://img.icons8.com/fluent/18/000000/star.png"/>
+                  })
                 ) : (
                   <small class='text-secondary'>
                     Press edit to add rating{" "}
                   </small>
                 )}
-                / 5
               </span>
             </p>
           )}

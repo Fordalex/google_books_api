@@ -81,7 +81,7 @@
     margin-bottom: 20px;
 }
 
-.profile-book-container img {
+.profile-book-container .book-cover-img {
     width: 190px;
     height: 300px;
     border-radius: 13px 13px 0 0 ;

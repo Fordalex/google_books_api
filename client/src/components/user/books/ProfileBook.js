@@ -12,6 +12,11 @@ const ProfileBook = ({book, addBookId}) => {
         addBookId({ id: b._id });
       };
 
+      var rating = [];
+      for (let i = 0; i < book.rating; i++) {
+        rating.push('');
+      }
+
   return (
       <Fragment>
           {book.readingStatus == 'read' ? (
@@ -20,7 +25,7 @@ const ProfileBook = ({book, addBookId}) => {
                class='profile-book-container'
                onClick={() => bookIdHandler(book)}
              >
-               <img src={book.img} />
+               <img src={book.img} class="book-cover-img"/>
                <div class='profile-book-info-container'>
                  <p class='justify-content-between'>
                    <b>Notes:</b> {book.notes.length}
@@ -48,7 +53,11 @@ const ProfileBook = ({book, addBookId}) => {
                    </span>
                  </p> */}
                  <p class='justify-content-between'>
-                   <b>Your Rating:</b> {book.rating} / 5
+                   <b>Your Rating:</b> <div>{
+                     rating.map((r) => {
+                      return <img src="https://img.icons8.com/fluent/16/000000/star.png"/>
+                    })
+                   }</div>
                  </p>
                  <div class='book-loading-container'>
                 <div
@@ -66,7 +75,7 @@ const ProfileBook = ({book, addBookId}) => {
             class='profile-book-container'
             onClick={() => bookIdHandler(book)}
           >
-            <img src={book.img} />
+            <img src={book.img} class="book-cover-img"/>
             <div class='profile-book-info-container'>
               <p class='justify-content-between'>
                 <b>Notes:</b> {book.notes.length}
@@ -103,7 +112,7 @@ const ProfileBook = ({book, addBookId}) => {
             class='profile-book-container'
             onClick={() => bookIdHandler(book)}
           >
-            <img src={book.img} />
+            <img src={book.img} class="book-cover-img"/>
             <div class='profile-book-info-container'>
               <p class='justify-content-between'>
                 <b>Notes:</b> {book.notes.length}
