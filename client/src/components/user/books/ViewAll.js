@@ -15,7 +15,6 @@ const Books = ({
   var {paramCategory} = useParams();
   const [view, setView] = useState("small");
   const [filterCategory, setFilterCategory] = useState(paramCategory);
-  
 
   useEffect(() => {
     anime({
@@ -36,8 +35,13 @@ const Books = ({
       opacity: 1,
       delay: anime.stagger(100, { easing: "easeOutQuad" }),
     });
-    var cat = document.getElementsByName(filterCategory)[0];
-    cat.setAttribute("selected", "")
+    try {
+      var cat = document.getElementsByName(filterCategory)[0];
+      cat.setAttribute("selected", "")
+    } catch {
+      var cat = 'all'
+    }
+    
   }, []);
 
   try {

@@ -67,7 +67,7 @@ const NavBar = ({
         </Link>
         {!auth.isAuthenticated ? (
           <Link
-            to='login'
+            to='/login'
             class='btn-main'>
             Login
           </Link>
@@ -100,7 +100,7 @@ const NavBar = ({
                     src='https://img.icons8.com/fluent/30/000000/user-male-circle.png'
                     class='m-1'
                   />
-                  <Link to='profile' onClick={toggleNavHandler}>
+                  <Link to='/profile' onClick={toggleNavHandler}>
                     Profile
                   </Link>
                 </li>
@@ -109,7 +109,7 @@ const NavBar = ({
                     src='https://img.icons8.com/fluent/30/000000/search.png'
                     class='m-1'
                   />
-                  <Link to='book-search' onClick={toggleNavHandler}>
+                  <Link to='/book-search' onClick={toggleNavHandler}>
                     Search Books
                   </Link>
                 </li>
@@ -118,7 +118,7 @@ const NavBar = ({
                     src='https://img.icons8.com/fluent/30/000000/settings.png'
                     class='m-1'
                   />
-                  <Link to='settings' onClick={toggleNavHandler}>
+                  <Link to='/settings' onClick={toggleNavHandler}>
                     Settings
                   </Link>
                 </li>
@@ -144,17 +144,17 @@ const NavBar = ({
             </div>
             <ul class='desktop-nav-links'>
                 <li>
-                  <Link to='profile'>
+                  <Link to='/profile'>
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link to='book-search' >
+                  <Link to='/book-search' >
                     Search Books
                   </Link>
                 </li>
                 <li>
-                  <Link to='settings' >
+                  <Link to='/settings' >
                     Settings
                   </Link>
                 </li>
