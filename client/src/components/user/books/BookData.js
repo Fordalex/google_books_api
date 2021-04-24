@@ -27,7 +27,7 @@ const BookData = ({
   }, []);
 
   return (
-    <div class="page-container">
+    <div class='page-container'>
       <div class='book-data-book-container'>
         <Link to='profile'>
           <img
@@ -143,6 +143,12 @@ const BookData = ({
             </p>
           )}
         </div>
+        {book.readingStatus == "uncompleted" && (
+          <Fragment>
+            <h4 class="mb-05">The Reason for not finishing</h4>
+            <p class="mb-1">{book.uncompletedReason}</p>
+          </Fragment>
+        )}
         <hr />
         <div class='justify-content-center'>
           <Link to='add-note' class='btn-main w-100 text-center'>

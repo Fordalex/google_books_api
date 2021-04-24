@@ -106,7 +106,6 @@ const ProfileBook = ({book, addBookId}) => {
             <img src={book.img} />
             <div class='profile-book-info-container'>
               <p class='justify-content-between'>
-                <p>uncompleted</p>
                 <b>Notes:</b> {book.notes.length}
               </p>
               <hr />
