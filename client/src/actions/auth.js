@@ -135,8 +135,6 @@ export const removeAccount = ({id}) => async (dispatch) => {
 export const passwordReset = ({email}) => async (dispatch) => {
   try {
 
-    console.log("action - " + email)
-
     const config = {
       header: {
         "Content-Type": "application/json",
@@ -150,9 +148,41 @@ export const passwordReset = ({email}) => async (dispatch) => {
       singleQuotes: false,
     });
 
-    console.log(body)
-
     const res = await axios.post("/api/auth/password-reset", body, config);
+
+    dispatch(setAlert("Email Sent", "success"));
+
+  } catch (err) {
+      const errors = err.response.data.errors;
+  
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+    }
+}
+
+// Create new password
+export const createNewPassword = ({token, newPassword}) => async (dispatch) => {
+  try {
+
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = { token, newPassword };
+
+    stringifyObject(body, {
+      indent: "  ",
+      singleQuotes: false,
+    });
+
+    const res = await axios.post("/api/auth/new-password", body, config);
+
+    dispatch(setAlert("Your password has been changed.", "success"));
+
+    return true;
 
   } catch (err) {
       const errors = err.response.data.errors;

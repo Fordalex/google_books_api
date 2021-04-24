@@ -187,7 +187,6 @@ router.delete("/remove/:id", auth, async (req, res) => {
 // @desc         Send email to reset the users password.
 // @access       Public
 router.post("/password-reset", async (req, res) => {
-  console.log("route called")
   try {
    crypto.randomBytes(32, async (err,buffer) => {
      if (err) {
@@ -195,7 +194,6 @@ router.post("/password-reset", async (req, res) => {
      }
      const token  = buffer.toString("hex");
      const user = await User.findOne({email:req.body.email})
-     console.log("route - " + req.body.email)
      if (!user) {
        return res.status(422).json({error: "User not found."})
      }
@@ -206,8 +204,10 @@ router.post("/password-reset", async (req, res) => {
       service_id: 'thenoteworthy',
       template_id: 'template_qvdcnxl',
       user_id: 'user_IdiXCOuXWraONPabxCazL',
-      template_params: {}
+      template_params: {token}
       };
+
+
    
       $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
           type: 'POST',
@@ -221,6 +221,31 @@ router.post("/password-reset", async (req, res) => {
      
      return res.json("Check your email.")
    })
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route        POST api/auth/new-password
+// @desc         Save the new password.
+// @access       Public
+router.post("/new-password", async (req, res) => {
+  try {
+    const newPassword = req.body.newPassword
+    const sentToken = req.body.token
+    const user = await User.findOne({resetToken:sentToken, expireToken:{$gt:Date.now()}})
+    if (!user) {
+      return res.status(422).json({err: "The reset link has expired."})
+    }
+    // Excrypt password
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+
+    await user.save();
+
+    return res.json("Your password has been changed.")
 
   } catch (err) {
     console.error(err.message);

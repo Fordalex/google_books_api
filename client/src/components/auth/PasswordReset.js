@@ -8,7 +8,6 @@ const PasswordReset = ({passwordReset}) => {
     const onSubmit = (e) => {
         e.preventDefault();
         const email = document.getElementsByName('email')[0].value;
-        console.log("view - " + email)
         passwordReset({email})
     }
 
@@ -27,7 +26,7 @@ const PasswordReset = ({passwordReset}) => {
               </div>
               <div className='justify-content-center'>
                 <button type='submit' className='btn-main w-100'>
-                  Login
+                  Send Email
                 </button>
               </div>
             </form>
