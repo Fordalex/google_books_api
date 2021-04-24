@@ -63,7 +63,7 @@ const NavBar = ({
     <Fragment>
       <nav class="main-nav">
         <Link class='nav-app-name' to='/'>
-          Noteworthy
+         TheNoteWorthy
         </Link>
         {!auth.isAuthenticated ? (
           <Link

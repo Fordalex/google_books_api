@@ -131,6 +131,38 @@ export const removeAccount = ({id}) => async (dispatch) => {
   }
 }
 
+// Send password reset
+export const passwordReset = ({email}) => async (dispatch) => {
+  try {
+
+    console.log("action - " + email)
+
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = { email };
+
+    stringifyObject(body, {
+      indent: "  ",
+      singleQuotes: false,
+    });
+
+    console.log(body)
+
+    const res = await axios.post("/api/auth/password-reset", body, config);
+
+  } catch (err) {
+      const errors = err.response.data.errors;
+  
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+    }
+}
+
 // Logout / Clear Profile
 export const logout = () => (dispatch) => {
   dispatch({ type: "CLEAR_PROFILE" });

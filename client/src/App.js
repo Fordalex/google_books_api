@@ -6,6 +6,7 @@ import Home from "./components/home/Home";
 import Register from "./components/auth/Register";
 import Alert from './components/layout/Alert';
 import Login from "./components/auth/Login";
+import PasswordReset from "./components/auth/PasswordReset";
 import BookSearch from "./components/search_books/BookIndex";
 import AddBookForm from "./components/search_books/AddBookForm";
 import Profile from "./components/user/Profile";
@@ -54,6 +55,7 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/password-reset' component={PasswordReset} />
               <PrivateRoute exact path='/profile' component={Profile} />
               <PrivateRoute exact path='/all-notes' component={AllNotes} />
               <PrivateRoute exact path='/view-all' component={ViewAll} />

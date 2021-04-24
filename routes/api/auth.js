@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator/check");
+// Add jquery
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 //  Add user model
 const User = require("../../models/User");
 const Book = require("../../models/Book");
@@ -172,6 +177,51 @@ router.delete("/remove/:id", auth, async (req, res) => {
     console.log(user, usersBooks)
 
     return res.json({ msg: "Account removed." });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route        POST api/auth/password-reset
+// @desc         Send email to reset the users password.
+// @access       Public
+router.post("/password-reset", async (req, res) => {
+  console.log("route called")
+  try {
+   crypto.randomBytes(32, async (err,buffer) => {
+     if (err) {
+       console.log(err);
+     }
+     const token  = buffer.toString("hex");
+     const user = await User.findOne({email:req.body.email})
+     console.log("route - " + req.body.email)
+     if (!user) {
+       return res.status(422).json({error: "User not found."})
+     }
+     user.resetToken = token;
+     user.expireToken = Date.now() + 3600000
+     user.save();
+     var data = {
+      service_id: 'thenoteworthy',
+      template_id: 'template_qvdcnxl',
+      user_id: 'user_IdiXCOuXWraONPabxCazL',
+      template_params: {}
+      };
+   
+      $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+          type: 'POST',
+          data: JSON.stringify(data),
+          contentType: 'application/json'
+      }).done(function() {
+          console.log("message sent")
+      }).fail(function(error) {
+          console.log('Oops... ' + JSON.stringify(error));
+      });
+     
+     return res.json("Check your email.")
+   })
+
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

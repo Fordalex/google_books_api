@@ -55,7 +55,8 @@ const Login = ({ login, auth }) => {
                   Login
                 </button>
               </div>
-              <p class="mt-2 text-secondary">Not got an account? <Link to="/register">Sign Up</Link></p>
+              <p class="mt-2 mb-05 text-secondary">Not got an account? <Link to="/register">Sign Up</Link></p>
+              <p class="text-secondary">Forgotten your password? <Link to="/password-reset">Reset Password</Link></p>
             </form>
           </div>
         </div>
