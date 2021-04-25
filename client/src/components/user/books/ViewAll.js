@@ -126,7 +126,7 @@ const Books = ({
         : reading.map((book, index) => (
             <BookSmall book={book} key={index} index={index} />
           ))}
-      <p class='m-1'>Results: {reading.length}</p>
+      <p class='m-1 text-secondary'>Results: {reading.length}</p>
       <hr />
       <h2 class='p-2 m-0'>Read</h2>
       {view == "medium"
@@ -136,7 +136,7 @@ const Books = ({
         : read.map((book, index) => (
             <BookSmall book={book} key={index} index={index} />
           ))}
-      <p class='m-1'>Results: {read.length}</p>
+      <p class='m-1 text-secondary'>Results: {read.length}</p>
       <hr />
       <h2 class='p-2 m-0'>Uncompleted</h2>
       {view == "medium"
@@ -146,7 +146,7 @@ const Books = ({
         : uncompleted.map((book, index) => (
             <BookSmall book={book} key={index} index={index} />
           ))}
-      <p class='m-1'>Results: {uncompleted.length}</p>
+      <p class='m-1 text-secondary'>Results: {uncompleted.length}</p>
     </Fragment>
   );
 };
