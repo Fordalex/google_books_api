@@ -5,7 +5,6 @@ import { addBookId } from "../../../actions/profile";
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 
-
 const ProfileBook = ({book, addBookId}) => {
 
     const bookIdHandler = (b) => {

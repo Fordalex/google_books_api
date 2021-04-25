@@ -44,7 +44,7 @@ const Books = ({ books: {books, loading}, setBookIndex}) => {
             {books.items.map((book, index) => (
               <Book book={book} key={index} index={index} setBookIndex={setBookIndex}/>
             ))}
-            <p class="m-1">Results: {books.items.length}</p>
+            <p class="m-1 text-secondary">Results: {books.items.length}</p>
         </Fragment>
       )}
     </Fragment>

@@ -8,7 +8,6 @@
 }
 
 .search-book-page-wrapper {
-    max-width: 530px;
     width: 100%;
 }
 
@@ -74,6 +73,8 @@ button:focus {
     margin: 10px;
     padding: 10px;
     opacity: 0;
+    max-width: 450px;
+    display: block;
 }
 
 .book-img-container {
@@ -188,4 +189,14 @@ button:focus {
     .book-info-container {
         padding-left: 95px;
     }
+}
+
+@media screen and (min-width: 720px) {
+    .book-container {
+        min-width: 300px;
+        max-width: 350px;
+        width: 100%;
+        display: inline-block;
+    }
+    
 }
