@@ -59,22 +59,23 @@
     width: 50vw;
     max-width: 150px;
     display: block;
-    margin: auto;
-    padding: 40px 0;
+    margin: 35px auto 55px auto;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.12);
 }
 
 .book-data-book-container {
-    
+    background-color: transparent;
+    height: fit-content;
+    margin: 0;
+    border-radius: 0;
 }
 
 .book-all-info-container {
     background-color: white;
     padding: 15px;
-    padding-bottom: 90px;
-}
-
-.book-all-info-container {
-    
+    padding-bottom: 30px;
+    margin: 0;
+    border-radius: 0;
 }
 
 .book-all-info-container .add-book {
@@ -97,10 +98,15 @@
 /* desktop view */
 @media screen and (min-width: 780px) {
     .book-data-book-container {
+        background-color: white;
         width: 40%;
+        margin: 20px;
+        border-radius: 8px 8px 0 0;
     }
-    
     .book-all-info-container {
         width: 60%;
+        border-radius: 8px;
+        margin-right: 20px;
+        margin-top: 20px;
     }
 }
