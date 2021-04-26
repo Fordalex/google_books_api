@@ -127,7 +127,7 @@ const AddNote = ({
                     </div>
                   </div>
                   <div className='justify-content-center mt-2' id='doneButton'>
-                    <button type='submit' className='btn-main w-100'>
+                    <button type='submit' className='btn btn-main w-100'>
                       Add Note
                     </button>
                   </div>

@@ -28,7 +28,7 @@ const BookData = ({
 
   var rating = [];
   for (let i = 0; i < book.rating; i++) {
-    rating.push('');
+    rating.push("");
   }
 
   return (
@@ -124,22 +124,6 @@ const BookData = ({
               <span id='avgPagesPerDay'></span>
             </p>
           )}
-          {book.readingStatus !== "reading" && (
-            <p class='justify-content-between'>
-              <b>Your Rating:</b>
-              <span>
-                {book.rating ? (
-                  rating.map((r) => {
-                    return <img src="https://img.icons8.com/fluent/18/000000/star.png"/>
-                  })
-                ) : (
-                  <small class='text-secondary'>
-                    Press edit to add rating{" "}
-                  </small>
-                )}
-              </span>
-            </p>
-          )}
           {book.categories && (
             <p class='justify-content-between'>
               <b>Categories</b>
@@ -151,25 +135,57 @@ const BookData = ({
         </div>
         {book.readingStatus == "uncompleted" && (
           <Fragment>
-            <h4 class="mb-05">The Reason for not finishing</h4>
-            <p class="mb-1">{book.uncompletedReason}</p>
+            <h4 class='mb-05'>The Reason for not finishing</h4>
+            <p class='mb-1'>{book.uncompletedReason}</p>
           </Fragment>
         )}
         <hr />
         <div class='justify-content-center'>
-          <Link to='add-note' class='btn-main w-100 text-center'>
+          <Link to='add-note' class='btn btn-main w-100 text-center'>
             Add Note
           </Link>
           <Link
             to='edit-book-data'
-            class='btn-secondary w-100 text-center ml-1'
+            class='btn btn-secondary w-100 text-center ml-1'
           >
             Edit
           </Link>
         </div>
         <hr />
+        <div class='justify-content-center'>
+          <Link to='add-review' class='btn btn-gold w-100'>
+            Add Review & Rating
+          </Link>
+        </div>
+        <hr />
+        <h3 class="mb-05">Review</h3>
+        {book.review ? (
+          <p>
+            <span class='text-secondary'>{book.review}</span>
+          </p>
+        ) : (
+          <p class='mb-1 justify-content-between'>
+            <span class='text-secondary'><small class='text-secondary'>No review created yet.</small></span>
+          </p>
+        )}
+
+        <p class='justify-content-between'>
+          <b>Your Rating:</b>
+          <span>
+            {book.rating ? (
+              rating.map((r) => {
+                return (
+                  <img src='https://img.icons8.com/fluent/18/000000/star.png' />
+                );
+              })
+            ) : (
+              <small class='text-secondary'>Press edit to add rating </small>
+            )}
+          </span>
+        </p>
+        <hr />
         {book.notes.length < 1 ? (
-          <p class='text-secondary'>You haven't added any notes yet.</p>
+          <p class='text-secondary'><small>You haven't added any notes yet.</small></p>
         ) : (
           <Fragment>
             <h2>Notes</h2>

@@ -21,17 +21,14 @@ const EditBookData = ({
     const startDateInput = document.getElementsByName("startDate")[0];
     const finishedDateInput = document.getElementsByName("finishedDate")[0];
     const currentPageInput = document.getElementsByName("currentPage")[0];
-    const ratingInput = document.getElementsByName("rating")[0];
     const uncompletedReason = document.getElementsByName(
       "uncompletedReason"
     )[0];
-
     startDateInput.value = book.startDate.slice(0, 10);
     finishedDateInput.value = book.finishedDate
       ? book.finishedDate.slice(0, 10)
       : "";
     currentPageInput.value = book.currentPage ? book.currentPage : "";
-    ratingInput.value = book.rating;
     uncompletedReason.value = book.uncompletedReason
       ? book.uncompletedReason
       : "";
@@ -87,7 +84,6 @@ const EditBookData = ({
     var readingStatus = document.getElementsByName("readingStatus")[0].value;
     var finishedDate = document.getElementsByName("finishedDate")[0].value;
     var startDate = document.getElementsByName("startDate")[0].value;
-    var rating = document.getElementsByName("rating")[0].value;
 
     var res = await updateBook({
       uncompletedReason,
@@ -97,7 +93,6 @@ const EditBookData = ({
       finishedDate,
       startDate,
       title: book.title,
-      rating,
     });
     if (res) {
       setFormSubmited(true)
@@ -142,38 +137,33 @@ const EditBookData = ({
                     <div class='hidden' id='finishedInput'>
                       <p>Finished Date</p>
                       <input type='date' name='finishedDate' />
-                      <p>Rating</p>
-                      <input
-                        min='0'
-                        max='5'
-                        type='number'
-                        name='rating'
-                        placeholder='Rating'
-                      />
                     </div>
                     <div id='pageInput'>
+                    <p>Current Page</p>
                       <input
                         type='number'
                         placeholder='Current Page'
                         name='currentPage'
+                        class='m-0'
                       />
                     </div>
                     <div class='hidden' id='reasonInput'>
-                      <input
+                      <textarea
                         type='text'
                         placeholder='Reason...'
                         name='uncompletedReason'
-                      />
+                        class='input-style'
+                      ></textarea>
                     </div>
                   </div>
                   <div className='justify-content-center mt-2' id='doneButton'>
-                    <button type='submit' className='btn-main w-100'>
+                    <button type='submit' className='btn btn-main w-100'>
                       Update
                     </button>
                   </div>
                   <div className='justify-content-center mt-2' id='doneButton'>
                     <button
-                      className='btn-danger w-100'
+                      className='btn btn-danger w-100'
                       onClick={() => removeBookHandler()}
                     >
                       Delete

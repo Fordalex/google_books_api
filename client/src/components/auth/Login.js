@@ -51,7 +51,7 @@ const Login = ({ login, auth }) => {
                 />
               </div>
               <div className='justify-content-center'>
-                <button type='submit' className='btn-main w-100'>
+                <button type='submit' className='btn btn-main w-100'>
                   Login
                 </button>
               </div>

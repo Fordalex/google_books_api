@@ -44,6 +44,10 @@ const BookSchema = new mongoose.Schema({
         type: Number,
         required: false,
     },
+    review: {
+        type: String,
+        required: false,
+    },
     categories: {
         type: Array,
         required: false,

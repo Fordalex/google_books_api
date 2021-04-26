@@ -68,7 +68,7 @@ const NavBar = ({
         {!auth.isAuthenticated ? (
           <Link
             to='/login'
-            class='btn-main'>
+            class='btn btn-main'>
             Login
           </Link>
         ) : (

@@ -125,7 +125,7 @@ const Home = ({ auth }) => {
               <Link
                 to='register'
                 id='homeEnter'
-                className='btn-secondary hidden home-right-button'
+                className='btn btn-secondary hidden home-right-button'
               >
                 Sign Up
               </Link>

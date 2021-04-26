@@ -86,10 +86,10 @@ const Register = ({ register, auth, setAlert }) => {
                 </small>
               </div>
               <div className='justify-content-center'>
-                <button type='submit' className='btn-main w-100'>
+                <button type='submit' className='btn btn-main w-100'>
                   Register
                 </button>
-                <Link className='btn-secondary w-100 ml-1' to='login'>
+                <Link className='btn btn-secondary w-100 ml-1' to='login'>
                   Sign In
                 </Link>
               </div>

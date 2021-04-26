@@ -119,15 +119,13 @@ export const removeBook = ({ id, title }) => async (dispatch) => {
 };
 
 export const updateBook = ({
-  
   uncompletedReason,
   id,
   readingStatus,
   currentPage,
   finishedDate,
   startDate,
-  title,
-  rating
+  title
 }) => async (dispatch) => {
   const config = {
     header: {
@@ -140,8 +138,7 @@ export const updateBook = ({
     readingStatus,
     currentPage,
     finishedDate,
-    startDate,
-    rating
+    startDate
   };
 
   try {

@@ -8,7 +8,7 @@ const Settings = ({removeAccount, profile: {profile}}) => {
 
     return (
         <div>
-           <button class="btn-danger" onClick={() => removeAccount({id: profile.user._id})}>Remove Account</button>
+           <button class="btn btn-danger" onClick={() => removeAccount({id: profile.user._id})}>Remove Account</button>
         </div>
     )
 }

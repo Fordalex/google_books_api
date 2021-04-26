@@ -202,10 +202,10 @@ const Profile = ({
                 </div>
                 <hr />
                 <div class='justify-content-center px-2 py-1'>
-                  <Link to='all-notes' class='btn-secondary w-100 text-center'>
+                  <Link to='all-notes' class='btn btn-secondary w-100 text-center'>
                     View All Notes
                   </Link>
-                  <Link to='book-search' class='btn-main w-100 ml-1 text-center'>
+                  <Link to='book-search' class='btn btn-main w-100 ml-1 text-center'>
                     Add Book
                   </Link>
              

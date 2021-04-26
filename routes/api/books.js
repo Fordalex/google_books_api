@@ -91,8 +91,8 @@ router.put("/update/:id", auth, async (req, res) => {
     readingStatus,
     currentPage,
     finishedDate,
-    startDate,
-    rating } = req.body;
+    startDate
+   } = req.body;
 
   try {
     let book = await Book.findOneAndUpdate({ _id: req.params.id }, { new: true });
@@ -102,7 +102,6 @@ router.put("/update/:id", auth, async (req, res) => {
     book.currentPage = currentPage;
     book.finishedDate = finishedDate;
     book.startDate = startDate;
-    book.rating = rating;
 
     await book.save();
 

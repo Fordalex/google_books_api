@@ -72,11 +72,11 @@ const BookInfo = ({ books: { books, bookIndex } }) => {
           <a
             href={books.items[bookIndex].volumeInfo.previewLink}
             target='_blank'
-            class='btn-secondary w-100 text-center'
+            class='btn btn-secondary w-100 text-center'
           >
             Preview Book
           </a>
-          <Link class='btn-main w-100  ml-1 text-center' to='add-book'>
+          <Link class='btn btn-main w-100  ml-1 text-center' to='add-book'>
           Add Book
         </Link>
         </div>
