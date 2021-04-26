@@ -152,8 +152,7 @@ const EditBookData = ({
                         type='text'
                         placeholder='Reason...'
                         name='uncompletedReason'
-                        class='input-style'
-                      ></textarea>
+                        class='input-style'></textarea>
                     </div>
                   </div>
                   <div className='justify-content-center mt-2' id='doneButton'>

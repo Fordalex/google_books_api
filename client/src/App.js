@@ -11,6 +11,7 @@ import NewPassword from "./components/auth/NewPassword";
 import BookSearch from "./components/search_books/BookIndex";
 import AddBookForm from "./components/search_books/AddBookForm";
 import Profile from "./components/user/Profile";
+import AddReview from "./components/user/books/AddReview";
 import ViewAll from "./components/user/books/ViewAll";
 import BookData from "./components/user/books/BookData";
 import EditBookData from "./components/user/books/EditBookData";
@@ -58,6 +59,7 @@ function App() {
               <Route exact path='/password-reset' component={PasswordReset} />
               <Route exact path='/new-password/:token' component={NewPassword} />
               <PrivateRoute exact path='/profile' component={Profile} />
+              <PrivateRoute exact path='/add-review' component={AddReview} />
               <PrivateRoute exact path='/all-notes' component={AllNotes} />
               <PrivateRoute exact path='/view-all/:paramCategory' component={ViewAll} />
               <PrivateRoute exact path='/book-data' component={BookData} />
