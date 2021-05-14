@@ -122,6 +122,13 @@ const NavBar = ({
                     Settings
                   </Link>
                 </li>
+                {user?.email == 'thenoteworthy1@gmail.com' && (
+                  <li>
+                  <Link to='/admin' onClick={toggleNavHandler}>
+                    Admin
+                  </Link>
+                  </li> 
+                )}
                 <li>
                   <img
                     src='https://img.icons8.com/fluent/30/000000/export.png'
@@ -158,6 +165,13 @@ const NavBar = ({
                     Settings
                   </Link>
                 </li>
+                {user?.email == 'thenoteworthy1@gmail.com' && (
+                  <li>
+                  <Link to='/admin'>
+                    Admin
+                  </Link>
+                  </li> 
+                )}
               </ul>
               <ul class='desktop-nav-links'>
               <li>
